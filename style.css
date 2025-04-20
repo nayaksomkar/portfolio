@@ -1,0 +1,36 @@
+body {
+    background-color: black;
+    font-family: Arial, sans-serif;
+}
+
+.loading-screen {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.loading-text {
+    font-size: 48px;
+    font-weight: bold;
+    color: #924DBF;
+    margin-bottom: 20px;
+    transition: color 0.5s ease-in-out;
+}
+
+.loading-bar-container {
+    width: 400px; /* Increased width */
+    height: 20px; /* Increased height */
+    background-color: #333;
+    border-radius: 10px; /* Increased border radius */
+    overflow: hidden;
+    margin: 0 auto; /* Centered */
+}
+
+.loading-bar {
+    width: 0%;
+    height: 100%;
+    background-color: white;
+    transition: width 0.5s ease-in-out;
+}
