@@ -20,7 +20,7 @@ body {
 }
 
 .loading-bar-container {
-    width: 400px; /* Increased width */
+    width: 300px; /* Increased width */
     height: 20px; /* Increased height */
     background-color: #333;
     border-radius: 10px; /* Increased border radius */
