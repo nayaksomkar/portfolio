@@ -1,8 +1,8 @@
 {
   "_comment": "Edit this file to control what shows on your portfolio.",
-  "_comment_projects": "Add GitHub repo names to hide from the Projects tab",
+  "_comment_projects": "Add repo names (e.g. 'old-project') or full URLs to hide from Projects tab",
   "_comment_certificates": "Add certificate titles to hide from the Certificates tab",
 
-  "ignoreProjects": ["https://github.com/nayaksomkar/portfolio"],
+  "ignoreProjects": ["portfolio"],
   "ignoreCertificates": []
 }

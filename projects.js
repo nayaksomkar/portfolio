@@ -14,7 +14,11 @@ async function fetchRepos() {
     if (!res.ok) throw new Error(`GitHub API error: ${res.status}`);
     let repos = await res.json();
     repos = repos.filter(r => !r.fork).sort((a, b) => b.stargazers_count - a.stargazers_count);
-    const ignored = (config.ignoreProjects || []).map(n => n.toLowerCase().trim());
+    const ignored = (config.ignoreProjects || []).map(n => {
+      let name = n.toLowerCase().trim();
+      if (name.includes('github.com/')) name = name.split('/').pop();
+      return name;
+    });
     repos = repos.filter(r => !ignored.includes(r.name.toLowerCase().trim()));
     if (repos.length === 0) {
       grid.innerHTML = `<div class="error-msg"><i class="fas fa-folder-open"></i><p>No public repositories found.</p></div>`;
