@@ -2,7 +2,9 @@
   "_comment": "Edit this file to control what shows on your portfolio.",
   "_comment_projects": "Add repo names (e.g. 'old-project') or full URLs to hide from Projects tab",
   "_comment_certificates": "Add certificate titles to hide from the Certificates tab",
+  "_comment_priority": "Pin these repo names to the top, in the order listed",
 
-  "ignoreProjects": ["portfolio", "BoilerPlateUnsloth"],
+  "ignoreProjects": ["portfolio", "FlutterTemplate", "nayaksomkar", "myOnlineMeal", "BoilerPlateUnsloth", "ignouassign.surveyform", "ignouassign.cookie"],
+  "priorityProjects": [],
   "ignoreCertificates": []
 }
