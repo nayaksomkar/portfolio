@@ -72,6 +72,7 @@ html {
 
 body {
   font-family: 'Space Mono', monospace;
+  font-weight: 700;
   background: var(--bg-body);
   color: var(--text-primary);
   line-height: 1.7;
@@ -177,7 +178,7 @@ nav {
 }
 .nav-links .nav-link {
   font-size: 0.9rem;
-  font-weight: 500;
+  font-weight: 700;
   padding: 0.4rem 0.8rem;
   border-radius: 6px;
   color: var(--text-secondary);
@@ -246,7 +247,8 @@ nav {
 }
 
 .section-desc {
-  font-size: 0.85rem;
+  font-size: 1.1rem;
+  font-weight: 700;
   color: var(--text-secondary);
   margin-bottom: 1.5rem;
 }
@@ -280,6 +282,7 @@ nav {
   display: flex;
   align-items: center;
   gap: 0.4rem;
+  color: var(--purple-accent);
 }
 .project-card h3 i {
   color: var(--purple-accent);
@@ -701,6 +704,7 @@ body.light-mode .ascii-art pre {
 
 .about-footer { text-align: center; padding: 2rem 0 0.5rem; border: none; }
 .about-footer .footer-copy { font-size: 0.8rem; color: var(--text-secondary); }
+footer .footer-copy:last-child { color: var(--purple-accent); }
 .about-footer .footer-sub { font-size: 0.72rem; color: var(--text-secondary); opacity: 0.6; margin-top: 0.2rem; }
 
 @media (max-width: 700px) {
