@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>nayaksomkar · projects</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body class="night-mode page-projects">
+
+  <div id="bg-text" aria-hidden="true"></div>
+
+  <nav>
+    <a href="index.html" class="nav-name">@nayaksomkar</a>
+    <div class="nav-links">
+      <a href="index.html" class="nav-link">About</a>
+      <a href="projects.html" class="nav-link active">Projects</a>
+      <a href="certificates.html" class="nav-link">Certificates</a>
+    </div>
+    <div class="nav-actions">
+      <a href="https://linktr.ee/nayaksomkar" target="_blank" class="social-icon"><i class="fab fa-link"></i></a>
+      <a href="https://github.com/nayaksomkar" target="_blank" class="social-icon"><i class="fab fa-github"></i></a>
+      <a href="https://linkedin.com/in/nayaksomkar" target="_blank" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+      <a href="mailto:nayaksomkar@outlook.in" class="social-icon"><i class="fas fa-envelope"></i></a>
+      <div class="toggle-wrap">
+        <input type="checkbox" id="theme-toggle">
+        <label for="theme-toggle" class="toggle-label">
+          <i class="fas fa-moon"></i>
+          <i class="fas fa-sun"></i>
+          <span class="toggle-ball"></span>
+        </label>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-content">
+      <div class="avatar-ring">
+        <img src="https://avatars.githubusercontent.com/nayaksomkar" alt="avatar" class="avatar">
+      </div>
+      <h1 class="hero-name">नायक Omkar <span class="hand">🖤🦢</span></h1>
+      <p class="hero-tagline">developer · creator · minimalist</p>
+      <div class="hero-links">
+        <a href="https://linktr.ee/nayaksomkar" target="_blank"><i class="fab fa-link"></i> linktr.ee/nayaksomkar</a>
+        <a href="mailto:nayaksomkar@outlook.in"><i class="fas fa-envelope"></i> nayaksomkar@outlook.in</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="content-section">
+    <div class="section-desc">Projects fetched from <a href="https://github.com/nayaksomkar" target="_blank">github.com/nayaksomkar</a></div>
+    <div class="project-grid" id="project-grid">
+      <div class="loader"><div class="spinner"></div><p>Loading projects...</p></div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-links">
+      <a href="https://linktr.ee/nayaksomkar" target="_blank"><i class="fab fa-link"></i></a>
+      <a href="https://github.com/nayaksomkar" target="_blank"><i class="fab fa-github"></i></a>
+      <a href="https://linkedin.com/in/nayaksomkar" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+      <a href="mailto:nayaksomkar@outlook.in"><i class="fas fa-envelope"></i></a>
+    </div>
+    <p class="footer-copy">&copy; 2026 @nayaksomkar · vibe coded with <span class="heart">&#9829;</span> · building intelligent systems</p>
+  </footer>
+
+  <div class="window-overlay" id="window-overlay">
+    <div class="window" id="project-window">
+      <div class="window-titlebar">
+        <span class="window-title" id="window-title">README</span>
+        <div class="window-controls">
+          <button class="win-btn minimize" id="win-minimize" title="Minimize"><i class="fas fa-minus"></i></button>
+          <button class="win-btn maximize" id="win-maximize" title="Maximize"><i class="fas fa-expand"></i></button>
+          <button class="win-btn close" id="win-close" title="Close"><i class="fas fa-times"></i></button>
+        </div>
+      </div>
+      <div class="window-body" id="window-body">
+        <div class="win-loader"><div class="spinner"></div><p>Fetching README...</p></div>
+      </div>
+      <div class="window-footer">
+        <a href="#" id="window-github-link" target="_blank" class="btn-gh"><i class="fab fa-github"></i> Open on GitHub</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <script src="projects.js"></script>
+</body>
+</html>
