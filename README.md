@@ -103,7 +103,7 @@ portfolio/
   2. **Config Loader** — Fetches `portfolio-config.json`.
   3. **Page Transition** — `.page-fold` animation on nav link clicks.
   4. **Background Text Wave** — `requestAnimationFrame` sine wave glow on Devanagari `"नायक Omkar"` grid.
-  5. **ASCII Art Magic (Easter Egg)** — 6-tap counter → vibration → popup asking for `"634"` → correct triggers hearts animation; wrong triggers shake + close.
+   5. **ASCII Art Magic (Easter Egg)** — 6-tap counter → vibration → popup asking for a secret code; correct triggers hearts animation; wrong triggers shake + close.
   6. **Emoji Hearts Animation** — Detects mobile (<640px) and reduces particles from 160 → 20 for performance.
 
 ### `projects.js`
@@ -177,7 +177,7 @@ Used on the Projects page for README display. Components: `.window-overlay`, `.w
 
 - **Trigger**: 6 rapid taps on the ASCII art logo.
 - **Step 1**: Vibration feedback + popup with 🔮 asking for magic number.
-- **Step 2**: Enter `"634"` → triggers hearts animation; wrong → red shake + close.
+- **Step 2**: Enter the correct code → triggers hearts animation; wrong → red shake + close.
 - **Hearts animation**: Emoji particles (`🖤🤍💜🦢✨`) burst across screen with float animation, then exit with blur-out.
 - **Mobile optimization**: Reduces particles to 20 (vs 160 on desktop), removes `filter: blur()`, uses `will-change: transform` + `translateZ(0)` for GPU compositing.
 
