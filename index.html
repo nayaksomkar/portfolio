@@ -12,7 +12,10 @@
   <div id="bg-text" aria-hidden="true"></div>
 
   <nav>
-    <a href="index.html" class="nav-name">@nayaksomkar</a>
+    <div class="nav-brand">
+      <img src="https://avatars.githubusercontent.com/nayaksomkar" alt="avatar" class="nav-avatar">
+      <a href="index.html" class="nav-name">@nayaksomkar</a>
+    </div>
     <div class="nav-links">
       <a href="index.html" class="nav-link active">About</a>
       <a href="projects.html" class="nav-link">Projects</a>
@@ -34,11 +37,8 @@
     </div>
   </nav>
 
-  <header class="hero">
-    <div class="hero-content">
-      <div class="avatar-ring">
-        <img src="https://avatars.githubusercontent.com/nayaksomkar" alt="avatar" class="avatar">
-      </div>
+  <main class="about-main">
+    <div class="about-intro">
       <h1 class="hero-name">नायक Omkar <span class="hand">🖤🦢</span></h1>
       <p class="hero-tagline">developer · creator · minimalist</p>
       <div class="hero-links">
@@ -46,69 +46,39 @@
         <a href="mailto:nayaksomkar@outlook.in"><i class="fas fa-envelope"></i> nayaksomkar@outlook.in</a>
       </div>
     </div>
-  </header>
 
-  <section class="content-section">
-    <div class="section-desc">About me</div>
+    <div class="about-grid">
+      <div class="about-card">
+        <h2><i class="fas fa-quote-left"></i> Summary</h2>
+        <p>Developing intelligent automation systems with n8n, LangChain, and LangGraph, one at a time.</p>
+      </div>
 
-    <div class="about-card">
-      <h2><i class="fas fa-quote-left"></i> Summary</h2>
-      <p>Developing intelligent automation systems with n8n, LangChain, and LangGraph, one at a time.</p>
-    </div>
-
-    <div class="about-card">
-      <h2><i class="fas fa-graduation-cap"></i> Education</h2>
-      <div class="edu-item">
-        <div class="edu-icon"><i class="fas fa-university"></i></div>
-        <div class="edu-info">
-          <h3>Bachelors of Computer Application (BCA)</h3>
-          <p class="edu-institute">Guru Ghasidas Vishwavidyalaya, Bilaspur (C.G)</p>
-          <p class="edu-desc">Primary focused on AI, ML and Data Science. Industrial Project on "Retinal disease detection with use of Machine and Deep Learning".</p>
-          <span class="edu-year">2022 - 2025</span>
+      <div class="about-card">
+        <h2><i class="fas fa-graduation-cap"></i> Education</h2>
+        <div class="edu-item">
+          <div class="edu-icon"><i class="fas fa-university"></i></div>
+          <div class="edu-info">
+            <h3>BCA · AI & ML</h3>
+            <p class="edu-institute">Guru Ghasidas Vishwavidyalaya</p>
+            <span class="edu-year">2022 - 2025</span>
+          </div>
         </div>
       </div>
     </div>
 
-    <div class="about-card">
+    <div class="about-card skills-card">
       <h2><i class="fas fa-microchip"></i> Technologies</h2>
-      <div class="skills-grid">
-        <div class="skill-group">
-          <h3>Languages</h3>
-          <div class="skill-tags">
-            <span>Python</span><span>HTML</span><span>CSS</span><span>JavaScript</span>
-          </div>
-        </div>
-        <div class="skill-group">
-          <h3>Libraries</h3>
-          <div class="skill-tags">
-            <span>TensorFlow</span><span>NumPy</span><span>nltk</span><span>Pandas</span><span>unsloth</span><span>PyTorch</span><span>LangChain</span><span>LangGraph</span><span>FastAPI</span><span>Flask</span>
-          </div>
-        </div>
-        <div class="skill-group">
-          <h3>Databases</h3>
-          <div class="skill-tags">
-            <span>MySQL</span><span>SQLite</span><span>Chroma</span><span>MongoDB</span><span>PostgreSQL</span>
-          </div>
-        </div>
-        <div class="skill-group">
-          <h3>Concepts & Tools</h3>
-          <div class="skill-tags">
-            <span>RAG</span><span>Docker</span><span>LLD</span><span>System Design</span><span>Git/GitHub</span><span>n8n</span><span>Data Visualization</span>
-          </div>
-        </div>
+      <div class="skill-tags">
+        <span>Python</span><span>TensorFlow</span><span>PyTorch</span><span>LangChain</span><span>LangGraph</span>
+        <span>n8n</span><span>FastAPI</span><span>Flask</span><span>Docker</span><span>RAG</span>
+        <span>MySQL</span><span>PostgreSQL</span><span>MongoDB</span><span>Git/GitHub</span>
       </div>
     </div>
-  </section>
 
-  <footer>
-    <div class="footer-links">
-      <a href="https://linktr.ee/nayaksomkar" target="_blank"><i class="fab fa-link"></i></a>
-      <a href="https://github.com/nayaksomkar" target="_blank"><i class="fab fa-github"></i></a>
-      <a href="https://linkedin.com/in/nayaksomkar" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-      <a href="mailto:nayaksomkar@outlook.in"><i class="fas fa-envelope"></i></a>
-    </div>
-    <p class="footer-copy">&copy; 2026 @nayaksomkar · vibe coded with <span class="heart">&#9829;</span> · building intelligent systems</p>
-  </footer>
+    <footer class="about-footer">
+      <p class="footer-copy">&copy; 2026 @nayaksomkar · vibe coded with <span class="heart">&#9829;</span></p>
+    </footer>
+  </main>
 
   <script src="script.js"></script>
 </body>

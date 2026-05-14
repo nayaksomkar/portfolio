@@ -29,7 +29,13 @@
   position: relative;
 }
 
-.bg-text-item.wave-glow {
+.page-about .bg-text-item {
+  opacity: 0.12;
+  color: var(--purple-accent);
+  text-shadow: 0 0 12px var(--purple-accent), 0 0 40px var(--purple-glow);
+}
+
+.page-about .bg-text-item.wave-glow {
   color: var(--purple-accent);
   opacity: 0.3;
   text-shadow: 0 0 20px var(--purple-accent), 0 0 60px var(--purple-accent), 0 0 120px var(--purple-glow);
@@ -552,6 +558,71 @@ nav {
   color: var(--text-secondary);
 }
 .error-msg i { font-size: 2rem; margin-bottom: 0.6rem; color: var(--purple-accent); }
+
+/* ───────── ABOUT MAIN PAGE (full viewport, no scroll) ───────── */
+.page-about { overflow: hidden; height: 100vh; display: flex; flex-direction: column; }
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.nav-avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--purple-accent);
+}
+
+.about-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1rem 2rem;
+  overflow: hidden;
+}
+
+.about-intro {
+  text-align: center;
+  margin-bottom: 0.8rem;
+}
+.about-intro .hero-name { font-size: 2rem; margin-bottom: 0.1rem; }
+.about-intro .hero-tagline { font-size: 0.8rem; margin-bottom: 0.5rem; }
+.about-intro .hero-links { gap: 0.6rem; }
+.about-intro .hero-links a { font-size: 0.75rem; padding: 0.25rem 0.7rem; }
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.6rem;
+  margin-bottom: 0.6rem;
+}
+
+.about-grid .about-card { padding: 0.8rem 1rem; margin-bottom: 0; }
+.about-grid .about-card h2 { font-size: 0.85rem; margin-bottom: 0.4rem; }
+.about-grid .about-card p { font-size: 0.78rem; }
+.about-grid .edu-item { gap: 0.6rem; }
+.about-grid .edu-icon { width: 32px; height: 32px; font-size: 0.8rem; }
+.about-grid .edu-info h3 { font-size: 0.82rem; }
+.about-grid .edu-institute { font-size: 0.72rem; }
+.about-grid .edu-year { font-size: 0.6rem; }
+
+.skills-card { padding: 0.8rem 1rem; margin-bottom: 0.4rem; }
+.skills-card h2 { font-size: 0.85rem; margin-bottom: 0.4rem; }
+.skills-card .skill-tags { gap: 0.3rem; }
+.skills-card .skill-tags span { font-size: 0.68rem; padding: 0.15rem 0.5rem; }
+
+.about-footer { text-align: center; padding: 0.3rem 0; border: none; }
+.about-footer .footer-copy { font-size: 0.65rem; }
+
+@media (max-width: 640px) {
+  .about-intro .hero-name { font-size: 1.4rem; }
+  .about-intro .hero-tagline { font-size: 0.65rem; }
+  .about-grid { grid-template-columns: 1fr; }
+  .about-main { padding: 0.5rem 0.8rem; }
+}
 
 /* ───────── ABOUT TAB ───────── */
 .about-card {

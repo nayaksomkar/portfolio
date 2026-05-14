@@ -58,28 +58,30 @@ window.addEventListener('resize', () => {
   rebuildTimer = setTimeout(buildBgText, 400);
 });
 
-function animateWave(time) {
-  waveTime = time * 0.0004;
-  const waveFreq = 0.003;
-  const waveAmp = 250;
-  const waveBand = 200;
+if (!document.body.classList.contains('page-about')) {
+  function animateWave(time) {
+    waveTime = time * 0.0004;
+    const waveFreq = 0.003;
+    const waveAmp = 250;
+    const waveBand = 200;
 
-  for (const el of textEls) {
-    const rect = el.getBoundingClientRect();
-    const cx = rect.left + rect.width / 2;
-    const cy = rect.top + rect.height / 2;
-    const wx = cx * waveFreq + waveTime;
-    const waveY = window.innerHeight / 2 + waveAmp * Math.sin(wx);
-    const dist = Math.abs(cy - waveY);
+    for (const el of textEls) {
+      const rect = el.getBoundingClientRect();
+      const cx = rect.left + rect.width / 2;
+      const cy = rect.top + rect.height / 2;
+      const wx = cx * waveFreq + waveTime;
+      const waveY = window.innerHeight / 2 + waveAmp * Math.sin(wx);
+      const dist = Math.abs(cy - waveY);
 
-    if (dist < waveBand) {
-      el.classList.add('wave-glow');
-    } else {
-      el.classList.remove('wave-glow');
+      if (dist < waveBand) {
+        el.classList.add('wave-glow');
+      } else {
+        el.classList.remove('wave-glow');
+      }
     }
+
+    requestAnimationFrame(animateWave);
   }
 
   requestAnimationFrame(animateWave);
 }
-
-requestAnimationFrame(animateWave);
