@@ -3,6 +3,6 @@
   "_comment_projects": "Add repo names (e.g. 'old-project') or full URLs to hide from Projects tab",
   "_comment_certificates": "Add certificate titles to hide from the Certificates tab",
 
-  "ignoreProjects": ["portfolio"],
+  "ignoreProjects": ["portfolio", "BoilerPlateUnsloth"],
   "ignoreCertificates": []
 }
