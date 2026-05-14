@@ -25,9 +25,10 @@ async function fetchRepos() {
       return;
     }
     renderRepos(repos);
-  } catch (err) {
-    grid.innerHTML = `<div class="error-msg"><i class="fas fa-exclamation-triangle"></i><p>Failed to load repos. ${err.message}</p></div>`;
-  }
+} catch (err) {
+     const is403 = err.message && err.message.includes('403');
+     grid.innerHTML = `<div class="error-msg"><i class="fas fa-exclamation-triangle"></i><p>${is403 ? 'GitHub API rate limit reached. Please try again later or refresh the page.' : 'Failed to load repos. ' + err.message}</p></div>`;
+   }
 }
 
 const LANG_COLORS = {
