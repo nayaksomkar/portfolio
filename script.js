@@ -87,7 +87,8 @@ function triggerHearts() {
   document.body.appendChild(overlay);
 
   const emojis = ['🖤', '🤍', '💜', '🦢', '✨'];
-  const count = 40;
+  const isMobile = window.innerWidth < 640;
+  const count = isMobile ? 20 : 40;
 
   for (let i = 0; i < count; i++) {
     const x = Math.random() * 100;
@@ -103,15 +104,17 @@ function triggerHearts() {
     el.style.setProperty('--delay', delay + 's');
     overlay.appendChild(el);
 
-    for (let c = 0; c < 3; c++) {
-      const child = document.createElement('div');
-      child.className = 'hearts-particle child';
-      child.textContent = emojis[(i + c + 1) % emojis.length];
-      child.style.left = (x + (Math.random() - 0.5) * 12) + '%';
-      child.style.top = (y + (Math.random() - 0.5) * 12) + '%';
-      child.style.fontSize = (0.6 + Math.random() * 0.8) + 'rem';
-      child.style.setProperty('--delay', (parseFloat(delay) + 0.25 + Math.random() * 0.3).toFixed(2) + 's');
-      overlay.appendChild(child);
+    if (!isMobile) {
+      for (let c = 0; c < 3; c++) {
+        const child = document.createElement('div');
+        child.className = 'hearts-particle child';
+        child.textContent = emojis[(i + c + 1) % emojis.length];
+        child.style.left = (x + (Math.random() - 0.5) * 12) + '%';
+        child.style.top = (y + (Math.random() - 0.5) * 12) + '%';
+        child.style.fontSize = (0.6 + Math.random() * 0.8) + 'rem';
+        child.style.setProperty('--delay', (parseFloat(delay) + 0.25 + Math.random() * 0.3).toFixed(2) + 's');
+        overlay.appendChild(child);
+      }
     }
   }
 

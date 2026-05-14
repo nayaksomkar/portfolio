@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>nayaksomkar · about</title>
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 </head>
 <body class="night-mode page-about">
 
@@ -14,14 +14,15 @@
   <nav>
     <div class="nav-inner">
       <div class="nav-brand">
-        <img src="https://avatars.githubusercontent.com/nayaksomkar" alt="avatar" class="nav-avatar">
-        <div class="nav-brand-text">
-          <span class="nav-handle">@nayaksomkar</span>
-          <span class="nav-fullname">नायक Omkar</span>
-        </div>
+        <a href="./" class="nav-brand-link">
+          <img src="https://avatars.githubusercontent.com/nayaksomkar" alt="avatar" class="nav-avatar">
+          <div class="nav-brand-text">
+            <span class="nav-handle">@nayaksomkar</span>
+            <span class="nav-fullname">नायक Omkar 🖤🦢</span>
+          </div>
+        </a>
       </div>
       <div class="nav-links">
-        <a href="./" class="nav-link active">About</a>
         <a href="projects" class="nav-link">Projects</a>
         <a href="certificates" class="nav-link">Certificates</a>
       </div>
@@ -43,6 +44,9 @@
   <div class="page-wrap">
   <main class="about-main">
     <div class="about-hero">
+      <div class="avatar-glow">
+        <img src="https://avatars.githubusercontent.com/nayaksomkar" alt="" class="about-avatar" />
+      </div>
       <div class="ascii-art" id="ascii-art">
         <pre>✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦
 
@@ -57,7 +61,7 @@
       </div>
     </div>
 
-    <div class="about-card">
+    <div class="about-card" style="text-align: center;">
       <p>Developing intelligent automation systems with n8n, LangChain, and LangGraph, one at a time.</p>
     </div>
 
@@ -79,7 +83,11 @@
       <div class="about-card">
         <h2><i class="fas fa-code"></i> Languages</h2>
         <div class="skill-icons">
-          <img src="https://skillicons.dev/icons?i=python,js,go,html,css&theme=dark" alt="languages" />
+          <img src="https://cdn.simpleicons.org/python" width="56" height="56" alt="Python" title="Python" />
+          <img src="https://cdn.simpleicons.org/javascript" width="56" height="56" alt="JavaScript" title="JavaScript" />
+          <img src="https://cdn.simpleicons.org/go" width="56" height="56" alt="Go" title="Go" />
+          <img src="https://cdn.simpleicons.org/html5" width="56" height="56" alt="HTML5" title="HTML5" />
+          <img src="https://1000logos.net/wp-content/uploads/2020/09/CSS-Logo.png" width="56" height="56" alt="CSS3" title="CSS3" style="object-fit:contain;" />
         </div>
         <p class="skill-labels">Python • JavaScript • Go • HTML • CSS</p>
       </div>
@@ -87,10 +95,13 @@
       <div class="about-card">
         <h2><i class="fas fa-brain"></i> AI / ML Libraries</h2>
         <div class="skill-icons">
-          <img src="https://skillicons.dev/icons?i=tensorflow,pytorch,numpy,pandas&theme=dark" alt="ml libraries" />
-          <img src="https://cdn.simpleicons.org/scikitlearn/white" width="40" height="40" alt="Scikit-Learn" />
-          <img src="https://cdn.simpleicons.org/matplotlib/white" width="40" height="40" alt="Matplotlib" />
-          <img src="https://cdn.simpleicons.org/seaborn/white" width="40" height="40" alt="Seaborn" />
+          <img src="https://upload.wikimedia.org/wikipedia/commons/2/20/Tensorflow-svgrepo-com.svg" width="56" height="56" alt="TensorFlow" title="TensorFlow" />
+          <img src="https://upload.wikimedia.org/wikipedia/commons/1/10/PyTorch_logo_icon.svg" width="56" height="56" alt="PyTorch" title="PyTorch" />
+          <img src="https://upload.wikimedia.org/wikipedia/commons/6/67/Numpy-svgrepo-com.svg" width="56" height="56" alt="NumPy" title="NumPy" />
+          <img src="https://upload.wikimedia.org/wikipedia/commons/2/22/Pandas_mark.svg" width="56" height="56" alt="Pandas" title="Pandas" />
+          <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Scikit_learn_logo_small.svg" width="56" height="56" alt="Scikit-Learn" title="Scikit-Learn" />
+          <img src="https://upload.wikimedia.org/wikipedia/commons/8/84/Matplotlib_icon.svg" width="56" height="56" alt="Matplotlib" title="Matplotlib" />
+          <img src="https://upload.wikimedia.org/wikipedia/commons/4/45/Logo-seaborn.png" width="56" height="56" alt="Seaborn" title="Seaborn" />
         </div>
         <p class="skill-labels">TensorFlow • PyTorch • NumPy • Pandas • Scikit-Learn • Matplotlib • Seaborn</p>
       </div>
@@ -98,40 +109,46 @@
       <div class="about-card">
         <h2><i class="fas fa-cogs"></i> Frameworks</h2>
         <div class="skill-icons">
-          <img src="https://skillicons.dev/icons?i=flask,fastapi&theme=dark" alt="frameworks" />
+          <img src="https://cdn.simpleicons.org/flask" width="56" height="56" alt="Flask" title="Flask" />
+          <img src="https://cdn.simpleicons.org/fastapi" width="56" height="56" alt="FastAPI" title="FastAPI" />
         </div>
         <p class="skill-labels">Flask • FastAPI</p>
       </div>
 
       <div class="about-card">
         <h2><i class="fas fa-cubes"></i> AI & LLM Stack</h2>
-        <div class="skill-icons">
-          <img src="https://cdn.simpleicons.org/unsloth/white" width="40" height="40" alt="Unsloth" />
-          <img src="https://skillicons.dev/icons?i=langchain&theme=dark" alt="langchain" />
-          <img src="https://cdn.simpleicons.org/langgraph/white" width="40" height="40" alt="LangGraph" />
-          <img src="https://cdn.simpleicons.org/n8n/white" width="40" height="40" alt="n8n" />
+        <div class="skill-icons skill-icons--xl">
+          <img src="https://unsloth.ai/cgi/image/unsloth_green_sticker_cME6ryC59BlZg-VtqGN4p.png?width=128&quality=80&format=auto" width="80" height="80" alt="Unsloth" title="Unsloth" style="object-fit:contain;" />
+          <img src="https://raw.githubusercontent.com/lobehub/lobe-icons/refs/heads/master/packages/static-png/light/langchain-color.png" width="80" height="80" alt="LangChain" title="LangChain" />
+          <img src="https://raw.githubusercontent.com/lobehub/lobe-icons/refs/heads/master/packages/static-png/light/langgraph-color.png" width="80" height="80" alt="LangGraph" title="LangGraph" />
+          <span class="skill-icon-badge skill-icon-badge--xl" title="RAG" style="font-size:3rem;">🧠</span>
+          <img src="https://raw.githubusercontent.com/lobehub/lobe-icons/refs/heads/master/packages/static-png/light/n8n-color.png" width="80" height="80" alt="n8n" title="n8n" />
         </div>
         <p class="skill-labels">Unsloth • LangChain • LangGraph • RAG • n8n</p>
       </div>
 
       <div class="about-card">
         <h2><i class="fas fa-database"></i> Databases</h2>
-        <div class="skill-icons">
-          <img src="https://skillicons.dev/icons?i=mongodb,postgres,redis&theme=dark" alt="databases" />
-          <img src="https://cdn.simpleicons.org/chromadb/white" width="40" height="40" alt="ChromaDB" />
+        <div class="skill-icons skill-icons--xl">
+          <img src="https://icon.icepanel.io/Technology/svg/MongoDB.svg" width="56" height="56" alt="MongoDB" title="MongoDB" />
+          <img src="https://icon.icepanel.io/Technology/svg/PostgresSQL.svg" width="56" height="56" alt="PostgreSQL" title="PostgreSQL" />
+          <img src="https://icon.icepanel.io/Technology/svg/MySQL.svg" width="56" height="56" alt="MySQL" title="MySQL" />
+          <img src="https://icon.icepanel.io/Technology/svg/SQLite.svg" width="56" height="56" alt="SQLite" title="SQLite" />
+          <img src="https://assets.streamlinehq.com/image/private/w_300,h_300,ar_1/f_auto/v1/icons/1/chroma-erzavigj9yrwcd5lup0swm.png/chroma-1xw4nxhjo4c64ndhrqtxp.png?_a=DATAiZiuZAA0" width="56" height="56" alt="ChromaDB" title="ChromaDB" style="border-radius:6px;" />
         </div>
-        <p class="skill-labels">MongoDB • PostgreSQL • ChromaDB</p>
+        <p class="skill-labels">MongoDB • PostgreSQL • MySQL • SQLite • ChromaDB</p>
       </div>
     </div>
 
     <div class="about-card" style="text-align: center;">
-      <h2 style="justify-content: center;"><i class="fas fa-paper-plane"></i> Connect</h2>
-      <p style="margin-bottom: 1.2rem;">Open to conversations, collaborations, and opportunities.</p>
-      <div class="contact-links" style="margin-bottom: 1rem;">
+      <h2><i class="fas fa-paper-plane"></i> Connect</h2>
+      <p>Open to conversations, collaborations, and opportunities.</p>
+      <div class="contact-links">
         <a href="https://github.com/nayaksomkar" target="_blank" class="contact-btn" title="GitHub"><i class="fab fa-github"></i> <span>GitHub</span></a>
         <a href="https://linkedin.com/in/nayaksomkar" target="_blank" class="contact-btn" title="LinkedIn"><i class="fab fa-linkedin-in"></i> <span>LinkedIn</span></a>
+        <a href="https://bsky.app/profile/nayaksomkar.bsky.social" target="_blank" class="contact-btn" title="Bluesky"><i class="fab fa-bluesky"></i> <span>Bluesky</span></a>
         <a href="mailto:nayaksomkar@outlook.in" class="contact-btn" title="Email"><i class="fas fa-envelope"></i> <span>Email</span></a>
-        <a href="https://linktr.ee/nayaksomkar" target="_blank" class="contact-btn" title="Linktree"><i class="fas fa-link"></i> <span>Linktree</span></a>
+        <a href="https://linktr.ee/nayaksomkar" target="_blank" class="contact-btn" title="Linktree"><img src="https://cdn.iconscout.com/icon/free/png-256/free-linktree-icon-svg-download-png-14549505.png?f=webp&w=128" width="16" height="16" alt="" style="vertical-align:middle;" /> <span>Linktree</span></a>
       </div>
       <div class="find-links">
         <a href="projects" class="find-btn"><i class="fas fa-code"></i> View Projects</a>
