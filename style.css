@@ -21,7 +21,7 @@
   opacity: 0.04;
   transform: rotate(-4deg);
   user-select: none;
-  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-family: 'Space Mono', monospace;
   pointer-events: none;
   position: relative;
 }
@@ -71,7 +71,7 @@ html {
 }
 
 body {
-  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  font-family: 'Space Mono', monospace;
   background: var(--bg-body);
   color: var(--text-primary);
   line-height: 1.7;
@@ -202,17 +202,17 @@ nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 50px;
-  height: 26px;
+  width: 56px;
+  height: 30px;
   background: var(--purple-card);
   border: 1px solid var(--purple-border);
   border-radius: 40px;
   cursor: pointer;
-  padding: 0 6px;
+  padding: 0 7px;
   transition: background var(--transition), border-color var(--transition);
 }
 .toggle-label i {
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   z-index: 2;
   color: var(--text-secondary);
   transition: color var(--transition);
@@ -222,17 +222,17 @@ nav {
 
 .toggle-ball {
   position: absolute;
-  top: 2px;
-  left: 2px;
-  width: 20px;
-  height: 20px;
+  top: 3px;
+  left: 3px;
+  width: 22px;
+  height: 22px;
   background: var(--purple-accent);
   border-radius: 50%;
   transition: transform var(--transition), background var(--transition);
 }
 
 #theme-toggle:checked + .toggle-label .toggle-ball {
-  transform: translateX(24px);
+  transform: translateX(26px);
   background: #fbbf24;
 }
 
@@ -477,7 +477,7 @@ nav {
 }
 .ascii-art pre {
   display: inline-block;
-  font-family: 'Courier New', 'Fira Code', 'Consolas', monospace;
+  font-family: 'Space Mono', monospace;
   font-size: 0.65rem;
   line-height: 1.15;
   letter-spacing: normal;
@@ -1230,12 +1230,12 @@ footer {
   .nav-links .nav-link { font-size: 0.8rem; padding: 0.3rem 0.6rem; }
   .ascii-art pre { font-size: 0.5rem; }
   #bg-text { padding: 6rem 2rem; gap: 2rem 3rem; }
-  .bg-text-item { font-size: 6rem; }
+  .bg-text-item { font-size: 4rem; }
 }
 
 @media (max-width: 768px) {
   #bg-text { grid-template-columns: repeat(2, 1fr); gap: 1rem 1.5rem; padding: 5rem 1.5rem; }
-  .bg-text-item { font-size: 5rem; -webkit-text-stroke: 2.5px var(--purple-border); }
+  .bg-text-item { font-size: 3.5rem; -webkit-text-stroke: 2px var(--purple-border); }
   .ascii-art pre { font-size: 0.45rem; }
   .about-main { padding: 5.5rem 1.2rem 2.5rem; }
 }
@@ -1271,13 +1271,13 @@ footer {
   .nav-links .nav-link { padding: 0.5rem 0.65rem; font-size: 0.82rem; }
   .nav-actions { gap: 0.5rem; }
   .social-icon { font-size: 1.3rem; padding: 0.2rem; }
-  .toggle-label { width: 38px; height: 20px; padding: 0 4px; }
-  .toggle-ball { width: 14px; height: 14px; top: 2px; left: 2px; }
-  #theme-toggle:checked + .toggle-label .toggle-ball { transform: translateX(18px); }
-  .toggle-label i { font-size: 0.45rem; }
+  .toggle-label { width: 50px; height: 26px; padding: 0 6px; }
+  .toggle-ball { width: 18px; height: 18px; top: 3px; left: 3px; }
+  #theme-toggle:checked + .toggle-label .toggle-ball { transform: translateX(26px); }
+  .toggle-label i { font-size: 0.55rem; }
 
   #bg-text { padding: 4rem 1rem; gap: 0.8rem 1rem; }
-  .bg-text-item { font-size: 3.5rem; }
+  .bg-text-item { font-size: 2.2rem; }
 
   .content-section { padding: 3.5rem 0.8rem 2rem; }
   .section-desc { font-size: 0.75rem; }
@@ -1328,13 +1328,13 @@ footer {
   .nav-links .nav-link { padding: 0.45rem 0.6rem; font-size: 0.8rem; }
   .nav-actions { gap: 0.4rem; }
   .social-icon { font-size: 1.2rem; padding: 0.2rem; }
-  .toggle-label { width: 34px; height: 18px; padding: 0 3px; }
-  .toggle-ball { width: 12px; height: 12px; top: 2px; left: 2px; }
-  #theme-toggle:checked + .toggle-label .toggle-ball { transform: translateX(16px); }
-  .toggle-label i { font-size: 0.4rem; }
+  .toggle-label { width: 46px; height: 24px; padding: 0 5px; }
+  .toggle-ball { width: 16px; height: 16px; top: 3px; left: 3px; }
+  #theme-toggle:checked + .toggle-label .toggle-ball { transform: translateX(22px); }
+  .toggle-label i { font-size: 0.5rem; }
 
   #bg-text { padding: 3.5rem 0.8rem; gap: 0.6rem 0.8rem; }
-  .bg-text-item { font-size: 2.8rem; }
+  .bg-text-item { font-size: 1.6rem; }
 
   .about-main { padding: 4rem 0.6rem 1.5rem; }
   .about-card { padding: 0.8rem; text-align: center; }
@@ -1363,12 +1363,13 @@ footer {
   .nav-links .nav-link { padding: 0.4rem 0.5rem; font-size: 0.75rem; }
   .nav-actions { gap: 0.3rem; }
   .social-icon { font-size: 1.1rem; padding: 0.1rem; }
-  .toggle-label { width: 30px; height: 16px; }
-  .toggle-ball { width: 10px; height: 10px; }
-  #theme-toggle:checked + .toggle-label .toggle-ball { transform: translateX(14px); }
+  .toggle-label { width: 40px; height: 22px; padding: 0 5px; }
+  .toggle-ball { width: 14px; height: 14px; top: 3px; left: 3px; }
+  #theme-toggle:checked + .toggle-label .toggle-ball { transform: translateX(18px); }
+  .toggle-label i { font-size: 0.45rem; }
 
   #bg-text { padding: 3rem 0.5rem; gap: 0.4rem; }
-  .bg-text-item { font-size: 2rem; }
+  .bg-text-item { font-size: 1.2rem; }
 
   .about-main { padding: 3.8rem 0.5rem 1.2rem; }
   .about-card { padding: 0.6rem; text-align: center; }
