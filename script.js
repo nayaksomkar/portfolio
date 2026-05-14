@@ -78,9 +78,9 @@ let heartTapTimer;
 function triggerHearts() {
   if (document.querySelector('.hearts-overlay')) return;
 
-  setTimeout(() => {
-    if (navigator.vibrate) navigator.vibrate([30, 40, 20, 30, 20]);
-  }, 150);
+  if (navigator.vibrate) {
+    navigator.vibrate([50, 30, 50, 30, 50, 50, 50, 50, 50, 60, 60, 60, 80, 80, 100, 80, 60]);
+  }
 
   const overlay = document.createElement('div');
   overlay.className = 'hearts-overlay';
@@ -139,6 +139,7 @@ function showMagicPopup() {
       <div class="magic-icon">🔮</div>
       <p class="magic-ask">enter the magic number</p>
       <input type="password" class="magic-input" maxlength="3" inputmode="numeric" autofocus>
+      <p class="magic-hint">it's my birthday — 3 digits</p>
       <button class="magic-submit">✨ unlock</button>
     </div>
   `;
@@ -181,6 +182,14 @@ if (asciiArt) {
   asciiArt.addEventListener('click', () => {
     heartTapCount++;
     clearTimeout(heartTapTimer);
+
+    if (navigator.vibrate) navigator.vibrate(30);
+
+    document.querySelectorAll('.about-avatar, .ascii-art pre').forEach(el => {
+      el.style.transition = 'transform 0.15s ease';
+      el.style.transform = 'scale(1.1)';
+      setTimeout(() => { el.style.transform = 'scale(1)'; }, 150);
+    });
 
     if (heartTapCount < 6) {
       heartTapTimer = setTimeout(() => { heartTapCount = 0; }, 1200);

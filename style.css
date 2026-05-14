@@ -649,7 +649,8 @@ body.light-mode .ascii-art pre {
 }
 
 .magic-icon { font-size: 3rem; margin-bottom: 0.5rem; }
-.magic-ask { font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.04em; }
+.magic-ask { font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 0.04em; }
+.magic-hint { font-size: 0.72rem; color: var(--text-secondary); opacity: 0.7; line-height: 1.4; margin-bottom: 0.8rem; }
 .magic-input {
   display: block;
   width: 100%;
@@ -1228,12 +1229,15 @@ footer {
   .nav-links { gap: 0.8rem; }
   .nav-links .nav-link { font-size: 0.8rem; padding: 0.3rem 0.6rem; }
   .ascii-art pre { font-size: 0.5rem; }
+  #bg-text { padding: 6rem 2rem; gap: 2rem 3rem; }
+  .bg-text-item { font-size: 6rem; }
 }
 
 @media (max-width: 768px) {
   #bg-text { grid-template-columns: repeat(2, 1fr); gap: 1rem 1.5rem; padding: 5rem 1.5rem; }
   .bg-text-item { font-size: 5rem; -webkit-text-stroke: 2.5px var(--purple-border); }
   .ascii-art pre { font-size: 0.45rem; }
+  .about-main { padding: 5.5rem 1.2rem 2.5rem; }
 }
 
 @media (max-width: 700px) {
@@ -1242,29 +1246,38 @@ footer {
   .about-hero { padding: 1.5rem 0 1.5rem; }
   .about-hero h1 { font-size: 1.5rem; }
   .about-avatar { width: 72px; height: 72px; }
+  .skill-icons { justify-content: center; }
   .skill-icons img { height: 40px; }
   .skill-icons--xl img { height: 44px; }
   .skill-icon-badge--xl { font-size: 1.6rem; }
-  .about-card { padding: 1rem; }
-  .about-card h2 { font-size: 0.8rem; }
+  .about-card { padding: 1rem; text-align: center; }
+  .about-card h2 { font-size: 0.8rem; justify-content: center; }
   .about-card p, .skill-labels { font-size: 0.85rem; }
+  .edu-item { justify-content: center; }
   .ascii-art pre { font-size: 0.4rem; }
   .ascii-art { margin-bottom: 1rem; }
+  .contact-btn { padding: 0.8rem 1.4rem; font-size: 1rem; }
+  .find-btn { padding: 0.8rem 1.4rem; font-size: 1rem; }
+  .nav-links .nav-link { padding: 0.5rem 0.7rem; font-size: 0.85rem; }
 }
 
 @media (max-width: 640px) {
-  .nav-inner { padding: 0 0.8rem; height: 56px; }
+  .nav-inner { padding: 0 0.8rem; height: 56px; gap: 0.5rem; }
+  .nav-brand-link { gap: 0.5rem; }
   .nav-avatar { width: 30px; height: 30px; border-width: 1.5px; }
   .nav-handle { font-size: 0.75rem; }
   .nav-fullname { font-size: 0.6rem; }
-  .nav-links { gap: 0.4rem; position: static; transform: none; }
-  .nav-links .nav-link { font-size: 0.7rem; padding: 0.25rem 0.4rem; }
-  .nav-actions { gap: 0.4rem; }
-  .social-icon { font-size: 1rem; }
+  .nav-links { gap: 0.6rem; position: static; transform: none; justify-content: center; }
+  .nav-links .nav-link { padding: 0.5rem 0.65rem; font-size: 0.82rem; }
+  .nav-actions { gap: 0.5rem; }
+  .social-icon { font-size: 1.3rem; padding: 0.2rem; }
   .toggle-label { width: 38px; height: 20px; padding: 0 4px; }
   .toggle-ball { width: 14px; height: 14px; top: 2px; left: 2px; }
   #theme-toggle:checked + .toggle-label .toggle-ball { transform: translateX(18px); }
   .toggle-label i { font-size: 0.45rem; }
+
+  #bg-text { padding: 4rem 1rem; gap: 0.8rem 1rem; }
+  .bg-text-item { font-size: 3.5rem; }
 
   .content-section { padding: 3.5rem 0.8rem 2rem; }
   .section-desc { font-size: 0.75rem; }
@@ -1294,38 +1307,90 @@ footer {
   .skill-icon-badge--xl { font-size: 1.4rem; }
   .skill-labels { font-size: 0.7rem; }
 
-  footer { padding: 1.2rem 0.8rem; }
+  .contact-links { gap: 0.6rem; justify-content: center; }
+  .contact-btn { padding: 0.8rem 1.3rem; font-size: 0.95rem; gap: 0.45rem; }
+  .find-links { gap: 0.8rem; justify-content: center; }
+  .find-btn { padding: 0.8rem 1.3rem; font-size: 0.95rem; }
+  .nav-links .nav-link { padding: 0.5rem 0.65rem; font-size: 0.82rem; }
+
+  footer { padding: 1.2rem 0.8rem; text-align: center; }
   .footer-copy { font-size: 0.65rem; }
   .footer-sub { font-size: 0.6rem; }
-  .footer-links { gap: 0.6rem; }
+  .footer-links { gap: 0.6rem; justify-content: center; }
   .footer-links a { font-size: 0.9rem; }
 }
 
-@media (max-width: 480px) {
-  #bg-text { grid-template-columns: repeat(1, 1fr); gap: 0.6rem; padding: 5rem 1rem; }
-  .bg-text-item { font-size: 3rem; -webkit-text-stroke: 2px var(--purple-border); }
-  .ascii-art pre { font-size: 0.3rem; }
-  .ascii-art pre { font-size: 0.28rem; }
-  .about-card { padding: 0.8rem; }
-  .about-card h2 { font-size: 0.75rem; }
-  .about-card p { font-size: 0.78rem; }
-  .about-hero h1 { font-size: 1.2rem; }
-  .about-tagline { font-size: 0.8rem; }
-  .contact-btn { font-size: 0.75rem; padding: 0.4rem 0.8rem; }
-  .find-btn { font-size: 0.75rem; padding: 0.4rem 0.8rem; }
+@media (max-width: 500px) {
+  .nav-inner { padding: 0 0.6rem; height: 52px; gap: 0.4rem; }
+  .nav-handle { font-size: 0.65rem; }
+  .nav-fullname { display: none; }
+  .nav-links { gap: 0.5rem; justify-content: center; }
+  .nav-links .nav-link { padding: 0.45rem 0.6rem; font-size: 0.8rem; }
+  .nav-actions { gap: 0.4rem; }
+  .social-icon { font-size: 1.2rem; padding: 0.2rem; }
+  .toggle-label { width: 34px; height: 18px; padding: 0 3px; }
+  .toggle-ball { width: 12px; height: 12px; top: 2px; left: 2px; }
+  #theme-toggle:checked + .toggle-label .toggle-ball { transform: translateX(16px); }
+  .toggle-label i { font-size: 0.4rem; }
+
+  #bg-text { padding: 3.5rem 0.8rem; gap: 0.6rem 0.8rem; }
+  .bg-text-item { font-size: 2.8rem; }
+
+  .about-main { padding: 4rem 0.6rem 1.5rem; }
+  .about-card { padding: 0.8rem; text-align: center; }
+  .about-card h2 { justify-content: center; }
+  .about-hero { padding: 1rem 0 1rem; }
+  .about-avatar { width: 64px; height: 64px; }
+  .about-hero h1 { font-size: 1.3rem; }
+
+  .skill-icons { justify-content: center; }
+  .skill-icons img { height: 32px; }
+  .skill-icons--xl img { height: 36px; }
+  .skill-icon-badge--xl { font-size: 1.2rem; }
+
+  .contact-btn { padding: 0.7rem 1.2rem; font-size: 0.9rem; }
+  .find-btn { padding: 0.7rem 1.2rem; font-size: 0.9rem; }
+  .contact-links { gap: 0.8rem; justify-content: center; }
+  .find-links { gap: 0.8rem; justify-content: center; }
+  .nav-links .nav-link { padding: 0.45rem 0.6rem; font-size: 0.8rem; }
 }
 
 @media (max-width: 380px) {
-  .nav-inner { padding: 0 0.5rem; height: 50px; }
-  .nav-avatar { width: 26px; height: 26px; }
-  .nav-handle { font-size: 0.65rem; }
-  .nav-fullname { display: none; }
-  .nav-links .nav-link { font-size: 0.6rem; padding: 0.2rem 0.3rem; }
-  .social-icon { font-size: 0.85rem; }
-  .toggle-label { width: 32px; height: 18px; }
-  .toggle-ball { width: 12px; height: 12px; }
+  .nav-inner { padding: 0 0.4rem; height: 48px; gap: 0.3rem; }
+  .nav-avatar { width: 24px; height: 24px; }
+  .nav-handle { font-size: 0.58rem; }
+  .nav-links { gap: 0.4rem; justify-content: center; }
+  .nav-links .nav-link { padding: 0.4rem 0.5rem; font-size: 0.75rem; }
+  .nav-actions { gap: 0.3rem; }
+  .social-icon { font-size: 1.1rem; padding: 0.1rem; }
+  .toggle-label { width: 30px; height: 16px; }
+  .toggle-ball { width: 10px; height: 10px; }
   #theme-toggle:checked + .toggle-label .toggle-ball { transform: translateX(14px); }
+
+  #bg-text { padding: 3rem 0.5rem; gap: 0.4rem; }
+  .bg-text-item { font-size: 2rem; }
+
+  .about-main { padding: 3.8rem 0.5rem 1.2rem; }
+  .about-card { padding: 0.6rem; text-align: center; }
+  .about-card h2 { justify-content: center; }
+  .about-hero h1 { font-size: 1.1rem; }
+  .about-avatar { width: 56px; height: 56px; }
+  .avatar-glow { margin-bottom: 1rem; }
+
+  .skill-icons { justify-content: center; }
+  .skill-icons img { height: 28px; }
+  .skill-icons--xl img { height: 32px; }
+  .skill-icon-badge--xl { font-size: 1rem; }
+  .skill-labels { font-size: 0.65rem; }
+
+  .contact-btn { padding: 0.65rem 1.1rem; font-size: 0.85rem; gap: 0.35rem; }
+  .find-btn { padding: 0.65rem 1.1rem; font-size: 0.85rem; }
+  .contact-links { gap: 0.7rem; justify-content: center; }
+  .find-links { gap: 0.7rem; justify-content: center; }
+  .nav-links .nav-link { padding: 0.4rem 0.5rem; font-size: 0.75rem; }
+
   .ascii-art pre { font-size: 0.22rem; }
+  .about-card p { font-size: 0.72rem; }
 }
 
 @media (hover: none) {
