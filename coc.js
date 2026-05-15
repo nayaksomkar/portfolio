@@ -74,7 +74,7 @@ function triggerCoCHearts() {
   document.body.appendChild(overlay);
   var emojis = ['🎮', '⚔️', '🏆', '👑', '🔥', '💎', '⚡', '🛡️'];
   var isMobile = window.innerWidth < 640;
-  var count = isMobile ? 10 : 28;
+  var count = isMobile ? 16 : 28;
   for (var i = 0; i < count; i++) {
     var x = Math.random() * 100;
     var y = Math.random() * 100;

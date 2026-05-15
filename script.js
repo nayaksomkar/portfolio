@@ -88,7 +88,7 @@ function triggerHearts() {
 
   const emojis = ['🖤', '🤍', '💜', '🦢', '✨'];
   const isMobile = window.innerWidth < 640;
-  const count = isMobile ? 10 : 28;
+  const count = isMobile ? 16 : 28;
 
   for (let i = 0; i < count; i++) {
     const x = Math.random() * 100;
