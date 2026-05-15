@@ -787,25 +787,41 @@ body.light-mode .ascii-art pre {
 
 .magic-icon { font-size: 3rem; margin-bottom: 0.5rem; }
 .magic-ask { font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 0.04em; }
-.magic-hint { font-size: 0.72rem; color: var(--text-secondary); opacity: 0.7; line-height: 1.4; margin-bottom: 0.8rem; }
-.magic-input {
-  display: block;
-  width: 100%;
-  max-width: 120px;
-  margin: 0 auto 1rem;
-  padding: 0.7rem;
-  font-size: 1.5rem;
-  text-align: center;
-  background: transparent;
-  border: none;
-  border-bottom: 2px solid var(--purple-accent);
-  color: var(--purple-accent);
-  outline: none;
-  font-family: inherit;
-  letter-spacing: 0.3em;
+.magic-counter {
+  position: absolute;
+  top: -0.5rem;
+  right: -0.5rem;
+  background: var(--purple-accent);
+  color: #fff;
+  font-size: 0.6rem;
+  font-weight: 700;
+  padding: 0.15rem 0.4rem;
+  border-radius: 8px;
+  line-height: 1;
+  pointer-events: none;
+  animation: cocPopIn 0.2s ease;
+  z-index: 2;
 }
-.magic-input::placeholder { color: var(--text-secondary); opacity: 0.4; letter-spacing: 0.1em; }
-.magic-submit {
+
+.magic-box {
+  width: 44px;
+  height: 48px;
+  text-align: center;
+  font-size: 1.3rem;
+  font-weight: 700;
+  font-family: 'Space Mono', monospace;
+  background: var(--card-bg);
+  border: 2px solid var(--purple-border);
+  border-radius: 8px;
+  color: var(--text-primary);
+  outline: none;
+  transition: border-color var(--transition);
+}
+.magic-box:focus {
+  border-color: var(--purple-accent);
+  box-shadow: 0 0 0 2px rgba(168, 85, 247, 0.25);
+}
+.magic-submit-two {
   display: inline-block;
   padding: 0.5rem 1.5rem;
   border: 1px solid var(--purple-accent);
@@ -816,7 +832,7 @@ body.light-mode .ascii-art pre {
   cursor: pointer;
   transition: all 0.25s;
 }
-.magic-submit:hover {
+.magic-submit-two:hover {
   background: var(--purple-accent);
   color: #fff;
 }

@@ -20,7 +20,7 @@ toggle.addEventListener('change', () => {
 });
 
 /* ───────── CONFIG (shared) ───────── */
-let config = { ignoreProjects: [], priorityProjects: [], ignoreCertificates: [] };
+let config = { ignoreProjects: [], priorityProjects: [], ignoreCertificates: [], cocApiKey: '' };
 
 async function loadConfig() {
   try {
@@ -88,7 +88,7 @@ function triggerHearts() {
 
   const emojis = ['🖤', '🤍', '💜', '🦢', '✨'];
   const isMobile = window.innerWidth < 640;
-  const count = isMobile ? 20 : 40;
+  const count = isMobile ? 10 : 28;
 
   for (let i = 0; i < count; i++) {
     const x = Math.random() * 100;
@@ -100,7 +100,7 @@ function triggerHearts() {
     el.textContent = emojis[i % emojis.length];
     el.style.left = x + '%';
     el.style.top = y + '%';
-    el.style.fontSize = (1.8 + Math.random() * 2.5) + 'rem';
+    el.style.fontSize = (isMobile ? 1.4 : 2) + (Math.random() * (isMobile ? 1 : 1.5)) + 'rem';
     el.style.setProperty('--delay', delay + 's');
     overlay.appendChild(el);
 
@@ -138,19 +138,32 @@ function showMagicPopup() {
     <div class="magic-card">
       <div class="magic-icon">🔮</div>
       <p class="magic-ask">enter the magic number</p>
-      <input type="password" class="magic-input" maxlength="3" inputmode="numeric" autofocus>
-      <p class="magic-hint">it's my birthday — 3 digits</p>
-      <button class="magic-submit">✨ unlock</button>
+      <div style="display:flex;gap:0.5rem;justify-content:center;margin:0.8rem 0;">
+        <input class="magic-box" id="m0" maxlength="1" inputmode="numeric" autofocus>
+        <input class="magic-box" id="m1" maxlength="1" inputmode="numeric">
+        <input class="magic-box" id="m2" maxlength="1" inputmode="numeric">
+      </div>
+      <button class="magic-submit-two">✨ unlock</button>
     </div>
   `;
   document.body.appendChild(popup);
 
-  const input = popup.querySelector('.magic-input');
+  const inputs = [popup.querySelector('#m0'), popup.querySelector('#m1'), popup.querySelector('#m2')];
   const card = popup.querySelector('.magic-card');
-  const btn = popup.querySelector('.magic-submit');
+  const btn = popup.querySelector('.magic-submit-two');
+
+  for (let i = 0; i < 3; i++) {
+    inputs[i].addEventListener('input', function() {
+      if (this.value && i < 2) inputs[i + 1].focus();
+    });
+    inputs[i].addEventListener('keydown', function(e) {
+      if (e.key === 'Backspace' && !this.value && i > 0) inputs[i - 1].focus();
+      if (e.key === 'Enter') checkAnswer();
+    });
+  }
 
   function checkAnswer() {
-    const val = input.value.trim();
+    const val = inputs.map(inp => inp.value).join('');
     if (val === '634') {
       popup.remove();
       triggerHearts();
@@ -167,21 +180,34 @@ function showMagicPopup() {
   }
 
   btn.addEventListener('click', checkAnswer);
-  input.addEventListener('keydown', e => {
-    if (e.key === 'Enter') checkAnswer();
-  });
 
   popup.addEventListener('click', e => {
     if (e.target === popup) popup.remove();
   });
 
-  setTimeout(() => input.focus(), 100);
+  setTimeout(() => inputs[0].focus(), 100);
+}
+
+let magicCounterEl = null;
+
+function removeMagicCounter() {
+  if (magicCounterEl) { magicCounterEl.remove(); magicCounterEl = null; }
+}
+
+function updateMagicCounter(count) {
+  removeMagicCounter();
+  if (count >= 6) return;
+  magicCounterEl = document.createElement('div');
+  magicCounterEl.className = 'magic-counter';
+  magicCounterEl.textContent = count + '/6';
+  asciiArt.appendChild(magicCounterEl);
 }
 
 if (asciiArt) {
   asciiArt.addEventListener('click', () => {
     heartTapCount++;
     clearTimeout(heartTapTimer);
+    updateMagicCounter(heartTapCount);
 
     if (navigator.vibrate) navigator.vibrate(30);
 
@@ -192,12 +218,15 @@ if (asciiArt) {
     });
 
     if (heartTapCount < 6) {
-      heartTapTimer = setTimeout(() => { heartTapCount = 0; }, 1200);
+      heartTapTimer = setTimeout(() => { heartTapCount = 0; removeMagicCounter(); }, 1200);
       return;
     }
 
+    removeMagicCounter();
     heartTapCount = 0;
     showMagicPopup();
   });
 }
+
+
 

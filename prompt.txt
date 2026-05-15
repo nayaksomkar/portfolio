@@ -1,0 +1,51 @@
+Build a personal developer portfolio website with these pages and features:
+
+### Pages
+1. **About** (`index.html`) — Landing page with:
+   - Fixed nav with avatar, handle (@username), display name
+   - 2 nav links that change based on current page (e.g. on About show Projects + Certificates)
+   - Dark/light theme toggle
+   - Avatar with animated purple glow ring
+   - ASCII art name with sweep fill animation (clickable for easter egg)
+   - Skill cards in 3-column grid: Languages, AI/ML Libraries, Frameworks, AI & LLM Stack, Databases, Education, Connect
+   - Skill icons from simpleicons.org with hover scale effect
+   - Footer: tagline → copyright → nav links to other pages
+
+2. **Projects** (`projects.html`) — GitHub repos grid:
+   - Fetch from GitHub API (`/users/{user}/repos`)
+   - Filter out forks and ignored repos from config
+   - Sort: priority projects first (pinned), then by stars
+   - Dashed divider between pinned and rest
+   - Click opens a modal window with README rendered from GitHub API
+   - Modal has MacOS-style titlebar with min/max/close
+
+3. **Certificates** (`certificates.html`) — Grid of cert cards with icons/badges, filterable by config
+
+4. **Socials** (`socials.html`) — Connect cards for:
+   - GitHub (filtered public repo count)
+   - Bluesky (followers + posts count, click opens popup with stacked posts carousel)
+   - Hugging Face (models + datasets count, click opens popup with last 2 models & datasets)
+   - Email
+
+### Design System
+- Font: Space Mono (Google Fonts), weight 400/700
+- Purple/dark theme with CSS custom properties
+- Light mode via `body.light-mode` class override
+- Smooth page transitions (translateY slide + fade, not clip-path)
+- Background grid of repeating text with sine-wave glow animation
+- Windows/macOS-style popup windows with titlebar
+- Fully responsive: 1600px+ (wider content), 1100px, 1024px, 900px, 768px, 700px, 640px, 500px, 380px
+- Touch-friendly: larger tap targets on mobile, `hover: none` media queries
+
+### Interactive Features
+- Bluesky posts: fetch from `public.api.bsky.app`, show as stacked cards with MacOS traffic-light dots, swipe/arrow navigation, loop to start/end
+- Hugging Face: fetch models & datasets, show last 2 with download counts
+- Magic easter egg: clicking ASCII art prompts for a code (634), triggers hearts animation
+- All counts cached in localStorage with 30-min TTL
+- Page transitions intercept nav clicks, animate out then in
+
+### Tech Stack
+- Vanilla HTML, CSS, JS only — no frameworks or build tools
+- Flat file structure (no subdirectories)
+- Config via `portfolio-config.json` (ignore lists, priority projects)
+- No proxy servers needed — all APIs support CORS

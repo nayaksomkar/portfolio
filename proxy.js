@@ -54,6 +54,43 @@ app.get('/api/twitter/tweets', async (req, res) => {
   }
 });
 
+app.get('/api/coc', async (req, res) => {
+  try {
+    const r = await fetch('https://www.clashofstats.com/players/kalki-9PU28QLQQ/summary', {
+      headers: { 'User-Agent': 'Mozilla/5.0 (compatible; PortfolioBot/1.0)' }
+    });
+    if (!r.ok) throw new Error('CoS returned ' + r.status);
+    const html = await r.text();
+
+    const stats = {};
+
+    const nameMatch = html.match(/<h1[^>]*class="text-h3"[^>]*>([^<]+)<\/h1>/);
+    if (nameMatch) stats.name = nameMatch[1].trim();
+
+    const thMatch = html.match(/num-val">TH\s*(\d+)</);
+    if (thMatch) stats.townHall = 'TH ' + thMatch[1];
+
+    const bhMatch = html.match(/num-val">BH\s*(\d+)</);
+    if (bhMatch) stats.builderHall = 'BH ' + bhMatch[1];
+
+    const trophyMatch = html.match(/body-2">(\d{1,3}(?:,\d{3})*)</);
+    if (trophyMatch) stats.bestTrophies = trophyMatch[1];
+
+    const clanMatch = html.match(/v-list-item__title">([^<]+)<\/div>\s*<div class="v-list-item__subtitle">/);
+    if (clanMatch) stats.clan = clanMatch[1].trim();
+
+    const locMatch = html.match(/fl[\s\S]{0,300}?num-val">([A-Za-z\s]+)<\/span>/);
+    if (locMatch && locMatch[1].trim() !== 'TH' && locMatch[1].trim() !== 'BH') {
+      stats.location = locMatch[1].trim();
+    }
+
+    if (!stats.name) throw new Error('Could not parse player data');
+    res.json(stats);
+  } catch (err) {
+    res.status(500).json({ error: err.message, note: 'Try a CoC API key in portfolio-config.json instead' });
+  }
+});
+
 app.listen(PORT, () => {
   console.log(`Proxy server running on http://localhost:${PORT}`);
 });

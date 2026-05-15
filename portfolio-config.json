@@ -6,5 +6,6 @@
 
   "ignoreProjects": ["portfolio", "WeatherAppWeb","FlutterTemplate", "nayaksomkar", "myOnlineMeal", "BoilerPlateUnsloth", "ignouassign.surveyform", "ignouassign.cookie"],
   "priorityProjects": ["RetinaDx", "marble", "mailGraph", "QuickBasket", "PsychologyQualityDataset"],
-  "ignoreCertificates": []
+  "ignoreCertificates": [],
+  "cocApiKey": ""
 }
