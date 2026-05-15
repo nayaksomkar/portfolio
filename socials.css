@@ -16,6 +16,7 @@
   border-radius: var(--radius);
   text-decoration: none;
   transition: all var(--transition);
+  cursor: pointer;
 }
 
 .connect-card:hover {
@@ -47,6 +48,221 @@
   color: var(--text-secondary);
 }
 
+/* ───────── HF POPUP ───────── */
+.hf-body {
+  max-height: 60vh;
+  overflow-y: auto;
+}
+
+.hf-section {
+  margin-bottom: 1.2rem;
+}
+
+.hf-section:last-child {
+  margin-bottom: 0;
+}
+
+.hf-section-title {
+  font-size: 0.85rem;
+  color: var(--purple-accent);
+  margin-bottom: 0.6rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.hf-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 0.5rem;
+}
+
+.hf-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 0.5rem 0.7rem;
+  background: var(--bg-body);
+  border-radius: 6px;
+  border: 1px solid var(--purple-border);
+  text-decoration: none;
+  transition: border-color var(--transition), background var(--transition);
+}
+
+.hf-card:hover {
+  border-color: var(--purple-accent);
+  background: var(--purple-glow);
+}
+
+.hf-card-name {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.hf-card-desc {
+  font-size: 0.68rem;
+  color: var(--text-secondary);
+  line-height: 1.3;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.hf-card-stat {
+  font-size: 0.7rem;
+  color: var(--text-secondary);
+}
+
+.hf-empty {
+  color: var(--text-secondary);
+  font-size: 0.78rem;
+  padding: 0.5rem 0;
+}
+
+/* ───────── BLUESKY POSTS ───────── */
+.bsky-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.bsky-post {
+  background: var(--bg-body);
+  border: 1px solid var(--purple-border);
+  border-radius: 10px;
+  padding: 0.9rem;
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.bsky-post:hover {
+  border-color: var(--purple-accent);
+  box-shadow: 0 0 20px rgba(168, 85, 247, 0.08);
+}
+
+.bsky-post-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.bsky-avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1.5px solid var(--purple-accent);
+}
+
+.bsky-avatar-placeholder {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--purple-glow);
+  border: 1.5px solid var(--purple-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  color: var(--purple-accent);
+}
+
+.bsky-post-author {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--purple-accent);
+  display: block;
+}
+
+.bsky-post-date {
+  font-size: 0.65rem;
+  color: var(--text-secondary);
+}
+
+.bsky-post-name {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.3;
+}
+
+.bsky-post-handle {
+  font-size: 0.68rem;
+  color: var(--purple-accent);
+  line-height: 1.3;
+}
+
+.bsky-post-text {
+  font-size: 0.78rem;
+  color: var(--text-primary);
+  line-height: 1.5;
+  margin: 0 0 0.6rem;
+  word-wrap: break-word;
+}
+
+.bsky-post-text a.bsky-link {
+  color: var(--purple-accent);
+  text-decoration: underline;
+  word-break: break-all;
+}
+
+.bsky-post-text a.bsky-tag {
+  color: var(--purple-accent);
+  text-decoration: none;
+}
+
+.bsky-post-text a.bsky-tag:hover {
+  text-decoration: underline;
+}
+
+.bsky-post-text a.bsky-mention {
+  color: var(--purple-accent);
+  text-decoration: none;
+}
+
+.bsky-post-text a.bsky-mention:hover {
+  text-decoration: underline;
+}
+
+.bsky-post-stats {
+  display: flex;
+  gap: 1rem;
+}
+
+.bsky-stat {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.7rem;
+  color: var(--text-secondary);
+}
+
+.bsky-stat.like:hover { color: #ec4899; }
+.bsky-stat.repost:hover { color: #22c55e; }
+.bsky-stat.reply:hover { color: var(--purple-accent); }
+
+.bsky-footer-note {
+  text-align: center;
+  font-size: 0.7rem;
+  color: var(--text-secondary);
+  padding: 0.6rem 1rem 0;
+  border-top: 1px solid var(--purple-border);
+  margin-top: 0.5rem;
+}
+
+.bsky-footer-note a {
+  color: var(--purple-accent);
+  text-decoration: none;
+}
+
+.bsky-footer-note a:hover {
+  text-decoration: underline;
+}
+
 @media (max-width: 900px) {
   .connect-grid { grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 0.8rem; }
   .connect-card { padding: 1.2rem 0.8rem; }
@@ -58,6 +274,7 @@
   .connect-icon { font-size: 1.5rem; }
   .connect-label { font-size: 0.85rem; }
   .connect-desc { font-size: 0.7rem; }
+  .hf-item { font-size: 0.7rem; padding: 0.35rem 0.5rem; }
 }
 
 @media (max-width: 380px) {

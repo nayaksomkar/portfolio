@@ -4,7 +4,7 @@
   "_comment_certificates": "Add certificate titles to hide from the Certificates tab",
   "_comment_priority": "Pin these repo names to the top, in the order listed",
 
-  "ignoreProjects": ["portfolio", "FlutterTemplate", "nayaksomkar", "myOnlineMeal", "BoilerPlateUnsloth", "ignouassign.surveyform", "ignouassign.cookie"],
+  "ignoreProjects": ["portfolio", "WeatherAppWeb","FlutterTemplate", "nayaksomkar", "myOnlineMeal", "BoilerPlateUnsloth", "ignouassign.surveyform", "ignouassign.cookie"],
   "priorityProjects": [],
   "ignoreCertificates": []
 }

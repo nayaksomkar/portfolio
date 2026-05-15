@@ -823,9 +823,13 @@ body.light-mode .ascii-art pre {
 
 .about-grid-2 {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   gap: 1rem;
   margin-bottom: 0.5rem;
+}
+
+@media (max-width: 1000px) {
+  .about-grid-2 { grid-template-columns: 1fr 1fr; }
 }
 
 .about-footer { text-align: center; padding: 2rem 0 0.5rem; border: none; }
