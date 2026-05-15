@@ -12,9 +12,7 @@ function cocStatRow(label, value) {
 }
 
 function renderCoC(body, data) {
-  var thLevel = data.townHallLevel || 18;
-  var thImg = 'https://www.clashofstats.com/images/game-data-sprites/1x/th-' + thLevel + '.png';
-  var html = '<div class="coc-th-wrap"><img src="' + thImg + '" alt="TH' + thLevel + '" class="coc-th-img"></div>';
+  var html = '<div class="coc-th-wrap"><img src="https://upload.wikimedia.org/wikipedia/sco/5/59/Clash_of_Clans_Logo.png" alt="Clash of Clans" class="coc-th-img"></div>';
   html += '<div style="display:grid;gap:0.6rem;">';
   if (data.name) html += cocStatRow('Name', data.name);
   if (data.townHall) html += cocStatRow('Town Hall', '<span style="font-size:1.3rem;">🏛️</span> ' + data.townHall);

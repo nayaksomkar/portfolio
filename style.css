@@ -34,38 +34,38 @@
 }
 
 :root {
-  --purple-deep: #0e0e1a;
-  --purple-card: #181828;
-  --purple-border: #1e1835;
+  --purple-deep: #0a0a10;
+  --purple-card: #121218;
+  --purple-border: #1e1535;
   --purple-accent: #a855f7;
-  --purple-accent2: #7c3aed;
-  --purple-glow: rgba(168, 85, 247, 0.18);
-  --text-primary: #e0d6ee;
-  --text-secondary: #9885b0;
-  --bg-body: #0a0a16;
-  --bg-card: #141421;
-  --bg-nav: rgba(10, 10, 22, 0.95);
+  --purple-accent2: #8133d6;
+  --purple-glow: rgba(168, 85, 247, 0.16);
+  --text-primary: #ece6f2;
+  --text-secondary: #9685b0;
+  --bg-body: #08080c;
+  --bg-card: rgba(10, 10, 18, 0.55);
+  --bg-nav: rgba(8, 8, 12, 0.85);
   --shadow: 0 4px 24px rgba(0,0,0,0.5);
   --shadow-hover: 0 8px 32px rgba(168, 85, 247, 0.08);
   --radius: 12px;
-  --transition-bg: #120a1e;
+  --transition-bg: #0d001a;
   --transition: 0.25s ease;
 }
 
 body.light-mode {
-  --purple-deep: #f5eeff;
+  --purple-deep: #ffffff;
   --purple-card: #ffffff;
-  --purple-border: #ddd6ef;
+  --purple-border: #e8dff0;
   --purple-accent: #a855f7;
-  --purple-accent2: #7c3aed;
-  --purple-glow: rgba(168, 85, 247, 0.08);
-  --text-primary: #1e1035;
-  --text-secondary: #6b5585;
-  --bg-body: #f3edfc;
-  --bg-card: #ffffff;
-  --bg-nav: rgba(243, 237, 252, 0.92);
-  --shadow: 0 4px 24px rgba(30, 16, 53, 0.06);
-  --transition-bg: #e6d9f7;
+  --purple-accent2: #8133d6;
+  --purple-glow: rgba(168, 85, 247, 0.07);
+  --text-primary: #1a1030;
+  --text-secondary: #7a6a95;
+  --bg-body: #f8f6fb;
+  --bg-card: rgba(255, 255, 255, 0.6);
+  --bg-nav: rgba(248, 246, 251, 0.85);
+  --shadow: 0 4px 24px rgba(30, 16, 53, 0.05);
+  --transition-bg: #f0e6ff;
 }
 
 html {
@@ -101,7 +101,8 @@ nav {
   top: 0; left: 0; right: 0;
   z-index: 100;
   background: var(--bg-nav);
-  backdrop-filter: blur(16px);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--purple-border);
   transition: background var(--transition), border-color var(--transition);
 }
@@ -137,15 +138,11 @@ nav {
   object-fit: cover;
   border: 2px solid var(--purple-accent);
   flex-shrink: 0;
-  opacity: 0.75;
-  filter: blur(0.4px);
   box-shadow: 0 0 12px var(--purple-glow);
-  transition: opacity 0.3s, filter 0.3s, box-shadow 0.3s;
+  transition: box-shadow 0.3s;
 }
 
 .nav-avatar:hover {
-  opacity: 1;
-  filter: blur(0);
   box-shadow: 0 0 20px var(--purple-glow);
 }
 
@@ -397,6 +394,8 @@ nav {
 
 .project-card {
   background: var(--bg-card);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border: 1px solid var(--purple-border);
   border-radius: var(--radius);
   padding: 1.2rem;
@@ -465,6 +464,8 @@ nav {
   align-items: center;
   gap: 1rem;
   background: var(--bg-card);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border: 1px solid var(--purple-border);
   border-radius: var(--radius);
   padding: 1.2rem;
@@ -756,6 +757,8 @@ body.light-mode .ascii-art pre {
 
 .magic-card {
   background: var(--bg-card);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border: 1px solid var(--purple-accent);
   border-radius: 16px;
   padding: 2rem;
@@ -877,6 +880,8 @@ body.light-mode .ascii-art pre {
 /* ───────── ABOUT CONTENT CARDS ───────── */
 .about-card {
   background: var(--bg-card);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border: 1px solid var(--purple-border);
   border-radius: var(--radius);
   padding: 1.2rem 1.4rem;
@@ -1202,6 +1207,8 @@ footer {
 
 .window {
   background: var(--bg-card);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border: 1px solid var(--purple-border);
   border-radius: 10px;
   width: 100%;
@@ -1245,7 +1252,9 @@ footer {
   align-items: center;
   justify-content: space-between;
   padding: 0.7rem 1rem;
-  background: var(--purple-deep);
+  background: rgba(14, 14, 26, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--purple-border);
   user-select: none;
 }
@@ -1514,8 +1523,8 @@ footer {
   .cert-info h3 { font-size: 0.8rem; }
   .cert-info p { font-size: 0.7rem; }
 
-  .window-overlay.open { padding: 0.5rem; }
-  .window { max-height: 90vh; }
+  .window-overlay.open { padding: 1.5rem; }
+  .window { max-width: 92vw; max-height: 80vh; }
   .window-body { padding: 0.8rem; font-size: 0.78rem; }
   .window-title { font-size: 0.72rem; }
   .win-btn { width: 22px; height: 22px; font-size: 0.5rem; }
@@ -1574,6 +1583,9 @@ footer {
   .find-links { gap: 0.8rem; justify-content: center; flex-direction: column; align-items: center; }
   .nav-links .nav-link { padding: 0.45rem 0.6rem; font-size: 0.8rem; }
   .footer-nav-link { padding: 0.5rem 0.7rem; font-size: 0.78rem; }
+
+  .window-overlay.open { padding: 1.2rem; }
+  .window { max-width: 94vw; max-height: 80vh; }
 }
 
 @media (max-width: 380px) {
@@ -1613,6 +1625,9 @@ footer {
   .footer-nav-link { padding: 0.4rem 0.6rem; font-size: 0.7rem; }
 
   .about-card p { font-size: 0.72rem; }
+
+  .window-overlay.open { padding: 1rem; }
+  .window { max-width: 96vw; max-height: 75vh; }
 }
 
 @media (hover: none) {

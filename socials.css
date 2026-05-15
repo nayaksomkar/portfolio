@@ -12,6 +12,8 @@
   gap: 0.4rem;
   padding: 1.5rem 1rem;
   background: var(--bg-card);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border: 1px solid var(--purple-border);
   border-radius: var(--radius);
   text-decoration: none;
@@ -110,6 +112,8 @@
 /* ───────── BLUESKY POSTS ───────── */
 .bsky-stack-wrap {
   background: var(--bg-card);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border: 1px solid var(--purple-border);
   border-radius: 10px;
   width: 100%;
@@ -399,13 +403,13 @@
   .connect-label { font-size: 0.85rem; }
   .connect-desc { font-size: 0.7rem; }
   .hf-item { font-size: 0.7rem; padding: 0.35rem 0.5rem; }
-  .bsky-stack-wrap { padding: 0.6rem; }
+  .bsky-stack-wrap { padding: 1rem; max-width: 88vw; }
   .bsky-body { min-height: 160px; }
   .bsky-stack { min-height: 140px; }
   .bsky-hint-bar { font-size: 0.5rem; }
-  .bsky-open-link { padding: 0.7rem 0.8rem; font-size: 0.75rem; }
+  .bsky-open-link { padding: 0.7rem 0.8rem; font-size: 0.75rem; max-width: 88vw; }
   .bsky-footer-note { font-size: 0.6rem; padding: 0.4rem 0.6rem 0; }
-  .window-overlay.open { padding: 0.4rem; }
+  .window-overlay.open { padding: 1.5rem; }
   .bsky-post { padding: 0.6rem; }
   .bsky-post-text { font-size: 0.7rem; }
   .bsky-post-stats { gap: 0.6rem; }
@@ -422,4 +426,7 @@
   .bsky-stack-card.next-2 { transform: translateX(30px) scale(0.9); }
   .bsky-stack-card.prev { transform: translateX(-15px) scale(0.95); }
   .bsky-stack-card.prev-2 { transform: translateX(-30px) scale(0.9); }
+  .window-overlay.open { padding: 1rem; }
+  .bsky-stack-wrap { max-width: 92vw; padding: 0.8rem; }
+  .bsky-open-link { max-width: 92vw; }
 }

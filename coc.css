@@ -11,12 +11,11 @@
 }
 
 .coc-th-img {
-  width: 80px;
-  height: 80px;
+  width: auto;
+  height: 72px;
   object-fit: contain;
   image-rendering: auto;
-  filter: drop-shadow(0 0 10px rgba(168, 85, 247, 0.35));
-  transition: filter 0.3s;
+  animation: cocGlow 2.5s ease-in-out infinite;
 }
 
 .coc-row {
@@ -106,4 +105,9 @@
 
 .coc-window.shake {
   animation: shake 0.4s ease;
+}
+
+@keyframes cocGlow {
+  0%, 100% { filter: drop-shadow(0 0 6px rgba(168, 85, 247, 0.25)); }
+  50% { filter: drop-shadow(0 0 18px rgba(168, 85, 247, 0.55)); }
 }
