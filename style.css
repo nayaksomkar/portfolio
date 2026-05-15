@@ -870,9 +870,7 @@ body.light-mode .ascii-art pre {
   .about-hero { padding: 1.5rem 0 1.5rem; }
   .about-avatar { width: 64px; height: 64px; }
   .about-hero h1 { font-size: 1.5rem; }
-  .skill-icons img { height: 40px; }
-  .skill-icons--xl img { height: 44px; }
-  .skill-icon-badge--xl { font-size: 1.6rem; }
+  .skill-icons img { height: 36px; }
   .about-card { padding: 1rem; }
   .about-card h2 { font-size: 0.8rem; }
   .about-card p, .skill-labels { font-size: 0.85rem; }
@@ -940,33 +938,28 @@ body.light-mode .ascii-art pre {
 .skill-icons {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: 0.6rem;
   align-items: center;
   justify-content: center;
   margin-bottom: 0.4rem;
 }
 .skill-icons img {
-  height: 56px;
+  height: 44px;
   width: auto;
+  object-fit: contain;
+  border-radius: 4px;
+  transition: transform 0.25s ease;
 }
-
-.skill-icons img, .skill-icons .skill-icon-badge {
-  transition: transform 0.2s ease, filter 0.2s ease;
-}
-.skill-icons img:hover, .skill-icons .skill-icon-badge:hover {
+.skill-icons img:hover {
   transform: scale(1.2);
-  filter: brightness(1.15);
 }
 
-.skill-icons--xl img { height: auto; max-height: 80px; width: auto; }
-.skill-icons--xl { gap: 1rem; }
-.skill-icons--xl img { height: auto; width: auto; max-height: 80px; }
-.skill-icon-badge--xl { font-size: 2rem; line-height: 1; }
 .skill-labels {
-  font-size: 0.78rem;
+  font-size: 0.72rem;
   color: var(--text-secondary);
-  line-height: 1.5;
+  line-height: 1.6;
   text-align: center;
+  letter-spacing: 0.02em;
 }
 
 .about-card--half {
@@ -1489,9 +1482,7 @@ body.light-mode .magic-card {
   .about-hero h1 { font-size: 1.5rem; }
   .about-avatar { width: 72px; height: 72px; }
   .skill-icons { justify-content: center; }
-  .skill-icons img { height: 40px; }
-  .skill-icons--xl img { height: 44px; }
-  .skill-icon-badge--xl { font-size: 1.6rem; }
+  .skill-icons img { height: 36px; }
   .about-card { padding: 1rem; text-align: center; }
   .about-card h2 { font-size: 0.8rem; justify-content: center; }
   .about-card p, .skill-labels { font-size: 0.85rem; }
@@ -1525,14 +1516,6 @@ body.light-mode .magic-card {
   .section-desc { font-size: 0.75rem; }
 
   .about-main { padding: 4.5rem 0.8rem 2rem; }
-
-  .ascii-art pre {
-    animation: none;
-    background-position: 50% 50% !important;
-    -webkit-text-fill-color: var(--purple-accent);
-    color: var(--purple-accent);
-    opacity: 0.7;
-  }
 
   .about-card, .project-card, .cert-card, .connect-card {
     backdrop-filter: blur(6px);
@@ -1584,8 +1567,6 @@ body.light-mode .magic-card {
   .win-btn { width: 22px; height: 22px; font-size: 0.5rem; }
 
   .skill-icons img { height: 36px; }
-  .skill-icons--xl img { height: 40px; }
-  .skill-icon-badge--xl { font-size: 1.4rem; }
   .skill-labels { font-size: 0.7rem; }
 
   .contact-links { gap: 0.6rem; justify-content: center; flex-direction: column; align-items: center; }
@@ -1627,9 +1608,7 @@ body.light-mode .magic-card {
   .about-hero h1 { font-size: 1.3rem; }
 
   .skill-icons { justify-content: center; }
-  .skill-icons img { height: 32px; }
-  .skill-icons--xl img { height: 36px; }
-  .skill-icon-badge--xl { font-size: 1.2rem; }
+  .skill-icons img { height: 28px; }
 
   .contact-btn { padding: 0.7rem 1.2rem; font-size: 0.9rem; width: 100%; max-width: 260px; }
   .find-btn { padding: 0.7rem 1.2rem; font-size: 0.9rem; width: 100%; max-width: 260px; }
@@ -1666,9 +1645,7 @@ body.light-mode .magic-card {
   .avatar-glow { margin-bottom: 1rem; }
 
   .skill-icons { justify-content: center; }
-  .skill-icons img { height: 28px; }
-  .skill-icons--xl img { height: 32px; }
-  .skill-icon-badge--xl { font-size: 1rem; }
+  .skill-icons img { height: 24px; }
   .skill-labels { font-size: 0.65rem; }
 
   .contact-btn { padding: 0.65rem 1.1rem; font-size: 0.85rem; gap: 0.35rem; }
