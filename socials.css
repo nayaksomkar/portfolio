@@ -133,6 +133,10 @@
   pointer-events: auto;
 }
 
+body.light-mode .bsky-stack-wrap {
+  background: #ffffff;
+}
+
 .bsky-overlay {
   flex-direction: column;
   gap: 0.6rem;
