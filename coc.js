@@ -109,7 +109,7 @@ function openMainCoCPopup() {
   popup.className = 'window-overlay';
   popup.style.cssText = 'visibility:visible;opacity:1;background:rgba(0,0,0,0.7);backdrop-filter:blur(6px);';
   popup.innerHTML =
-    '<div class="window coc-window" style="opacity:1;transform:scale(1);pointer-events:auto;animation:none;">' +
+    '<div class="window coc-window">' +
       '<div class="window-titlebar">' +
         '<span class="window-title"><i class="fas fa-shield-halved"></i> Clash of Clans · ' + COC_TAG + '</span>' +
         '<div class="window-controls"><button class="win-btn close coc-close"><i class="fas fa-times"></i></button></div>' +
@@ -119,6 +119,7 @@ function openMainCoCPopup() {
       '</div>' +
     '</div>';
   document.body.appendChild(popup);
+  popup.querySelector('.coc-window').classList.add('visible');
   popup.querySelector('.coc-close').onclick = function() { popup.remove(); };
   popup.onclick = function(e) { if (e.target === popup) popup.remove(); };
   document.addEventListener('keydown', function onEsc(e2) {
@@ -142,7 +143,7 @@ function showGameQuestion() {
   overlay.className = 'window-overlay';
   overlay.style.cssText = 'visibility:visible;opacity:1;background:rgba(0,0,0,0.7);backdrop-filter:blur(6px);';
   overlay.innerHTML =
-    '<div class="window coc-window" style="opacity:1;transform:scale(1);pointer-events:auto;animation:none;max-width:340px;text-align:center;">' +
+    '<div class="window coc-window" style="max-width:340px;text-align:center;">' +
       '<div class="window-body" style="padding:2rem 1.5rem;">' +
         '<div style="font-size:3rem;margin-bottom:0.5rem;">🎮</div>' +
         '<p style="color:var(--text-primary);font-size:1rem;margin:0 0 0.25rem;">what\'s my favorite game?</p>' +
@@ -156,6 +157,7 @@ function showGameQuestion() {
       '</div>' +
     '</div>';
   document.body.appendChild(overlay);
+  overlay.querySelector('.coc-window').classList.add('visible');
 
   var inputs = [overlay.querySelector('#coc-l0'), overlay.querySelector('#coc-l1'), overlay.querySelector('#coc-l2')];
   inputs[0].focus();

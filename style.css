@@ -768,7 +768,9 @@ body.light-mode .ascii-art pre {
   max-width: 300px;
   width: 90%;
   box-shadow: 0 0 30px rgba(168, 85, 247, 0.15);
-  animation: popupScale 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  opacity: 0;
+  transform: scale(0.95);
+  animation: winOpen 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 @keyframes popupScale {
@@ -845,8 +847,6 @@ body.light-mode .ascii-art pre {
 /* ─── SWEEP FILL ─── */
 @keyframes sweepFill {
   0%, 100% { background-position: 0% 0; }
-  50% { background-position: 200% 0; }
-}
   50% { background-position: 200% 0; }
 }
 
@@ -1192,7 +1192,7 @@ footer {
   padding: 2rem;
   background: rgba(0, 0, 0, 0);
   backdrop-filter: blur(0px);
-  transition: visibility 0.3s, opacity 0.3s, background 0.3s, backdrop-filter 0.3s;
+  transition: visibility 0.35s, opacity 0.35s, background 0.35s, backdrop-filter 0.35s;
 }
 .window-overlay.open {
   visibility: visible;
@@ -1225,7 +1225,7 @@ footer {
   pointer-events: none;
 }
 .window.visible {
-  animation: winOpen 0.3s ease-out forwards;
+  animation: winOpen 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   pointer-events: auto;
 }
 .window.closing {
@@ -1240,8 +1240,8 @@ footer {
 }
 
 @keyframes winOpen {
-  from { opacity: 0; transform: scale(0.95); }
-  to { opacity: 1; transform: scale(1); }
+  from { opacity: 0; transform: scale(0.92) translateY(8px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
 }
 
 @keyframes winClose {
@@ -1525,6 +1525,45 @@ body.light-mode .magic-card {
   .section-desc { font-size: 0.75rem; }
 
   .about-main { padding: 4.5rem 0.8rem 2rem; }
+
+  .ascii-art pre {
+    animation: none;
+    background-position: 50% 50% !important;
+    -webkit-text-fill-color: var(--purple-accent);
+    color: var(--purple-accent);
+    opacity: 0.7;
+  }
+
+  .about-card, .project-card, .cert-card, .connect-card {
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+  }
+  .window, .bsky-stack-wrap, .magic-card {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+  nav {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+
+  .hearts-particle {
+    animation: heartsEnter 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    animation-delay: var(--delay);
+  }
+  .hearts-particle.child {
+    animation: heartsEnter 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    animation-delay: var(--delay);
+  }
+  .hearts-particle.exit,
+  .hearts-particle.child.exit {
+    animation: heartsExit 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+
+  @keyframes avatarGlow {
+    0%, 100% { background-position: 0% 50%; box-shadow: 0 0 10px rgba(168, 85, 247, 0.15); }
+    50% { background-position: 100% 50%; box-shadow: 0 0 20px rgba(168, 85, 247, 0.25); }
+  }
 
   .project-grid { grid-template-columns: 1fr; gap: 0.6rem; }
   .project-card { padding: 0.8rem; }
