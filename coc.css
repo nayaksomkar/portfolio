@@ -15,7 +15,7 @@
   height: 80px;
   object-fit: contain;
   image-rendering: auto;
-  filter: drop-shadow(0 0 12px rgba(168, 85, 247, 0.5));
+  filter: drop-shadow(0 0 10px rgba(168, 85, 247, 0.35));
   transition: filter 0.3s;
 }
 
@@ -53,7 +53,7 @@
 .coc-counter {
   position: absolute;
   top: -1.2rem;
-  right: -0.5rem;
+  right: 0;
   background: var(--purple-accent);
   color: #fff;
   font-size: 0.6rem;
@@ -87,7 +87,7 @@
 }
 .coc-letter:focus {
   border-color: var(--purple-accent);
-  box-shadow: 0 0 0 2px rgba(168, 85, 247, 0.25);
+  box-shadow: 0 0 0 2px rgba(168, 85, 247, 0.2);
 }
 
 .coc-submit {

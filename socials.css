@@ -217,7 +217,7 @@
 
 .bsky-post:hover {
   border-color: var(--purple-accent);
-  box-shadow: 0 0 20px rgba(168, 85, 247, 0.08);
+  box-shadow: 0 0 16px rgba(168, 85, 247, 0.06);
 }
 
 .bsky-post-header {
