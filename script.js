@@ -39,11 +39,23 @@ if (pageWrap) {
         e.preventDefault();
         const href = link.getAttribute('href');
         pageWrap.classList.add('page-fold');
-        setTimeout(() => { window.location = href; }, 450);
+        setTimeout(() => { window.location = href; }, 350);
       }
     });
   });
 }
+
+/* ───────── NAV COUNTS ───────── */
+const projectsCountEl = document.getElementById('projects-count');
+const certsCountEl = document.getElementById('certs-count');
+
+function updateNavCounts() {
+  const cachedProjects = localStorage.getItem('projectsCount');
+  const cachedCerts = localStorage.getItem('certsCount');
+  if (projectsCountEl && cachedProjects) projectsCountEl.textContent = cachedProjects;
+  if (certsCountEl && cachedCerts) certsCountEl.textContent = cachedCerts;
+}
+updateNavCounts();
 
 /* ───────── BACKGROUND TEXT ───────── */
 const BG_TEXT = '\u0928\u093E\u092F\u0915 Omkar';

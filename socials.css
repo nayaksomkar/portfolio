@@ -1,0 +1,68 @@
+.connect-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.connect-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.4rem;
+  padding: 1.5rem 1rem;
+  background: var(--bg-card);
+  border: 1px solid var(--purple-border);
+  border-radius: var(--radius);
+  text-decoration: none;
+  transition: all var(--transition);
+}
+
+.connect-card:hover {
+  border-color: var(--purple-accent);
+  background: var(--purple-glow);
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-2px);
+}
+
+.connect-icon {
+  font-size: 2rem;
+  color: var(--purple-accent);
+}
+
+.connect-img {
+  border-radius: 4px;
+  width: 28px;
+  height: 28px;
+}
+
+.connect-label {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.connect-desc {
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+}
+
+@media (max-width: 900px) {
+  .connect-grid { grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 0.8rem; }
+  .connect-card { padding: 1.2rem 0.8rem; }
+}
+
+@media (max-width: 640px) {
+  .connect-grid { grid-template-columns: 1fr 1fr; gap: 0.6rem; }
+  .connect-card { padding: 1rem; }
+  .connect-icon { font-size: 1.5rem; }
+  .connect-label { font-size: 0.85rem; }
+  .connect-desc { font-size: 0.7rem; }
+}
+
+@media (max-width: 380px) {
+  .connect-grid { grid-template-columns: 1fr; }
+  .connect-card { padding: 0.9rem; }
+  .connect-icon { font-size: 1.3rem; }
+  .connect-label { font-size: 0.8rem; }
+}

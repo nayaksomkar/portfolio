@@ -137,6 +137,16 @@ nav {
   object-fit: cover;
   border: 2px solid var(--purple-accent);
   flex-shrink: 0;
+  opacity: 0.75;
+  filter: blur(0.4px);
+  box-shadow: 0 0 12px var(--purple-glow);
+  transition: opacity 0.3s, filter 0.3s, box-shadow 0.3s;
+}
+
+.nav-avatar:hover {
+  opacity: 1;
+  filter: blur(0);
+  box-shadow: 0 0 20px var(--purple-glow);
 }
 
 .nav-brand-text {
@@ -192,6 +202,120 @@ nav {
 }
 .nav-links .nav-link.active {
   color: var(--purple-accent);
+}
+.nav-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 18px;
+  height: 16px;
+  padding: 0 4px;
+  margin-left: 4px;
+  font-size: 0.6rem;
+  font-weight: 700;
+  border-radius: 8px;
+  background: var(--purple-glow);
+  color: var(--purple-accent);
+  line-height: 1;
+  vertical-align: middle;
+}
+
+/* ─── NAV DROPDOWN ─── */
+.nav-dropdown {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.nav-dropdown-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.4rem 0.6rem;
+  border-radius: 6px;
+  color: var(--text-secondary);
+  transition: all var(--transition);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+}
+.nav-dropdown-toggle:hover {
+  color: var(--purple-accent);
+  background: var(--purple-glow);
+}
+.nav-dropdown-toggle .dot {
+  display: block;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: currentColor;
+}
+.nav-dropdown-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--bg-nav);
+  backdrop-filter: blur(16px);
+  border: 1px solid var(--purple-border);
+  border-radius: var(--radius);
+  min-width: 220px;
+  padding: 0.5rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+  z-index: 200;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+}
+.nav-dropdown-menu.open {
+  opacity: 1;
+  visibility: visible;
+}
+.nav-dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1rem;
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 0.85rem;
+  border-radius: 6px;
+  transition: all 0.25s ease;
+  opacity: 0;
+  transform: translateY(-8px);
+}
+.nav-dropdown-item i, .nav-dropdown-item img {
+  width: 16px;
+  text-align: center;
+  font-size: 0.9rem;
+}
+.nav-dropdown-menu.open .nav-dropdown-item {
+  opacity: 1;
+  transform: translateY(0);
+}
+.nav-dropdown-menu.open .nav-dropdown-item:nth-child(1) { transition-delay: 0.03s; }
+.nav-dropdown-menu.open .nav-dropdown-item:nth-child(2) { transition-delay: 0.07s; }
+.nav-dropdown-menu.open .nav-dropdown-item:nth-child(3) { transition-delay: 0.11s; }
+.nav-dropdown-menu.open .nav-dropdown-item:nth-child(4) { transition-delay: 0.15s; }
+.nav-dropdown-menu.open .nav-dropdown-item:nth-child(5) { transition-delay: 0.19s; }
+.nav-dropdown-menu.open .nav-dropdown-item:nth-child(6) { transition-delay: 0.23s; }
+.nav-dropdown-item:hover {
+  color: var(--purple-accent);
+  background: var(--purple-glow);
+}
+.nav-dropdown-divider {
+  height: 1px;
+  background: var(--purple-border);
+  margin: 0.3rem 0.5rem;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  transition-delay: 0.1s;
+}
+.nav-dropdown-menu.open .nav-dropdown-divider {
+  opacity: 1;
 }
 
 /* ─── THEME TOGGLE ─── */
@@ -729,11 +853,26 @@ body.light-mode .ascii-art pre {
   border-radius: var(--radius);
   padding: 1.2rem 1.4rem;
   margin-bottom: 1rem;
-  transition: border-color var(--transition), box-shadow var(--transition);
+  transition: border-color var(--transition), box-shadow var(--transition), transform 0.3s ease;
 }
 .about-card:hover {
   border-color: var(--purple-accent);
-  box-shadow: 0 4px 24px rgba(168, 85, 247, 0.06);
+  box-shadow: 0 8px 32px rgba(168, 85, 247, 0.12);
+  transform: translateY(-3px);
+}
+.about-card:hover .skill-icons img {
+  filter: none;
+  opacity: 1;
+}
+.about-card .skill-icons img {
+  transition: filter 0.3s, opacity 0.3s, transform 0.3s;
+  opacity: 0.8;
+  filter: grayscale(0.3) blur(0.3px);
+}
+.about-card:hover .skill-icons img:hover {
+  transform: scale(1.15);
+  filter: none;
+  opacity: 1;
 }
 .about-card h2 {
   font-size: 0.9rem;
@@ -973,6 +1112,42 @@ footer {
 }
 .copy-symbol { font-size: 0.75em; }
 
+.footer-nav {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 0.8rem;
+}
+.footer-nav-link {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 0.78rem;
+  transition: color var(--transition);
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  position: relative;
+}
+.footer-nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0.4rem;
+  right: 0.4rem;
+  height: 1.5px;
+  background: var(--purple-accent);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.35s ease;
+}
+.footer-nav-link:hover {
+  color: var(--purple-accent);
+  background: var(--purple-glow);
+}
+.footer-nav-link:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
 /* ───────── CUSTOM WINDOW (Popup) ───────── */
 .window-overlay {
   visibility: hidden;
@@ -1191,8 +1366,7 @@ footer {
 }
 
 .page-wrap {
-  animation: pageUnfold 0.9s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
-  transform-origin: 0% 100%;
+  animation: pageUnfold 0.6s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
   max-width: 1000px;
   margin: 0 auto;
   width: 100%;
@@ -1200,40 +1374,27 @@ footer {
 
 @keyframes pageUnfold {
   0% {
-    clip-path: circle(0% at 0% 100%);
     opacity: 0;
-    transform: scale(0.97);
-    filter: drop-shadow(0 0 0 transparent);
-  }
-  60% {
-    opacity: 1;
-    filter: drop-shadow(0 8px 30px rgba(168, 85, 247, 0.12));
+    transform: translateY(16px);
   }
   100% {
-    clip-path: circle(150% at 0% 100%);
     opacity: 1;
-    transform: scale(1);
-    filter: drop-shadow(0 2px 10px rgba(168, 85, 247, 0.05));
+    transform: translateY(0);
   }
 }
 
 .page-fold {
-  animation: pageFold 0.7s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
-  transform-origin: 0% 100%;
+  animation: pageFold 0.4s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
 }
 
 @keyframes pageFold {
   0% {
-    clip-path: circle(150% at 0% 100%);
     opacity: 1;
-    transform: scale(1);
-    filter: drop-shadow(0 2px 10px rgba(168, 85, 247, 0.05));
+    transform: translateY(0);
   }
   100% {
-    clip-path: circle(0% at 0% 100%);
     opacity: 0;
-    transform: scale(0.97);
-    filter: drop-shadow(0 0 0 transparent);
+    transform: translateY(-12px);
   }
 }
 

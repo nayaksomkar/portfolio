@@ -13,12 +13,11 @@ Hosted at: `https://nayaksomkar.github.io/portfolio/`
 4. [GitHub API Integration](#github-api-integration)  
 5. [Markdown README Renderer](#markdown-readme-renderer)  
 6. [Window/Popup System](#windowpopup-system)  
-7. [Theme Toggle](#theme-toggle)  
 8. [Background Text Wave Effect](#background-text-wave-effect)  
-9. [Emoji Magic Easter Egg](#emoji-magic-easter-egg)  
-10. [Browser Compatibility & SEO](#browser-compatibility--seo)  
-11. [Deployment](#deployment)  
-12. [GitHub Pages Clean URLs](#github-pages-clean-urls)  
+9. [Browser Compatibility & SEO](#browser-compatibility--seo)  
+10. [Deployment](#deployment)  
+11. [GitHub Pages Clean URLs](#github-pages-clean-urls)  
+12. [Customization Quick Reference](#customization-quick-reference)  
 
 ---
 
@@ -32,7 +31,7 @@ portfolio/
 ├── certificates/
 │   └── index.html          ← Certificates page (clean URL, no .html)
 ├── style.css               ← All styles (global + responsive)
-├── script.js               ← Shared JS (theme toggle, bg wave, magic popup)
+├── script.js               ← Shared JS (theme toggle, bg wave, page transitions)
 ├── projects.js             ← Project grid + GitHub API fetch + README window
 ├── certificates.js         ← Certificate data + rendering
 ├── portfolio-config.json   ← Ignore lists (hide specific repos/certs)
@@ -87,14 +86,12 @@ portfolio/
   10. `.ascii-art pre` — ASCII logo with sweep fill animation.
   11. `.about-card`, `.edu-item` — About content cards with hover glow.
   12. `.skill-icons`, `.skill-icons--xl` — Skill logo grids with individual hover scale.
-  13. `.contact-links`, `.contact-btn`, `.find-links`, `.find-btn` — Connect section buttons.
-  14. `.hearts-overlay`, `.hearts-particle` — Magic easter egg emoji animation.
-  15. `.magic-popup`, `.magic-card` — Magic number popup UI.
-  16. `.page-wrap`, `@keyframes pageUnfold`, `.page-fold` — Page transition animations.
-  17. `.project-grid`, `.project-card` — Project cards.
-  18. `.cert-grid`, `.cert-card` — Certificate cards.
-  19. `.window-overlay`, `.window` — Modal popup system.
-  20. `@media` breakpoints at 900px, 768px, 700px, 640px, 480px, 380px.
+   13. `.contact-links`, `.contact-btn`, `.find-links`, `.find-btn` — Connect section buttons.
+   14. `.page-wrap`, `@keyframes pageUnfold`, `.page-fold` — Page transition animations.
+   15. `.project-grid`, `.project-card` — Project cards.
+   16. `.cert-grid`, `.cert-card` — Certificate cards.
+   17. `.window-overlay`, `.window` — Modal popup system.
+   18. `@media` breakpoints at 900px, 768px, 700px, 640px, 480px, 380px.
 
 ### `script.js`
 - **Purpose**: Shared functionality across all pages.
@@ -103,8 +100,6 @@ portfolio/
   2. **Config Loader** — Fetches `portfolio-config.json`.
   3. **Page Transition** — `.page-fold` animation on nav link clicks.
   4. **Background Text Wave** — `requestAnimationFrame` sine wave glow on Devanagari `"नायक Omkar"` grid.
-   5. **ASCII Art Magic (Easter Egg)** — 6-tap counter → vibration → popup asking for a secret code; correct triggers hearts animation; wrong triggers shake + close.
-  6. **Emoji Hearts Animation** — Detects mobile (<640px) and reduces particles from 160 → 20 for performance.
 
 ### `projects.js`
 - **Purpose**: Fetches GitHub repos and renders project cards; manages README popup window.
@@ -170,16 +165,6 @@ Used on the Projects page for README display. Components: `.window-overlay`, `.w
 - Devanagari text `"नायक Omkar"` repeated in a responsive grid.
 - `requestAnimationFrame` loop with sine wave to reveal text with purple glow.
 - Configurable params: `waveFreq = 0.003`, `waveAmp = 350`, `waveBand = 260`.
-
----
-
-## Emoji Magic Easter Egg
-
-- **Trigger**: 6 rapid taps on the ASCII art logo.
-- **Step 1**: Vibration feedback + popup with 🔮 asking for magic number.
-- **Step 2**: Enter the correct code → triggers hearts animation; wrong → red shake + close.
-- **Hearts animation**: Emoji particles (`🖤🤍💜🦢✨`) burst across screen with float animation, then exit with blur-out.
-- **Mobile optimization**: Reduces particles to 20 (vs 160 on desktop), removes `filter: blur()`, uses `will-change: transform` + `translateZ(0)` for GPU compositing.
 
 ---
 

@@ -18,13 +18,16 @@ const certData = [
 
 (async function initCerts() {
   await loadConfig();
-  renderCerts();
-})();
-
-function renderCerts() {
-  const grid = document.getElementById('cert-grid');
   const ignored = (config.ignoreCertificates || []).map(s => s.toLowerCase().trim());
   const filtered = certData.filter(c => !ignored.includes(c.title.toLowerCase().trim()));
+  localStorage.setItem('certsCount', filtered.length);
+  const el = document.getElementById('certs-count');
+  if (el) el.textContent = filtered.length;
+  renderCerts(filtered);
+})();
+
+function renderCerts(filtered) {
+  const grid = document.getElementById('cert-grid');
   grid.innerHTML = filtered.map(c => {
     const imgHtml = c.image ? `<img src="${c.image}" alt="${c.title}" class="cert-img" loading="lazy">` : '';
     return `
