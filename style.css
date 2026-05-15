@@ -813,10 +813,10 @@ body.light-mode .ascii-art pre {
   font-size: 1.3rem;
   font-weight: 700;
   font-family: 'Space Mono', monospace;
-  background: var(--card-bg);
+  background: var(--bg-card);
   border: 2px solid var(--purple-border);
   border-radius: 8px;
-  color: var(--text-primary);
+  color: var(--purple-accent);
   outline: none;
   transition: border-color var(--transition);
 }
