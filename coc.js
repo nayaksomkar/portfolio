@@ -160,6 +160,7 @@ function showGameQuestion() {
   document.body.appendChild(overlay);
 
   var inputs = [overlay.querySelector('#coc-l0'), overlay.querySelector('#coc-l1'), overlay.querySelector('#coc-l2')];
+  inputs[0].focus();
   var btn = overlay.querySelector('#coc-submit');
 
   function advance(i) {
