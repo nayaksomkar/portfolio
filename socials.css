@@ -369,23 +369,57 @@
   border-color: var(--purple-accent);
 }
 
+@media (hover: none) {
+  .connect-card:active { border-color: var(--purple-accent); background: var(--purple-glow); }
+  .bsky-open-link:active { background: var(--purple-accent); color: #fff; }
+  .bsky-post:active { border-color: var(--purple-accent); }
+}
+
 @media (max-width: 900px) {
   .connect-grid { grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 0.8rem; }
   .connect-card { padding: 1.2rem 0.8rem; }
+  .bsky-stack-wrap { max-width: 95vw; }
+  .bsky-open-link { max-width: 95vw; }
+}
+
+@media (max-width: 768px) {
+  .connect-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 0.7rem; }
+  .bsky-stack-card { padding: 0.7rem 0.6rem 0.6rem; }
+  .bsky-stack-card.next { transform: translateX(25px) scale(0.94); }
+  .bsky-stack-card.next-2 { transform: translateX(45px) scale(0.88); }
+  .bsky-stack-card.prev { transform: translateX(-25px) scale(0.94); }
+  .bsky-stack-card.prev-2 { transform: translateX(-45px) scale(0.88); }
 }
 
 @media (max-width: 640px) {
   .connect-grid { grid-template-columns: 1fr 1fr; gap: 0.6rem; }
-  .connect-card { padding: 1rem; }
+  .connect-card { padding: 1rem 0.8rem; min-height: 100px; }
   .connect-icon { font-size: 1.5rem; }
+  .connect-img { width: 24px; height: 24px; }
   .connect-label { font-size: 0.85rem; }
   .connect-desc { font-size: 0.7rem; }
   .hf-item { font-size: 0.7rem; padding: 0.35rem 0.5rem; }
+  .bsky-stack-wrap { padding: 0.6rem; }
+  .bsky-body { min-height: 160px; }
+  .bsky-stack { min-height: 140px; }
+  .bsky-hint-bar { font-size: 0.5rem; }
+  .bsky-open-link { padding: 0.7rem 0.8rem; font-size: 0.75rem; }
+  .bsky-footer-note { font-size: 0.6rem; padding: 0.4rem 0.6rem 0; }
+  .window-overlay.open { padding: 0.4rem; }
+  .bsky-post { padding: 0.6rem; }
+  .bsky-post-text { font-size: 0.7rem; }
+  .bsky-post-stats { gap: 0.6rem; }
+  .bsky-post-stats span { font-size: 0.6rem; }
 }
 
 @media (max-width: 380px) {
-  .connect-grid { grid-template-columns: 1fr; }
-  .connect-card { padding: 0.9rem; }
+  .connect-grid { grid-template-columns: 1fr 1fr; gap: 0.4rem; }
+  .connect-card { padding: 0.8rem 0.6rem; min-height: 88px; }
   .connect-icon { font-size: 1.3rem; }
   .connect-label { font-size: 0.8rem; }
+  .connect-desc { font-size: 0.65rem; }
+  .bsky-stack-card.next { transform: translateX(15px) scale(0.95); }
+  .bsky-stack-card.next-2 { transform: translateX(30px) scale(0.9); }
+  .bsky-stack-card.prev { transform: translateX(-15px) scale(0.95); }
+  .bsky-stack-card.prev-2 { transform: translateX(-30px) scale(0.9); }
 }
