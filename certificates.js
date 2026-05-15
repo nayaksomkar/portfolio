@@ -21,8 +21,8 @@ const certData = [
   const ignored = (config.ignoreCertificates || []).map(s => s.toLowerCase().trim());
   const filtered = certData.filter(c => !ignored.includes(c.title.toLowerCase().trim()));
   localStorage.setItem('certsCount', filtered.length);
-  const el = document.getElementById('certs-count');
-  if (el) el.textContent = filtered.length;
+  const descEl = document.getElementById('certs-desc');
+  if (descEl) descEl.textContent = `${filtered.length} Certifications`;
   renderCerts(filtered);
 })();
 

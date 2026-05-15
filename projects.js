@@ -21,8 +21,8 @@ async function fetchRepos() {
     });
     repos = repos.filter(r => !ignored.includes(r.name.toLowerCase().trim()));
     localStorage.setItem('projectsCount', repos.length);
-    const pEl = document.getElementById('projects-count');
-    if (pEl) pEl.textContent = repos.length;
+    const descEl = document.getElementById('projects-desc');
+    if (descEl) descEl.textContent = `${repos.length} Projects`;
     if (repos.length === 0) {
       grid.innerHTML = `<div class="error-msg"><i class="fas fa-folder-open"></i><p>No public repositories found.</p></div>`;
       return;
