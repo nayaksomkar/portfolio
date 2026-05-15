@@ -387,6 +387,13 @@ nav {
   padding-top: 1rem;
 }
 
+.priority-divider {
+  grid-column: 1 / -1;
+  height: 0;
+  margin: 0.5rem 0;
+  border-top: 2px dashed #c084fc;
+}
+
 .project-card {
   background: var(--bg-card);
   border: 1px solid var(--purple-border);

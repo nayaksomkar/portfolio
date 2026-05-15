@@ -27,8 +27,8 @@ async function fetchRepos() {
       grid.innerHTML = `<div class="error-msg"><i class="fas fa-folder-open"></i><p>No public repositories found.</p></div>`;
       return;
     }
-    repos = sortByPriority(repos, config.priorityProjects || []);
-    renderRepos(repos);
+    const { pinned, rest } = sortByPriority(repos, config.priorityProjects || []);
+    renderRepos(pinned, rest);
 } catch (err) {
      const is403 = err.message && err.message.includes('403');
      grid.innerHTML = `<div class="error-msg"><i class="fas fa-exclamation-triangle"></i><p>${is403 ? 'GitHub API rate limit reached. Please try again later or refresh the page.' : 'Failed to load repos. ' + err.message}</p></div>`;
@@ -75,11 +75,11 @@ function sortByPriority(repos, priority) {
     }
   }
   rest.sort((a, b) => b.stargazers_count - a.stargazers_count);
-  return [...pinned.filter(Boolean), ...rest];
+  return { pinned: pinned.filter(Boolean), rest };
 }
 
-function renderRepos(repos) {
-  grid.innerHTML = repos.map(repo => `
+function renderRepos(pinned, rest) {
+  const renderCard = repo => `
     <div class="project-card" data-repo="${repo.name}">
       <h3><i class="fas fa-book"></i> ${repo.name}</h3>
       <p>${repo.description || 'No description provided.'}</p>
@@ -90,7 +90,10 @@ function renderRepos(repos) {
         <span><i class="fas fa-clock"></i> ${timeSince(repo.updated_at)}</span>
       </div>
     </div>
-  `).join('');
+  `;
+  const pinnedHtml = pinned.map(renderCard).join('');
+  const restHtml = rest.map(renderCard).join('');
+  grid.innerHTML = pinnedHtml + (pinned.length && rest.length ? '<div class="priority-divider"></div>' : '') + restHtml;
 
   document.querySelectorAll('.project-card').forEach(card => {
     card.addEventListener('click', (e) => openProjectWindow(card.dataset.repo, e));
