@@ -104,7 +104,9 @@
 .coc-submit:hover { opacity: 0.8; }
 
 .coc-window.shake {
-  animation: shake 0.4s ease;
+  animation: shake 0.5s ease;
+  border-color: #ef4444 !important;
+  box-shadow: 0 0 20px rgba(239,68,68,0.4), 0 0 40px rgba(239,68,68,0.15);
 }
 
 @keyframes cocGlow {

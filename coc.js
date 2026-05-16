@@ -190,10 +190,10 @@ function showGameQuestion() {
     } else {
       var card = overlay.querySelector('.window');
       card.classList.add('shake');
-      card.style.borderColor = '#ef4444';
-      if (navigator.vibrate) navigator.vibrate([40, 30, 40, 30, 60]);
+      if (navigator.vibrate) navigator.vibrate([60, 40, 60, 40, 80, 50, 100]);
       setTimeout(function() {
         overlay.remove();
+        triggerErrorHearts();
       }, 600);
     }
   }

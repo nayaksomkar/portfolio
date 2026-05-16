@@ -789,8 +789,11 @@ body.light-mode .ascii-art pre {
   100% { transform: scale(1); opacity: 1; }
 }
 
-.magic-card.shake {
+.magic-card.shake,
+.coc-window.shake {
   animation: shake 0.5s ease;
+  border-color: #ef4444 !important;
+  box-shadow: 0 0 20px rgba(239,68,68,0.4), 0 0 40px rgba(239,68,68,0.15);
 }
 
 @keyframes shake {
