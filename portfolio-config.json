@@ -5,7 +5,7 @@
   "_comment_priority": "Pin these repo names to the top, in the order listed",
 
   "ignoreProjects": ["portfolio", "WeatherAppWeb","FlutterTemplate", "nayaksomkar", "myOnlineMeal", "BoilerPlateUnsloth", "ignouassign.surveyform", "ignouassign.cookie"],
-  "priorityProjects": ["RetinaDx", "marble", "mailGraph", "QuickBasket", "PsychologyQualityDataset"],
+  "priorityProjects": ["RetinaDx","QuickBasket"],
   "ignoreCertificates": [],
   "cocApiKey": ""
 }

@@ -410,6 +410,15 @@ nav {
   border-color: var(--purple-accent);
   box-shadow: var(--shadow-hover);
 }
+.project-card.pinned {
+  background: rgba(168, 85, 247, 0.15);
+}
+body.light-mode .project-card.pinned {
+  background: rgba(168, 85, 247, 0.1);
+}
+.project-card.pinned:hover {
+  box-shadow: var(--shadow-hover);
+}
 
 .project-card h3 {
   font-size: 1rem;

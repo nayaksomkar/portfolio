@@ -79,8 +79,8 @@ function sortByPriority(repos, priority) {
 }
 
 function renderRepos(pinned, rest) {
-  const renderCard = repo => `
-    <div class="project-card" data-repo="${repo.name}">
+  const renderCard = (repo, isPinned = false) => `
+    <div class="project-card${isPinned ? ' pinned' : ''}" data-repo="${repo.name}">
       <h3><i class="fas fa-book"></i> ${repo.name}</h3>
       <p>${repo.description || 'No description provided.'}</p>
       <div class="project-meta">
@@ -91,8 +91,8 @@ function renderRepos(pinned, rest) {
       </div>
     </div>
   `;
-  const pinnedHtml = pinned.map(renderCard).join('');
-  const restHtml = rest.map(renderCard).join('');
+  const pinnedHtml = pinned.map(r => renderCard(r, true)).join('');
+  const restHtml = rest.map(r => renderCard(r)).join('');
   grid.innerHTML = pinnedHtml + (pinned.length && rest.length ? '<div class="priority-divider"></div>' : '') + restHtml;
 
   document.querySelectorAll('.project-card').forEach(card => {
