@@ -88,7 +88,7 @@ function triggerHearts() {
 
   const emojis = ['🖤', '🤍', '💜', '🦢', '✨'];
   const isMobile = window.innerWidth < 640;
-  const count = isMobile ? 16 : 28;
+  const count = isMobile ? 22 : 28;
 
   for (let i = 0; i < count; i++) {
     const x = Math.random() * 100;
@@ -100,21 +100,21 @@ function triggerHearts() {
     el.textContent = emojis[i % emojis.length];
     el.style.left = x + '%';
     el.style.top = y + '%';
-    el.style.fontSize = (isMobile ? 1.4 : 2) + (Math.random() * (isMobile ? 1 : 1.5)) + 'rem';
+    el.style.fontSize = (isMobile ? 2.0 : 2.8) + (Math.random() * (isMobile ? 1.2 : 1.5)) + 'rem';
     el.style.setProperty('--delay', delay + 's');
     overlay.appendChild(el);
 
-    if (!isMobile) {
-      for (let c = 0; c < 3; c++) {
-        const child = document.createElement('div');
-        child.className = 'hearts-particle child';
-        child.textContent = emojis[(i + c + 1) % emojis.length];
-        child.style.left = (x + (Math.random() - 0.5) * 12) + '%';
-        child.style.top = (y + (Math.random() - 0.5) * 12) + '%';
-        child.style.fontSize = (0.6 + Math.random() * 0.8) + 'rem';
-        child.style.setProperty('--delay', (parseFloat(delay) + 0.25 + Math.random() * 0.3).toFixed(2) + 's');
-        overlay.appendChild(child);
-      }
+    const childCount = isMobile ? 2 : 3;
+    const spread = isMobile ? 7 : 12;
+    for (let c = 0; c < childCount; c++) {
+      const child = document.createElement('div');
+      child.className = 'hearts-particle child';
+      child.textContent = emojis[(i + c + 1) % emojis.length];
+      child.style.left = (x + (Math.random() - 0.5) * spread) + '%';
+      child.style.top = (y + (Math.random() - 0.5) * spread) + '%';
+      child.style.fontSize = (isMobile ? 0.8 : 0.6) + Math.random() * (isMobile ? 0.6 : 0.8) + 'rem';
+      child.style.setProperty('--delay', (parseFloat(delay) + 0.25 + Math.random() * 0.3).toFixed(2) + 's');
+      overlay.appendChild(child);
     }
   }
 

@@ -724,18 +724,20 @@ body.light-mode .ascii-art pre {
 }
 
 @keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-12px); }
+  0%, 100% { transform: translateY(0px) translateX(0px); }
+  25% { transform: translateY(-8px) translateX(5px); }
+  50% { transform: translateY(-14px) translateX(0px); }
+  75% { transform: translateY(-6px) translateX(-5px); }
 }
 
 @keyframes heartsExit {
   0% {
     opacity: 1;
-    transform: translateY(0) scale(1);
+    transform: translateY(0) translateX(0) scale(1);
   }
   100% {
     opacity: 0;
-    transform: translateY(-200px) scale(0.6);
+    transform: translateY(-200px) translateX(40px) scale(0.8);
   }
 }
 
@@ -1531,16 +1533,18 @@ body.light-mode .magic-card {
   }
 
   .hearts-particle {
-    animation: heartsEnter 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-    animation-delay: var(--delay);
+    animation: heartsEnter 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards,
+               float 2s ease-in-out infinite;
+    animation-delay: var(--delay), calc(var(--delay) + 0.65s);
   }
   .hearts-particle.child {
-    animation: heartsEnter 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-    animation-delay: var(--delay);
+    animation: heartsEnter 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards,
+               float 2s ease-in-out infinite;
+    animation-delay: var(--delay), calc(var(--delay) + 0.55s);
   }
   .hearts-particle.exit,
   .hearts-particle.child.exit {
-    animation: heartsExit 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation: heartsExit 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
   }
 
   @keyframes avatarGlow {
