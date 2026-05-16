@@ -146,7 +146,7 @@ function showGameQuestion() {
     '<div class="window coc-window" style="max-width:340px;text-align:center;">' +
       '<div class="window-body" style="padding:2rem 1.5rem;">' +
         '<div style="font-size:3rem;margin-bottom:0.5rem;">🎮</div>' +
-        '<p style="color:var(--text-primary);font-size:1rem;margin:0 0 0.25rem;">what\'s my favorite game?</p>' +
+        '<p style="color:var(--text-secondary);font-size:0.82rem;margin:0 0 0.5rem;opacity:0.65;">build · battle</p>' +
         
         '<div style="display:flex;gap:0.6rem;justify-content:center;margin-bottom:1rem;">' +
           '<input class="coc-letter" id="coc-l0" maxlength="1" autofocus>' +
@@ -188,13 +188,9 @@ function showGameQuestion() {
       triggerCoCHearts();
       setTimeout(openMainCoCPopup, 800);
     } else {
-      var card = overlay.querySelector('.window');
-      card.classList.add('shake');
       if (navigator.vibrate) navigator.vibrate([60, 40, 60, 40, 80, 50, 100]);
-      setTimeout(function() {
-        overlay.remove();
-        triggerErrorHearts();
-      }, 600);
+      overlay.remove();
+      triggerErrorHearts();
     }
   }
 

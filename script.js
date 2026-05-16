@@ -223,12 +223,9 @@ function showMagicPopup() {
       popup.remove();
       triggerHearts();
     } else {
-      card.classList.add('shake');
       if (navigator.vibrate) navigator.vibrate([60, 40, 60, 40, 80, 50, 100]);
-      setTimeout(() => {
-        popup.remove();
-        triggerErrorHearts();
-      }, 600);
+      popup.remove();
+      triggerErrorHearts();
     }
   }
 
