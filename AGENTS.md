@@ -24,11 +24,12 @@ Key rule: never mention easter egg triggers, codes, or mechanics in README or pu
 | File | Purpose |
 |------|---------|
 | `script.js` | Theme toggle, bg wave, page transitions, config loader, magic easter egg |
-| `style.css` | Global styles, responsive, CSS custom properties |
+| `style.css` | Global styles, responsive, CSS custom properties, window/popup styles |
 | `projects.js` | GitHub API fetch, repo grid, README modal |
 | `certificates.js` | Certificate data + rendering |
-| `socials.js` | Connect cards, Bluesky popup, HF popup |
-| `coc.js` | Game-themed interactions (ClashKing API) |
+| `socials.js` | Connect cards, Bluesky popup (macOS titlebar), HF popup |
+| `socials.css` | Connect cards, Bluesky/HF popup styles |
+| `coc.js` | Game-themed interactions (ClashKing API), CoC popup |
 | `coc.css` | Game-themed animations/styles |
 | `proxy.js` | Express proxy (has `/api/coc`, `/api/twitter/*`) |
 | `portfolio-config.json` | Ignore lists, priority projects, API keys |
@@ -57,7 +58,7 @@ Key rule: never mention easter egg triggers, codes, or mechanics in README or pu
 | **Flow** | Open overlay → show spinner → fetch README → base64 decode → render with `marked` |
 | **MD rendering** | Uses `marked` with GFM, custom renderer for images (relative → raw.githubusercontent.com), links (open in new tab), code blocks |
 | **Image resolution** | `resolveUrl()` — if relative, prepends `https://raw.githubusercontent.com/{user}/{repo}/main/` |
-| **Window controls** | Close (Escape/click outside), minimize (slide out), maximize (toggle full width) |
+| **Window controls** | macOS traffic light buttons (close/minimize/maximize), circular, red/yellow/green. Close (Escape/click outside), minimize (slide out), maximize (toggle full width) |
 | **Error handling** | 404 → "No README found", other → error message |
 
 ### Bluesky — Profile & Feed (`socials.js`)
@@ -75,6 +76,7 @@ Key rule: never mention easter egg triggers, codes, or mechanics in README or pu
 | **Navigation** | Touch swipe (>40px delta) + ArrowLeft/ArrowRight keys + loops at ends |
 | **Text formatting** | `formatBSkyText()` — link detection, hashtag links, line breaks |
 | **Error handling** | Empty posts → "No posts" message, fetch failure → silent catch |
+| **Window** | `.window.bsky-stack-wrap` with macOS titlebar (close/minimize/maximize), `.window-footer` with hint bar + Open Bluesky link |
 
 ### Hugging Face — Models & Datasets (`socials.js`)
 
@@ -102,6 +104,7 @@ Key rule: never mention easter egg triggers, codes, or mechanics in README or pu
 | **Fallback chain** | If ClashKing fails → `tryOfficialAPI()` (requires config key) → `renderCoCLinksFallback()` |
 | **Town Hall image** | Dynamic: `https://www.clashofstats.com/images/game-data-sprites/1x/th-{level}.png` |
 | **Stats rendered** | TH image, player name, TH level, clan name, player tag, "Full player stats" link |
+| **Window** | macOS-style titlebar with close button, footer with Clash of Stats link |
 | **Error handling** | "Could not fetch player data" message on total failure |
 
 ### Config Loader (`script.js`)

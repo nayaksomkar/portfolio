@@ -22,7 +22,9 @@ CoC additionally fetches player stats from ClashKing API and shows a stats popup
 | **Puzzle** | 3 input boxes pop up — enter **`634`** |
 | **Wrong** | Popup shakes, border turns red, phone vibrates, closes after 600ms |
 | **Celebration** | `triggerHearts()` — 🖤🤍💜🦢✨ particles |
-| **Particles** | 16 mobile / 28 desktop · each desktop particle spawns 3 child particles |
+| **Particles** | 22 mobile / 28 desktop · each spawns 2 (mobile) or 3 (desktop) child particles |
+| **Sizes** | Mobile 2.0–3.2rem, desktop 2.8–4.3rem |
+| **Animation** | Organic float (horizontal + vertical drift), diagonal exit (fade + scale + translateX) |
 | **Cleanup** | Particles `exit` at 2.2s, overlay removed at 3.5s |
 
 ### Flow
@@ -69,7 +71,8 @@ CoC additionally fetches player stats from ClashKing API and shows a stats popup
 | **Puzzle** | 3 input boxes pop up — enter **`coc`** (auto-focused on first box) |
 | **Wrong** | Same shake + vibrate + close as magic number |
 | **Celebration** | `triggerCoCHearts()` — 🎮⚔️🏆👑🔥💎⚡🛡️ particles |
-| **Particles** | 16 mobile / 28 desktop · 3 child particles per desktop parent |
+| **Particles** | 22 mobile / 28 desktop · each spawns 2 (mobile) or 3 (desktop) child particles |
+| **Sizes** | Mobile 2.0–3.2rem, desktop 2.8–4.3rem |
 | **Stats Popup** | Appears 800ms after celebration, shows TH image + player data |
 | **Player Tag** | `#9PU28QLQQ` |
 
@@ -156,10 +159,12 @@ Official API fallback (`tryOfficialAPI`) maps fields directly: `data.name`, `dat
 | Aspect | Detail |
 |--------|--------|
 | Tap timeout | 1.2s — counter resets if taps are too slow |
-| Mobile particles | 16 per celebration |
-| Desktop particles | 28 per celebration, each with 3 children (84 extra particles) |
+| Particle count | 22 mobile / 28 desktop per celebration |
+| Child particles | 2 per parent on mobile (7% spread), 3 on desktop (12% spread) |
+| Parent sizes | Mobile 2.0 + random(0-1.2)rem, desktop 2.8 + random(0-1.5)rem |
+| Child sizes | Mobile 0.8 + random(0-0.6)rem, desktop 0.6 + random(0-0.8)rem |
 | Haptic feedback | On each tap (20-30ms) and on wrong answer (pattern: 40-30-40-30-60) |
-| Particle exit | `opacity`/`transform` fade via `.exit` class at 2.2s |
+| Float animation | Organic drift: `translateY(-6 to -14px)` + `translateX(-5 to +5px)` |
+| Exit animation | `translateY(-200px)` + `translateX(40px)` + `scale(0.8)`, mobile 1s, desktop 1.2s |
 | Overlay cleanup | DOM removed at 3.5s |
 | Particle rendering | Random position (0-100%), random delay (0-1.2s), randomized font sizes |
-| Child particles | Desktop only: 3 per parent, offset randomly within 12% radius, staggered delay |

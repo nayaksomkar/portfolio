@@ -58,8 +58,9 @@ portfolio/
 | Animation | Sine-wave glow on background text |
 | Transitions | translateY slide + fade between pages |
 | GitHub | Live repo grid with priority sorting, README popup |
-| Bluesky | Posts carousel with swipe/arrow nav |
+| Bluesky | Posts carousel with swipe/arrow nav, macOS-style titlebar |
 | Hugging Face | Models & datasets popup with download counts |
+| Windows | macOS traffic light controls (close/minimize/maximize) on all popups |
 | Responsive | 9 breakpoints: 380px → 1600px+ |
 | Accessibility | Reduced-motion support, touch-friendly targets |
 | Caching | localStorage with 30-min TTL for API counts |
@@ -85,6 +86,7 @@ portfolio/
 | **Fetch** | On card click via `openProjectWindow()` |
 | **Decoding** | Base64 → TextDecoder → rendered with `marked` library |
 | **Images** | Relative URLs resolved to `raw.githubusercontent.com/{user}/{repo}/main/` |
+| **Window** | macOS titlebar with close/minimize/maximize, footer with "Open on GitHub" link |
 | **Error** | 404 → "No README found"; other → error message |
 
 ### Bluesky — Profile & Feed (`socials.js`)
@@ -97,6 +99,7 @@ portfolio/
 | **Feed fetch** | On popup open via `openBSkyPopup()` |
 | **Caching** | Profile data cached 30 min under `bsky-both-v2` (localStorage) |
 | **Navigation** | Swipe (touch) + arrow keys, loops at start/end |
+| **Window** | macOS titlebar with close/minimize/maximize, footer with hint bar + Open Bluesky link |
 
 ### Hugging Face — Models & Datasets (`socials.js`)
 
@@ -108,6 +111,7 @@ portfolio/
 | **Popup fetch** | On popup open via `Promise.all()` — fetches both in parallel |
 | **Display** | Last 2 models + last 2 datasets with download counts |
 | **Caching** | Counts cached separately: `hf-models`, `hf-datasets` (30 min) |
+| **Window** | macOS titlebar with close/minimize/maximize, footer with "Open Hugging Face" link |
 
 ### ClashKing — CoC Player Data (`coc.js`)
 

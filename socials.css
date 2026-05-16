@@ -126,7 +126,6 @@
   opacity: 0;
   transform: scale(0.9);
   pointer-events: none;
-  padding: 1rem;
 }
 .bsky-stack-wrap.visible {
   animation: winOpen 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
@@ -139,13 +138,12 @@ body.light-mode .bsky-stack-wrap {
 
 .bsky-overlay {
   flex-direction: column;
-  gap: 0.6rem;
 }
 
 .bsky-body {
-  position: relative;
+  flex: 1;
+  overflow-y: auto;
   min-height: 220px;
-  overflow: hidden;
 }
 
 .bsky-stack {
@@ -165,22 +163,6 @@ body.light-mode .bsky-stack-wrap {
   border-radius: 10px;
   padding: 1rem 0.9rem 0.9rem;
 }
-
-.bsky-card-dots {
-  display: flex;
-  gap: 6px;
-  margin-bottom: 0.6rem;
-  padding-left: 2px;
-}
-.bsky-card-dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  display: inline-block;
-}
-.bsky-card-dot.red { background: #ff5f56; }
-.bsky-card-dot.yellow { background: #ffbd2e; }
-.bsky-card-dot.green { background: #27c93f; }
 
 .bsky-stack-card.active {
   transform: translateX(0) scale(1);
@@ -407,7 +389,7 @@ body.light-mode .bsky-stack-wrap {
   .connect-label { font-size: 0.85rem; }
   .connect-desc { font-size: 0.7rem; }
   .hf-item { font-size: 0.7rem; padding: 0.35rem 0.5rem; }
-  .bsky-stack-wrap { padding: 1rem; max-width: 88vw; }
+  .bsky-stack-wrap { max-width: 88vw; }
   .bsky-body { min-height: 160px; }
   .bsky-stack { min-height: 140px; }
   .bsky-hint-bar { font-size: 0.5rem; }
@@ -431,6 +413,6 @@ body.light-mode .bsky-stack-wrap {
   .bsky-stack-card.prev { transform: translateX(-15px) scale(0.95); }
   .bsky-stack-card.prev-2 { transform: translateX(-30px) scale(0.9); }
   .window-overlay.open { padding: 1rem; }
-  .bsky-stack-wrap { max-width: 92vw; padding: 0.8rem; }
+  .bsky-stack-wrap { max-width: 92vw; }
   .bsky-open-link { max-width: 92vw; }
 }

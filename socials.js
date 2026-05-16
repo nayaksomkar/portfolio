@@ -125,14 +125,24 @@ function openBSkyPopup() {
   const overlay = document.createElement('div');
   overlay.className = 'window-overlay bsky-overlay';
   overlay.innerHTML =
-    '<div class="bsky-stack-wrap" id="bsky-stack-wrap">' +
+    '<div class="window bsky-stack-wrap" id="bsky-stack-wrap">' +
+      '<div class="window-titlebar">' +
+        '<span class="window-title"><i class="fab fa-bluesky"></i> Bluesky</span>' +
+        '<div class="window-controls">' +
+          '<button class="win-btn close bsky-close"><i class="fas fa-times"></i></button>' +
+          '<button class="win-btn minimize bsky-min"><i class="fas fa-minus"></i></button>' +
+          '<button class="win-btn maximize bsky-max"><i class="fas fa-expand"></i></button>' +
+        '</div>' +
+      '</div>' +
       '<div class="bsky-body" id="bsky-body">' +
         '<div style="text-align:center;color:var(--text-secondary);padding:2rem;"><i class="fas fa-spinner fa-spin"></i> Loading posts...</div>' +
       '</div>' +
-      '<div class="bsky-hint-bar"><i class="fas fa-arrow-left"></i> swipe or arrows <i class="fas fa-arrow-right"></i></div>' +
-    '</div>' +
-    '<a href="https://bsky.app/profile/nayaksomkar.bsky.social" target="_blank" class="bsky-open-link"><i class="fab fa-bluesky"></i> Open Bluesky</a>' +
-    '<div class="bsky-footer-note">Showing last 3 posts · <a href="https://bsky.app/profile/nayaksomkar.bsky.social" target="_blank">Visit profile</a> for more</div>';
+      '<div class="window-footer" style="flex-direction:column;gap:0.4rem;align-items:stretch;padding:0.6rem 1rem;">' +
+        '<div class="bsky-hint-bar" style="padding:0;"><i class="fas fa-arrow-left"></i> swipe or arrows <i class="fas fa-arrow-right"></i></div>' +
+        '<a href="https://bsky.app/profile/nayaksomkar.bsky.social" target="_blank" class="bsky-open-link" style="margin:0;"><i class="fab fa-bluesky"></i> Open Bluesky</a>' +
+        '<div class="bsky-footer-note" style="padding:0;">Showing last 3 posts · <a href="https://bsky.app/profile/nayaksomkar.bsky.social" target="_blank">Visit profile</a> for more</div>' +
+      '</div>' +
+    '</div>';
   document.body.appendChild(overlay);
 
   bskyPosts = [];
@@ -145,6 +155,17 @@ function openBSkyPopup() {
       wrap.classList.add('visible');
     });
   });
+
+  overlay.querySelector('.bsky-close').onclick = closeBSky;
+  overlay.querySelector('.bsky-min').onclick = function() {
+    wrap.classList.remove('visible');
+    wrap.classList.add('minimized');
+    setTimeout(closeBSky, 280);
+  };
+  overlay.querySelector('.bsky-max').onclick = function() {
+    wrap.classList.toggle('maximized');
+    overlay.querySelector('.bsky-max i').className = wrap.classList.contains('maximized') ? 'fas fa-compress' : 'fas fa-expand';
+  };
 
   overlay.onclick = function(e) {
     if (e.target === overlay) closeBSky();
@@ -208,7 +229,6 @@ function renderBSkyPost(idx) {
         : '<div class="bsky-avatar-placeholder"><i class="fas fa-user"></i></div>';
       var postDate = p.record.createdAt ? new Date(p.record.createdAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) : '';
       html += '<div class="bsky-stack-card" data-idx="' + i + '">' +
-        '<div class="bsky-card-dots"><span class="bsky-card-dot red"></span><span class="bsky-card-dot yellow"></span><span class="bsky-card-dot green"></span></div>' +
         '<div class="bsky-post">' +
           '<div class="bsky-post-header">' + avatarHtml +
             '<div>' +
