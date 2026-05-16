@@ -1268,23 +1268,24 @@ footer {
 }
 
 .win-btn {
-  width: 28px;
-  height: 28px;
+  width: 20px;
+  height: 20px;
   border: none;
-  border-radius: 5px;
+  border-radius: 50%;
   cursor: pointer;
-  font-size: 0.65rem;
+  font-size: 0.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background 0.2s;
-  color: #fff;
+  transition: all 0.2s;
+  color: rgba(0,0,0,0.45);
 }
+.win-btn:hover { color: rgba(0,0,0,0.75); }
 
-.win-btn.minimize { background: #fbbf24; color: #1a1a2e; }
+.win-btn.minimize { background: #fbbf24; }
 .win-btn.minimize:hover { background: #f59e0b; }
 
-.win-btn.maximize { background: #34d399; color: #1a1a2e; }
+.win-btn.maximize { background: #34d399; }
 .win-btn.maximize:hover { background: #10b981; }
 
 .win-btn.close { background: #ef4444; }
@@ -1568,7 +1569,7 @@ body.light-mode .magic-card {
   .window { max-width: 92vw; max-height: 80vh; }
   .window-body { padding: 0.8rem; font-size: 0.78rem; }
   .window-title { font-size: 0.72rem; }
-  .win-btn { width: 22px; height: 22px; font-size: 0.5rem; }
+  .win-btn { width: 24px; height: 24px; font-size: 0.5rem; }
 
   .skill-icons img { height: 36px; }
   .skill-labels { font-size: 0.7rem; }

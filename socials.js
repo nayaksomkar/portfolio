@@ -290,9 +290,9 @@ function openHFPopup() {
       '<div class="window-titlebar">' +
         '<span class="window-title"><img src="https://cdn.simpleicons.org/huggingface" width="16" height="16" style="vertical-align:middle;margin-right:6px"> nayaksomkar · Hugging Face</span>' +
         '<div class="window-controls">' +
+          '<button class="win-btn close hf-close"><i class="fas fa-times"></i></button>' +
           '<button class="win-btn minimize hf-min"><i class="fas fa-minus"></i></button>' +
           '<button class="win-btn maximize hf-max"><i class="fas fa-expand"></i></button>' +
-          '<button class="win-btn close hf-close"><i class="fas fa-times"></i></button>' +
         '</div>' +
       '</div>' +
       '<div class="window-body hf-body" id="hf-body">' +
