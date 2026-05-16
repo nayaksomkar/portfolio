@@ -20,7 +20,7 @@ CoC additionally fetches player stats from ClashKing API and shows a stats popup
 | **Trigger** | Tap the ASCII art skull on the About page **6 times** (within ~1.2s window) |
 | **Counter** | `1/6` → `6/6` badge appears beside the art, disappears on timeout/completion |
 | **Puzzle** | 3 input boxes pop up — enter **`634`** |
-| **Wrong** | Popup shakes, border turns red, phone vibrates, closes after 600ms |
+| **Wrong** | Popup closes immediately → `triggerErrorHearts()` fills screen with red hearts → after 1.2s morph to broken hearts → fade out at 2.8s → cleanup at 3.8s |
 | **Celebration** | `triggerHearts()` — 🖤🤍💜🦢✨ particles |
 | **Particles** | 22 mobile / 28 desktop · each spawns 2 (mobile) or 3 (desktop) child particles |
 | **Sizes** | Mobile 2.0–3.2rem, desktop 2.8–4.3rem |
@@ -69,7 +69,7 @@ CoC additionally fetches player stats from ClashKing API and shows a stats popup
 | **Trigger** | Tap the tagline on the About page **6 times** (within ~1.2s window) |
 | **Counter** | `1/6` → `6/6` badge with CoC styling, same behavior |
 | **Puzzle** | 3 input boxes pop up — enter **`coc`** (auto-focused on first box) |
-| **Wrong** | Same shake + vibrate + close as magic number |
+| **Wrong** | Same heartbreak animation as magic number — `triggerErrorHearts()` with red hearts → broken hearts → fade |
 | **Celebration** | `triggerCoCHearts()` — 🎮⚔️🏆👑🔥💎⚡🛡️ particles |
 | **Particles** | 22 mobile / 28 desktop · each spawns 2 (mobile) or 3 (desktop) child particles |
 | **Sizes** | Mobile 2.0–3.2rem, desktop 2.8–4.3rem |
@@ -163,7 +163,11 @@ Official API fallback (`tryOfficialAPI`) maps fields directly: `data.name`, `dat
 | Child particles | 2 per parent on mobile (7% spread), 3 on desktop (12% spread) |
 | Parent sizes | Mobile 2.0 + random(0-1.2)rem, desktop 2.8 + random(0-1.5)rem |
 | Child sizes | Mobile 0.8 + random(0-0.6)rem, desktop 0.6 + random(0-0.8)rem |
-| Haptic feedback | On each tap (20-30ms) and on wrong answer (pattern: 40-30-40-30-60) |
+| Haptic feedback | On each tap (20-30ms) and on wrong answer (pattern: 60-40-60-40-80-50-100-60-120) |
+| Wrong answer animation | `triggerErrorHearts()` — same parent-child particle system as celebrations |
+| Error Phase 1 | Red hearts `❤️💖💗♥️❣️` burst in with warm background tint for 1.2s |
+| Error Phase 2 | All particles morph to `💔🖤` at 1.2s (heartbreak moment) |
+| Error Phase 3 | Fade out via `.exit` class at 2.8s, DOM removal at 3.8s |
 | Float animation | Organic drift: `translateY(-6 to -14px)` + `translateX(-5 to +5px)` |
 | Exit animation | `translateY(-200px)` + `translateX(40px)` + `scale(0.8)`, mobile 1s, desktop 1.2s |
 | Overlay cleanup | DOM removed at 3.5s |
