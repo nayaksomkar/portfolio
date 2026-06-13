@@ -12,10 +12,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body class="night-mode page-connect">
-<script>if(localStorage.getItem('theme')==='light'){document.body.classList.add('light-mode');document.body.classList.remove('night-mode')}</script>
+  <!-- Restore theme from localStorage before paint to avoid flash -->
+  <script>if(localStorage.getItem('theme')==='light'){document.body.classList.add('light-mode');document.body.classList.remove('night-mode')}</script>
 
   <div id="bg-text" aria-hidden="true"></div>
 
+  <!-- ─── NAVIGATION ─── -->
   <nav>
     <div class="nav-inner">
       <div class="nav-brand">
@@ -44,6 +46,7 @@
     </div>
   </nav>
 
+  <!-- ─── CONNECT CARDS ─── -->
   <div class="page-transition-bg">
   <div class="page-wrap">
   <section class="content-section">
@@ -53,6 +56,7 @@
   </div>
   </div>
 
+  <!-- ─── FOOTER ─── -->
   <footer>
     <p class="footer-copy">✨ Building Intelligent Systems • One at a Time ✨</p>
     <p class="footer-copy"><span class="copy-symbol">Ⓒ</span> nayaksomkar</p>

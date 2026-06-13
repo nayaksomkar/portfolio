@@ -24,7 +24,7 @@ Config file at `portfolio-config.json`. Serve locally with `python3 -m http.serv
 |------|------|------------|
 | About | `index.html` | ASCII art, skill cards, education, easter eggs |
 | Projects | `projects.html` | Live GitHub repos grid + README modal |
-| Certificates | `certificates.html` | Filterable certificate cards |
+| Certificates | `certificates.html` | Game-style card stack carousel from GitHub repo |
 | Socials | `socials.html` | GitHub / Bluesky / Hugging Face / Email |
 
 ## File Structure
@@ -113,6 +113,25 @@ portfolio/
 | **Caching** | Counts cached separately: `hf-models`, `hf-datasets` (30 min) |
 | **Window** | macOS titlebar with close/minimize/maximize, footer with "Open Hugging Face" link |
 
+### Certificates — Card Stack Carousel (`certificates.js`)
+
+| | |
+|---|---|
+| **JSON endpoint** | `raw.githubusercontent.com/nayaksomkar/myCerificates/main/certificates.json` |
+| **Image base** | `raw.githubusercontent.com/nayaksomkar/myCerificates/main/` |
+| **When** | On `certificates.html` page load via `initCerts()` |
+| **Flow** | `initCerts()` → `loadConfig()` → `fetch(CERT_JSON_URL)` → `buildStack()` → `positionCards()` |
+| **Filtering** | Entries whose `Title` matches `ignoreCertificates` in `portfolio-config.json` are removed |
+| **Rendering** | Certificates are rendered as a fanned‑out card deck (like a hand of cards) |
+| **Navigation** | Arrow buttons (← / →), keyboard ArrowLeft/ArrowRight, touch swipe on mobile |
+| **Stack positions** | 5 cards visible at once: `active`, `prev`, `prev-2`, `next`, `next-2` — fanned with rotation & scale |
+| **View popup** | Clicking "View Certificate" opens a macOS-style window (`openCertWindow`) with the full image and "View on Udemy" link |
+| **Image URLs** | Constructed dynamically: `IMG_BASE + pathJPG` from the JSON entry |
+| **Controls** | macOS traffic light buttons (close/minimize/maximize). Close via Escape or click outside |
+| **Animations** | Cards animate with a spring‑like cubic bezier on navigation |
+| **Error handling** | Shows empty state message if fetch fails or no certs remain after filtering |
+| **Adding certs** | Upload JPG to `CertificateJPG/` + add entry to `certificates.json` — no code changes needed |
+
 ### ClashKing — CoC Player Data (`coc.js`)
 
 | | |
@@ -162,6 +181,7 @@ portfolio/
 | ClashKing | `api.clashk.ing` | None | `coc.js` |
 | CoC Official | `api.clashofclans.com` | API key (fallback) | `coc.js` |
 | Clash of Stats | `clashofstats.com` (CDN images) | Public | `coc.js` |
+| GitHub Raw | `raw.githubusercontent.com` | Public | `certificates.js` |
 
 ## Customization
 
@@ -171,4 +191,4 @@ portfolio/
 | GitHub username | `GITHUB_USER` in `projects.js` |
 | Colors | CSS custom properties in `:root` |
 | Ignore lists | `portfolio-config.json` |
-| Certificates | `certData` in `certificates.js` |
+| Certificates | `certificates.json` in `nayaksomkar/myCerificates` repo |

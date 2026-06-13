@@ -11,10 +11,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body class="night-mode page-certificates">
-<script>if(localStorage.getItem('theme')==='light'){document.body.classList.add('light-mode');document.body.classList.remove('night-mode')}</script>
+  <!-- Restore theme from localStorage before paint to avoid flash -->
+  <script>if(localStorage.getItem('theme')==='light'){document.body.classList.add('light-mode');document.body.classList.remove('night-mode')}</script>
 
   <div id="bg-text" aria-hidden="true"></div>
 
+  <!-- ─── NAVIGATION ─── -->
   <nav>
     <div class="nav-inner">
       <div class="nav-brand">
@@ -43,17 +45,40 @@
     </div>
   </nav>
 
+  <!-- ─── CARD STACK CAROUSEL ─── -->
   <div class="page-transition-bg">
   <div class="page-wrap">
   <section class="content-section">
     <div class="section-desc" id="certs-desc">Certifications & achievements</div>
-    <div class="cert-grid" id="cert-grid"></div>
+    <div class="cert-stack-wrap" id="cert-stack-wrap">
+      <!-- Card stack populated by certificates.js -->
+      <div class="cert-stack" id="cert-stack"></div>
+      <!-- Navigation controls: arrows + counter -->
+      <div class="cert-controls" id="cert-controls">
+        <button class="cert-arrow cert-arrow--prev" id="cert-prev" aria-label="Previous certificate">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        <span class="cert-counter" id="cert-counter"></span>
+        <button class="cert-arrow cert-arrow--next" id="cert-next" aria-label="Next certificate">
+          <i class="fas fa-chevron-right"></i>
+        </button>
+      </div>
+      <!-- Animated hints on left/right pointing to arrows -->
+      <div class="cert-hint-left" id="cert-hint-left">
+        <span class="hint-arrows"><span>&gt;</span><span>&gt;</span><span>&gt;</span></span>
+      </div>
+      <div class="cert-hint-right" id="cert-hint-right">
+        <span class="hint-arrows"><span>&gt;</span><span>&gt;</span><span>&gt;</span></span>
+      </div>
+      <!-- Subtle hint text between card stack and controls -->
+      <div class="cert-hint-text" id="cert-hint-text">use arrow keys or swipe to navigate</div>
+    </div>
   </section>
   </div>
   </div>
 
+  <!-- ─── FOOTER ─── -->
   <footer>
-
     <p class="footer-copy">✨ Building Intelligent Systems • One at a Time ✨</p>
     <p class="footer-copy"><span class="copy-symbol">Ⓒ</span> nayaksomkar</p>
     <div class="footer-nav">

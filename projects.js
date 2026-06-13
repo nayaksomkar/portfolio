@@ -1,4 +1,5 @@
 /* ───────── GITHUB REPOS ───────── */
+/* Source: https://api.github.com/users/nayaksomkar/repos?sort=updated&per_page=100&type=public */
 const GITHUB_USER = 'nayaksomkar';
 const grid = document.getElementById('project-grid');
 
@@ -101,6 +102,8 @@ function renderRepos(pinned, rest) {
 }
 
 /* ───────── CUSTOM WINDOW ───────── */
+/* README source: https://api.github.com/repos/nayaksomkar/{repo}/readme */
+/* Images resolved to: https://raw.githubusercontent.com/nayaksomkar/{repo}/main/ */
 const overlay = document.getElementById('window-overlay');
 const win = document.getElementById('project-window');
 const winBody = document.getElementById('window-body');
