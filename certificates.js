@@ -285,10 +285,16 @@ function updatePopupContent() {
   const overlay = document.querySelector('.cert-overlay');
   if (!overlay) return;
   overlay.querySelector('.window-title').textContent = c.title;
-  overlay.querySelector('#popup-img').src = c.image;
-  overlay.querySelector('#popup-img').alt = c.title;
   overlay.querySelector('#popup-counter').textContent = `${popupIdx + 1} / ${certs.length}`;
   overlay.querySelector('.popup-udemy-link').href = c.url;
+
+  const img = overlay.querySelector('#popup-img');
+  img.style.opacity = '0';
+  setTimeout(() => {
+    img.src = c.image;
+    img.alt = c.title;
+    img.style.opacity = '1';
+  }, 200);
 }
 
 function popupKeyHandler(e) {
