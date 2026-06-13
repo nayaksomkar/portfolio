@@ -1905,26 +1905,32 @@ body.light-mode .magic-card {
   .project-meta { font-size: 0.65rem; gap: 0.3rem; }
 
   .content-section { padding-left: 0.5rem; padding-right: 0.5rem; padding-top: 4rem; padding-bottom: 1rem; }
-  .cert-stack { max-width: 100%; min-height: 88dvh; }
-  .cert-stack-img, .cert-stack-img-placeholder { height: 72dvh; }
-  .cert-stack-body { padding: 0.7rem 1rem; gap: 0.4rem; }
-  .cert-stack-title { font-size: 0.9rem; }
-  .cert-view-btn { font-size: 0.75rem; padding: 0.5rem 1rem; }
+  .cert-stack { max-width: 100%; min-height: 68dvh; }
+  .cert-stack-img, .cert-stack-img-placeholder { height: 54dvh; }
+  .cert-stack-body { padding: 0.6rem 0.9rem; gap: 0.35rem; }
+  .cert-stack-title { font-size: 0.85rem; }
+  .cert-view-btn { font-size: 0.7rem; padding: 0.4rem 0.9rem; }
   .cert-stack-card.prev { transform: translateX(-50px) scale(0.94) rotate(-2deg); }
   .cert-stack-card.prev-2 { transform: translateX(-80px) scale(0.88) rotate(-4deg); }
   .cert-stack-card.next { transform: translateX(50px) scale(0.94) rotate(2deg); }
   .cert-stack-card.next-2 { transform: translateX(80px) scale(0.88) rotate(4deg); }
-  .cert-arrow { width: 48px; height: 48px; font-size: 1.1rem; }
-  .cert-counter { font-size: 0.85rem; }
-  .cert-controls { gap: 1.2rem; margin-top: 0.8rem; }
-  .cert-hint-left, .cert-hint-right, .hint-bubble { display: none; }
-  .cert-hint { font-size: 0.65rem; margin-top: 0.4rem; }
+  .cert-arrow { width: 44px; height: 44px; font-size: 1rem; }
+  .cert-counter { font-size: 0.8rem; }
+  .cert-controls { gap: 1rem; margin-top: 0.6rem; }
+  .cert-hint-text { font-size: 0.6rem; margin-top: 0.5rem; }
+  .cert-hint-left, .cert-hint-right { display: none; }
 
   .window-overlay.open { padding: 1.5rem; }
   .window { max-width: 92vw; max-height: 80vh; }
   .window-body { padding: 0.8rem; font-size: 0.78rem; }
   .window-title { font-size: 0.72rem; }
   .win-btn { width: 24px; height: 24px; font-size: 0.5rem; }
+  .cert-popup-body { padding: 0.5rem; }
+  .cert-popup-img { max-height: 72dvh; }
+  .cert-popup-footer { padding: 0.4rem 0.6rem; gap: 0.3rem; }
+  .cert-popup-footer .popup-nav-hint { font-size: 0.5rem; }
+  .cert-popup-footer .btn-gh { padding: 0.35rem 0.8rem; font-size: 0.65rem; }
+  .popup-hint-left .hint-arrows span, .popup-hint-right .hint-arrows span { font-size: 0.9rem; }
 
   .skill-icons img { height: 36px; }
   .skill-labels { font-size: 0.7rem; }
@@ -1978,22 +1984,28 @@ body.light-mode .magic-card {
   .footer-nav-link { padding: 0.5rem 0.7rem; font-size: 0.78rem; }
 
   .content-section { padding-left: 0.4rem; padding-right: 0.4rem; padding-top: 3.5rem; padding-bottom: 0.5rem; }
-  .cert-stack { max-width: 100%; min-height: 85dvh; }
-  .cert-stack-img, .cert-stack-img-placeholder { height: 70dvh; }
-  .cert-stack-body { padding: 0.5rem 0.7rem 0.7rem; gap: 0.35rem; }
-  .cert-stack-title { font-size: 0.8rem; }
-  .cert-view-btn { font-size: 0.65rem; padding: 0.35rem 0.8rem; gap: 0.3rem; }
+  .cert-stack { max-width: 100%; min-height: 62dvh; }
+  .cert-stack-img, .cert-stack-img-placeholder { height: 48dvh; }
+  .cert-stack-body { padding: 0.4rem 0.6rem 0.6rem; gap: 0.3rem; }
+  .cert-stack-title { font-size: 0.75rem; }
+  .cert-view-btn { font-size: 0.6rem; padding: 0.3rem 0.7rem; gap: 0.25rem; }
   .cert-stack-card.prev { transform: translateX(-20px) scale(0.96) rotate(-1.5deg); }
   .cert-stack-card.prev-2 { transform: translateX(-35px) scale(0.92) rotate(-2.5deg); }
   .cert-stack-card.next { transform: translateX(20px) scale(0.96) rotate(1.5deg); }
   .cert-stack-card.next-2 { transform: translateX(35px) scale(0.92) rotate(2.5deg); }
-  .cert-arrow { width: 44px; height: 44px; font-size: 1rem; }
-  .cert-counter { font-size: 0.75rem; }
-  .cert-controls { gap: 0.8rem; margin-top: 0.6rem; }
-  .cert-hint { font-size: 0.6rem; margin-top: 0.3rem; }
+  .cert-arrow { width: 40px; height: 40px; font-size: 0.9rem; }
+  .cert-counter { font-size: 0.7rem; }
+  .cert-controls { gap: 0.6rem; margin-top: 0.5rem; }
+  .cert-hint-text { font-size: 0.55rem; margin-top: 0.4rem; }
 
   .window-overlay.open { padding: 1.2rem; }
   .window { max-width: 94vw; max-height: 80vh; }
+  .cert-popup-body { padding: 0.4rem; }
+  .cert-popup-img { max-height: 74dvh; }
+  .cert-popup-footer { padding: 0.35rem 0.5rem; }
+  .cert-popup-footer .popup-nav-hint { font-size: 0.45rem; }
+  .cert-popup-footer .btn-gh { padding: 0.3rem 0.7rem; font-size: 0.6rem; }
+  .popup-hint-left .hint-arrows span, .popup-hint-right .hint-arrows span { font-size: 0.8rem; }
 }
 
 @media (max-width: 380px) {
@@ -2033,21 +2045,28 @@ body.light-mode .magic-card {
   .about-card p { font-size: 0.72rem; }
 
   .content-section { padding-left: 0.3rem; padding-right: 0.3rem; padding-top: 3rem; padding-bottom: 0.5rem; }
-  .cert-stack { max-width: 100%; min-height: 86dvh; }
-  .cert-stack-img, .cert-stack-img-placeholder { height: 72dvh; }
-  .cert-stack-body { padding: 0.4rem 0.5rem 0.6rem; gap: 0.25rem; }
-  .cert-stack-title { font-size: 0.72rem; }
-  .cert-view-btn { font-size: 0.6rem; padding: 0.3rem 0.6rem; gap: 0.25rem; }
+  .cert-stack { max-width: 100%; min-height: 56dvh; }
+  .cert-stack-img, .cert-stack-img-placeholder { height: 44dvh; }
+  .cert-stack-body { padding: 0.3rem 0.5rem 0.5rem; gap: 0.2rem; }
+  .cert-stack-title { font-size: 0.68rem; }
+  .cert-view-btn { font-size: 0.55rem; padding: 0.25rem 0.5rem; gap: 0.2rem; }
   .cert-stack-card.prev { transform: translateX(-15px) scale(0.97) rotate(-1deg); }
   .cert-stack-card.prev-2 { transform: translateX(-25px) scale(0.94) rotate(-2deg); }
   .cert-stack-card.next { transform: translateX(15px) scale(0.97) rotate(1deg); }
   .cert-stack-card.next-2 { transform: translateX(25px) scale(0.94) rotate(2deg); }
-  .cert-arrow { width: 38px; height: 38px; font-size: 0.85rem; }
-  .cert-counter { font-size: 0.7rem; }
-  .cert-controls { gap: 0.6rem; margin-top: 0.6rem; }
+  .cert-arrow { width: 36px; height: 36px; font-size: 0.8rem; }
+  .cert-counter { font-size: 0.65rem; }
+  .cert-controls { gap: 0.5rem; margin-top: 0.4rem; }
+  .cert-hint-text { font-size: 0.5rem; margin-top: 0.3rem; }
 
   .window-overlay.open { padding: 1rem; }
   .window { max-width: 96vw; max-height: 75vh; }
+  .cert-popup-body { padding: 0.3rem; }
+  .cert-popup-img { max-height: 76dvh; }
+  .cert-popup-footer { padding: 0.3rem 0.4rem; }
+  .cert-popup-footer .popup-nav-hint { font-size: 0.4rem; }
+  .cert-popup-footer .btn-gh { padding: 0.25rem 0.6rem; font-size: 0.55rem; }
+  .popup-hint-left .hint-arrows span, .popup-hint-right .hint-arrows span { font-size: 0.7rem; }
 }
 
 @media (hover: none) {
