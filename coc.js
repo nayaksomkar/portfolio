@@ -29,19 +29,35 @@ function renderCoCLinksFallback(body) {
   body.innerHTML = '<div style="text-align:center;padding:0.5rem 0;color:var(--text-secondary);font-size:0.75rem;">Could not fetch player data.</div>';
 }
 
-function parseWarhits(data) {
+function parseWarhits(data, latestMember) {
   var items = data && data.items;
   if (!items || !items.length) return null;
-  var latest = items[0];
-  var member = latest.member_data;
+
+  /* Find most common clan across recent wars (skip temp/CWL clans) */
+  var clanCounts = {};
+  items.forEach(function(item) {
+    var c = item.war_data && item.war_data.clan;
+    if (c && c.name) clanCounts[c.name] = (clanCounts[c.name] || 0) + 1;
+  });
+  var bestClan = '', bestCount = 0;
+  for (var name in clanCounts) {
+    if (clanCounts[name] > bestCount) { bestCount = clanCounts[name]; bestClan = name; }
+  }
+  var bestClanLevel = 0;
+  for (var i = 0; i < items.length; i++) {
+    var c = items[i].war_data && items[i].war_data.clan;
+    if (c && c.name === bestClan) { bestClanLevel = c.clanLevel; break; }
+  }
+
+  var member = latestMember || items[0].member_data;
   if (!member) return null;
+
   var stats = {
     name: member.name,
     townHall: 'TH ' + member.townhallLevel,
     townHallLevel: member.townhallLevel,
   };
-  var clan = latest.war_data && latest.war_data.clan;
-  if (clan) stats.clan = clan.name + ' (lvl ' + clan.clanLevel + ')';
+  if (bestClan) stats.clan = bestClan + ' (lvl ' + bestClanLevel + ')';
   return stats;
 }
 
@@ -126,10 +142,11 @@ function openMainCoCPopup() {
     if (e2.key === 'Escape') { popup.remove(); document.removeEventListener('keydown', onEsc); }
   });
   var body = document.getElementById('coc-body');
-  fetch('https://api.clashk.ing/player/%239PU28QLQQ/warhits?limit=1')
+  fetch('https://api.clashk.ing/player/%239PU28QLQQ/warhits?limit=15')
     .then(function(r) { if (!r.ok) throw new Error('CK ' + r.status); return r.json(); })
     .then(function(data) {
-      var stats = parseWarhits(data);
+      var member = (data.items && data.items[0] && data.items[0].member_data) || null;
+      var stats = parseWarhits(data, member);
       if (stats) { renderCoC(body, stats); }
       else { throw new Error('no data'); }
     })

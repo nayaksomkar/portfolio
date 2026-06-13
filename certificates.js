@@ -262,6 +262,18 @@ function openCertWindow(idx) {
   overlay.onclick = e => { if (e.target === overlay) closeCertWindow(); };
   document.addEventListener('keydown', popupKeyHandler);
   wrapHintText();
+
+  /* Touch swipe on popup image */
+  const popupBody = overlay.querySelector('.cert-popup-body');
+  let touchX = 0;
+  popupBody.addEventListener('touchstart', e => { touchX = e.touches[0].clientX; }, { passive: true });
+  popupBody.addEventListener('touchend', e => {
+    const dx = e.changedTouches[0].clientX - touchX;
+    if (Math.abs(dx) > 40) {
+      if (dx > 0) popupGoPrev();
+      else popupGoNext();
+    }
+  }, { passive: true });
 }
 
 function popupGoPrev() {
@@ -290,11 +302,19 @@ function updatePopupContent() {
 
   const img = overlay.querySelector('#popup-img');
   img.style.opacity = '0';
-  setTimeout(() => {
+
+  const preloader = new Image();
+  preloader.onload = () => {
     img.src = c.image;
     img.alt = c.title;
     img.style.opacity = '1';
-  }, 200);
+  };
+  preloader.onerror = () => {
+    img.src = c.image;
+    img.alt = c.title;
+    img.style.opacity = '1';
+  };
+  preloader.src = c.image;
 }
 
 function popupKeyHandler(e) {
