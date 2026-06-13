@@ -227,8 +227,9 @@ function openCertWindow(idx) {
       </div>
       <div class="window-body cert-popup-body">
         <div class="popup-hint-left"><span class="hint-arrows"><span>&gt;</span><span>&gt;</span><span>&gt;</span></span></div>
-        <img id="popup-img" src="${certs[idx].image}" alt="${escapeAttr(certs[idx].title)}"
-             class="cert-popup-img">
+        <div class="cert-popup-slide">
+          <img id="popup-img" src="${certs[idx].image}" alt="${escapeAttr(certs[idx].title)}" class="cert-popup-img">
+        </div>
         <div class="popup-hint-right"><span class="hint-arrows"><span>&gt;</span><span>&gt;</span><span>&gt;</span></span></div>
       </div>
       <div class="window-footer cert-popup-footer">
@@ -281,7 +282,7 @@ function popupGoPrev() {
   popupIdx = (popupIdx - 1 + certs.length) % certs.length;
   currentIndex = popupIdx;
   positionCards(true);
-  updatePopupContent();
+  updatePopupContent('prev');
 }
 
 function popupGoNext() {
@@ -289,10 +290,10 @@ function popupGoNext() {
   popupIdx = (popupIdx + 1) % certs.length;
   currentIndex = popupIdx;
   positionCards(true);
-  updatePopupContent();
+  updatePopupContent('next');
 }
 
-function updatePopupContent() {
+function updatePopupContent(dir) {
   const c = certs[popupIdx];
   const overlay = document.querySelector('.cert-overlay');
   if (!overlay) return;
@@ -301,18 +302,38 @@ function updatePopupContent() {
   overlay.querySelector('.popup-udemy-link').href = c.url;
 
   const img = overlay.querySelector('#popup-img');
-  img.style.opacity = '0';
+  const slide = overlay.querySelector('.cert-popup-slide');
+  if (!slide) return;
+
+  if (dir) {
+    slide.classList.add(dir === 'next' ? 'slide-out-left' : 'slide-out-right');
+  } else {
+    img.style.opacity = '0';
+  }
 
   const preloader = new Image();
-  preloader.onload = () => {
+  preloader.onload = function() {
     img.src = c.image;
     img.alt = c.title;
-    img.style.opacity = '1';
+    if (dir) {
+      slide.classList.remove('slide-out-left', 'slide-out-right');
+      slide.classList.add(dir === 'next' ? 'slide-in-right' : 'slide-in-left');
+      slide.addEventListener('animationend', function() {
+        slide.classList.remove('slide-in-right', 'slide-in-left');
+      }, { once: true });
+    } else {
+      img.style.opacity = '1';
+    }
   };
-  preloader.onerror = () => {
+  preloader.onerror = function() {
     img.src = c.image;
     img.alt = c.title;
-    img.style.opacity = '1';
+    if (dir) {
+      slide.classList.remove('slide-out-left', 'slide-out-right');
+      img.style.opacity = '1';
+    } else {
+      img.style.opacity = '1';
+    }
   };
   preloader.src = c.image;
 }
