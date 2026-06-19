@@ -19,6 +19,19 @@
   text-decoration: none;
   transition: all var(--transition);
   cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.connect-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(135deg, var(--purple-accent), transparent 60%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
 }
 
 .connect-card:hover {
@@ -27,16 +40,27 @@
   box-shadow: var(--shadow-hover);
   transform: translateY(-2px);
 }
+.connect-card:hover::before {
+  opacity: 0.04;
+}
 
 .connect-icon {
   font-size: 2rem;
   color: var(--purple-accent);
+  transition: transform 0.3s ease;
+}
+.connect-card:hover .connect-icon {
+  transform: scale(1.15);
 }
 
 .connect-img {
   border-radius: 4px;
   width: 28px;
   height: 28px;
+  transition: transform 0.3s ease;
+}
+.connect-card:hover .connect-img {
+  transform: scale(1.15);
 }
 
 .connect-label {
@@ -352,11 +376,21 @@ body.light-mode .bsky-stack-wrap {
   transition: all var(--transition);
   max-width: 780px;
   width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+.bsky-open-link::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, transparent 40%, rgba(255,255,255,0.1) 100%);
+  pointer-events: none;
 }
 .bsky-open-link:hover {
   background: var(--purple-accent);
   color: #fff;
   border-color: var(--purple-accent);
+  transform: translateY(-1px);
 }
 
 @media (hover: none) {

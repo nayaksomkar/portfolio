@@ -28,8 +28,8 @@ async function fetchRepos() {
       grid.innerHTML = `<div class="error-msg"><i class="fas fa-folder-open"></i><p>No public repositories found.</p></div>`;
       return;
     }
-    const { pinned, rest } = sortByPriority(repos, config.priorityProjects || []);
-    renderRepos(pinned, rest);
+    const { pinned, incomplete, rest } = sortByPriority(repos, config.priorityProjects || [], config.incompleteProjects || []);
+    renderRepos(pinned, incomplete, rest);
 } catch (err) {
      const is403 = err.message && err.message.includes('403');
      grid.innerHTML = `<div class="error-msg"><i class="fas fa-exclamation-triangle"></i><p>${is403 ? 'GitHub API rate limit reached. Please try again later or refresh the page.' : 'Failed to load repos. ' + err.message}</p></div>`;
@@ -63,23 +63,29 @@ function timeSince(dateStr) {
   return `${mo}mo ago`;
 }
 
-function sortByPriority(repos, priority) {
+function sortByPriority(repos, priority, incomplete) {
   const priorityLower = priority.map(n => n.toLowerCase().trim());
+  const incompleteLower = incomplete.map(n => n.toLowerCase().trim());
   const pinned = [];
+  const incompleted = [];
   const rest = [];
   for (const r of repos) {
-    const idx = priorityLower.indexOf(r.name.toLowerCase().trim());
+    const nameLower = r.name.toLowerCase().trim();
+    const idx = priorityLower.indexOf(nameLower);
     if (idx !== -1) {
       pinned[idx] = r;
+    } else if (incompleteLower.includes(nameLower)) {
+      incompleted.push(r);
     } else {
       rest.push(r);
     }
   }
   rest.sort((a, b) => b.stargazers_count - a.stargazers_count);
-  return { pinned: pinned.filter(Boolean), rest };
+  incompleted.sort((a, b) => b.stargazers_count - a.stargazers_count);
+  return { pinned: pinned.filter(Boolean), incomplete: incompleted, rest };
 }
 
-function renderRepos(pinned, rest) {
+function renderRepos(pinned, incomplete, rest) {
   const renderCard = (repo, isPinned = false) => `
     <div class="project-card${isPinned ? ' pinned' : ''}" data-repo="${repo.name}">
       <h3><i class="fas fa-book"></i> ${repo.name}</h3>
@@ -94,7 +100,9 @@ function renderRepos(pinned, rest) {
   `;
   const pinnedHtml = pinned.map(r => renderCard(r, true)).join('');
   const restHtml = rest.map(r => renderCard(r)).join('');
-  grid.innerHTML = pinnedHtml + (pinned.length && rest.length ? '<div class="priority-divider"></div>' : '') + restHtml;
+  const incompleteHtml = incomplete.map(r => renderCard(r)).join('');
+  const incompleteSection = incompleteHtml ? `<div class="priority-divider"></div><div class="project-grid-inline">${incompleteHtml}</div>` : '';
+  grid.innerHTML = pinnedHtml + (pinnedHtml && (restHtml || incompleteHtml) ? '<div class="priority-divider"></div>' : '') + restHtml + incompleteSection;
 
   document.querySelectorAll('.project-card').forEach(card => {
     card.addEventListener('click', (e) => openProjectWindow(card.dataset.repo, e));

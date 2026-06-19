@@ -7,28 +7,6 @@ let cocClickCount = 0;
 let cocClickTimer;
 var cocCounterEl = null;
 
-function cocStatRow(label, value) {
-  return '<div class="coc-row"><span class="coc-label">' + label + '</span><span class="coc-value">' + value + '</span></div>';
-}
-
-function renderCoC(body, data) {
-  var html = '<div class="coc-th-wrap"><img src="https://upload.wikimedia.org/wikipedia/sco/5/59/Clash_of_Clans_Logo.png" alt="Clash of Clans" class="coc-th-img"></div>';
-  html += '<div style="display:grid;gap:0.6rem;">';
-  if (data.name) html += cocStatRow('Name', data.name);
-  if (data.townHall) html += cocStatRow('Town Hall', '<span style="font-size:1.3rem;">🏛️</span> ' + data.townHall);
-  if (data.clan) html += cocStatRow('Clan', data.clan);
-  html += cocStatRow('Player Tag', '<strong style="color:var(--purple-accent);letter-spacing:0.5px;">' + COC_TAG + '</strong>');
-  html += '</div>';
-  html += '<div style="text-align:center;margin-top:0.8rem;padding-top:0.6rem;border-top:1px solid var(--purple-border);">';
-  html += '<a href="https://www.clashofstats.com/players/kalki-9PU28QLQQ/summary" target="_blank" class="coc-link">Full player stats <i class="fas fa-external-link-alt"></i></a>';
-  html += '</div>';
-  body.innerHTML = html;
-}
-
-function renderCoCLinksFallback(body) {
-  body.innerHTML = '<div style="text-align:center;padding:0.5rem 0;color:var(--text-secondary);font-size:0.75rem;">Could not fetch player data.</div>';
-}
-
 function parseWarhits(data, latestMember) {
   var items = data && data.items;
   if (!items || !items.length) return null;
@@ -57,8 +35,32 @@ function parseWarhits(data, latestMember) {
     townHall: 'TH ' + member.townhallLevel,
     townHallLevel: member.townhallLevel,
   };
-  if (bestClan) stats.clan = bestClan + ' (lvl ' + bestClanLevel + ')';
+  if (bestClan) {
+    stats.clanName = bestClan;
+    stats.clanLevel = bestClanLevel;
+  }
   return stats;
+}
+
+function renderCoC(body, data) {
+  var html =
+    '<div class="coc-body-inner">' +
+      '<div class="coc-header">' +
+        '<img src="https://upload.wikimedia.org/wikipedia/sco/5/59/Clash_of_Clans_Logo.png" alt="" class="coc-shield">' +
+      '</div>' +
+      '<div class="coc-stats">';
+  if (data.name) html += '<div class="coc-stat-row"><span class="coc-stat-icon"><i class="fas fa-user"></i></span><span class="coc-stat-label">Name</span><span class="coc-stat-val">' + data.name + '</span></div>';
+  if (data.clanName) html += '<div class="coc-stat-row"><span class="coc-stat-icon"><i class="fas fa-flag"></i></span><span class="coc-stat-label">Clan</span><span class="coc-stat-val"><span class="coc-clan">' + data.clanName + '</span><span class="coc-clan-lvl">lvl ' + data.clanLevel + '</span></span></div>';
+  html += '<div class="coc-stat-row"><span class="coc-stat-icon"><i class="fas fa-hashtag"></i></span><span class="coc-stat-label">Tag</span><span class="coc-stat-val coc-tag">' + COC_TAG + '</span></div>';
+  html +=
+      '</div>' +
+      '<a href="https://www.clashofstats.com/players/kalki-9PU28QLQQ/summary" target="_blank" class="coc-stats-link"><i class="fas fa-external-link-alt"></i> Full player stats</a>' +
+    '</div>';
+  body.innerHTML = html;
+}
+
+function renderCoCLinksFallback(body) {
+  body.innerHTML = '<div class="coc-body-inner" style="text-align:center;padding:2rem 1rem;"><div style="font-size:2rem;margin-bottom:0.5rem;opacity:0.4;">⚔️</div><p style="color:var(--text-secondary);font-size:0.78rem;opacity:0.65;">Could not fetch player data.</p></div>';
 }
 
 function tryOfficialAPI(body) {
@@ -73,7 +75,8 @@ function tryOfficialAPI(body) {
         name: data.name,
         townHall: 'TH ' + data.townHallLevel,
         townHallLevel: data.townHallLevel,
-        clan: data.clan ? data.clan.name + ' (lvl ' + data.clan.clanLevel + ')' : 'No clan',
+        clanName: data.clan ? data.clan.name : '',
+        clanLevel: data.clan ? data.clan.clanLevel : 0,
       });
     })
     .catch(function() { renderCoCLinksFallback(body); });
@@ -225,23 +228,28 @@ function updateCounter(count) {
   cocCounterEl = document.createElement('div');
   cocCounterEl.className = 'coc-counter';
   cocCounterEl.textContent = count + '/6';
-  cocTrigger.parentNode.appendChild(cocCounterEl);
+  cocTrigger.appendChild(cocCounterEl);
 }
 
 if (cocTrigger) {
-  cocTrigger.addEventListener('click', function() {
+  cocTrigger.addEventListener('click', function(e) {
     cocClickCount++;
     clearTimeout(cocClickTimer);
     if (navigator.vibrate) navigator.vibrate(20);
     updateCounter(cocClickCount);
 
     cocTrigger.style.transition = 'transform 0.12s ease, color 0.12s';
-    cocTrigger.style.transform = 'scale(1.06)';
+    cocTrigger.style.transform = 'scale(1.04)';
     cocTrigger.style.color = 'var(--purple-accent)';
     setTimeout(function() {
       cocTrigger.style.transform = 'scale(1)';
       cocTrigger.style.color = '';
     }, 200);
+
+    var flash = document.createElement('span');
+    flash.className = 'tagline-flash';
+    cocTrigger.appendChild(flash);
+    setTimeout(function() { flash.remove(); }, 400);
 
     if (cocClickCount < 6) {
       cocClickTimer = setTimeout(function() { cocClickCount = 0; removeCounter(); }, 1200);

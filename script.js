@@ -8,12 +8,6 @@ if (localStorage.getItem('theme') === 'light') {
 }
 
 toggle.addEventListener('change', () => {
-  const overlay = document.createElement('div');
-  overlay.style.cssText = 'position:fixed;inset:0;z-index:9998;background:var(--bg-body);transition:opacity 0.3s;opacity:1;pointer-events:none';
-  document.body.appendChild(overlay);
-  requestAnimationFrame(() => { overlay.style.opacity = '0'; });
-  setTimeout(() => overlay.remove(), 350);
-
   document.body.classList.toggle('light-mode', toggle.checked);
   document.body.classList.toggle('night-mode', !toggle.checked);
   localStorage.setItem('theme', toggle.checked ? 'light' : 'dark');
@@ -276,6 +270,124 @@ if (asciiArt) {
     heartTapCount = 0;
     showMagicPopup();
   });
+}
+
+/* ───────── PROFILE README POPUP ───────── */
+{
+  const avatar = document.querySelector('.about-avatar');
+  const avatarGlow = document.querySelector('.avatar-glow');
+  if (avatar) {
+    const overlay = document.getElementById('window-overlay');
+    const win = document.getElementById('project-window');
+    const winBody = document.getElementById('window-body');
+    const winTitle = document.getElementById('window-title');
+    const winGhLink = document.getElementById('window-github-link');
+    let holdTimer = null;
+    let holdStarted = false;
+
+    function closePopup() {
+      if (!overlay.classList.contains('open')) return;
+      win.classList.remove('visible');
+      win.classList.add('closing');
+      overlay.classList.add('closing');
+      setTimeout(() => {
+        overlay.classList.remove('open', 'closing');
+        win.classList.remove('visible', 'closing', 'minimized', 'maximized');
+      }, 300);
+    }
+
+    document.getElementById('win-close').addEventListener('click', closePopup);
+    document.getElementById('win-minimize').addEventListener('click', () => {
+      win.classList.remove('visible');
+      win.classList.add('minimized');
+      setTimeout(closePopup, 280);
+    });
+    document.getElementById('win-maximize').addEventListener('click', () => {
+      const maximized = win.classList.toggle('maximized');
+      win.querySelector('.win-btn.maximize i').className = maximized ? 'fas fa-compress' : 'fas fa-expand';
+    });
+    overlay.addEventListener('click', e => { if (e.target === overlay) closePopup(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closePopup(); });
+
+    function openProfileReadme() {
+      winTitle.textContent = 'nayaksomkar · README';
+      winBody.innerHTML = '<div class="win-loader"><div class="spinner"></div><p>Loading README...</p></div>';
+      winGhLink.href = 'https://github.com/nayaksomkar/nayaksomkar';
+      win.classList.remove('visible', 'closing', 'minimized', 'maximized');
+      overlay.classList.add('open');
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => win.classList.add('visible'));
+      });
+
+      (async () => {
+        try {
+          const res = await fetch('https://api.github.com/repos/nayaksomkar/nayaksomkar/readme');
+          if (!res.ok) {
+            winBody.innerHTML = res.status === 404
+              ? '<div class="error-msg"><i class="fas fa-file-alt"></i><p>No profile README found.</p></div>'
+              : `<div class="error-msg"><i class="fas fa-exclamation-triangle"></i><p>Failed to load README (HTTP ${res.status})</p></div>`;
+            return;
+          }
+          const data = await res.json();
+          const bytes = Uint8Array.from(atob(data.content.replace(/\n/g, '')), c => c.charCodeAt(0));
+          const md = new TextDecoder().decode(bytes);
+
+          if (typeof marked === 'undefined') {
+            winBody.innerHTML = '<div class="error-msg"><i class="fas fa-exclamation-triangle"></i><p>Markdown library unavailable.</p></div>';
+            return;
+          }
+
+          marked.setOptions({ gfm: true, breaks: true, smartLists: true });
+          const renderer = new marked.Renderer();
+          renderer.image = ({ href, title, text }) => {
+            const url = href.startsWith('http') || href.startsWith('data:') ? href
+              : href.startsWith('./') ? `https://raw.githubusercontent.com/nayaksomkar/nayaksomkar/main/${href.slice(2)}`
+              : `https://raw.githubusercontent.com/nayaksomkar/nayaksomkar/main/${href}`;
+            return `<img src="${url}" alt="${text || ''}" loading="lazy" onerror="this.style.display='none'"${title ? ` title="${title}"` : ''}>`;
+          };
+          renderer.link = ({ href, title, text }) => `<a href="${href}" target="_blank"${title ? ` title="${title}"` : ''}>${text}</a>`;
+          renderer.code = ({ text, lang }) => {
+            const langClass = lang ? ` class="lang-${lang}"` : '';
+            return `<pre><code${langClass}>${text}</code></pre>`;
+          };
+          marked.use({ renderer });
+          winBody.innerHTML = marked.parse(md);
+        } catch (err) {
+          winBody.innerHTML = `<div class="error-msg"><i class="fas fa-exclamation-triangle"></i><p>Failed to load README. ${err.message}</p></div>`;
+        }
+      })();
+    }
+
+    function cancelHold() {
+      if (holdTimer) { clearTimeout(holdTimer); holdTimer = null; }
+      holdStarted = false;
+      avatar.classList.remove('avatar-pulsing');
+      if (avatarGlow) avatarGlow.classList.remove('avatar-pulsing');
+      if (navigator.vibrate) navigator.vibrate(0);
+    }
+
+    function startHold() {
+      if (holdStarted) return;
+      holdStarted = true;
+      avatar.classList.add('avatar-pulsing');
+      if (avatarGlow) avatarGlow.classList.add('avatar-pulsing');
+      if (navigator.vibrate) navigator.vibrate(6000);
+      holdTimer = setTimeout(() => {
+        cancelHold();
+        openProfileReadme();
+      }, 6000);
+    }
+
+    const isTouch = 'ontouchstart' in window;
+    if (isTouch) {
+      avatar.addEventListener('touchstart', startHold, { passive: true });
+      avatar.addEventListener('touchmove', cancelHold, { passive: true });
+      avatar.addEventListener('touchend', cancelHold);
+      avatar.addEventListener('touchcancel', cancelHold);
+    } else {
+      avatar.addEventListener('click', openProfileReadme);
+    }
+  }
 }
 
 

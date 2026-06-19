@@ -3,8 +3,17 @@
   "_comment_projects": "Add repo names (e.g. 'old-project') or full URLs to hide from Projects tab",
   "_comment_certificates": "Add certificate titles to hide from the Certificates tab",
   "_comment_priority": "Pin these repo names to the top, in the order listed",
+  "_comment_incomplete": "Incomplete/experimental/abandoned projects shown at the bottom, sorted by stars",
 
-  "ignoreProjects": [
+  "ignoreProjects": [],
+  "priorityProjects": ["RetinaDx", "QuickBasket", "marble", "mailGraph"],
+  "incompleteProjects": [
+    "SoundSpace",
+    "PearlEnergyWeb",
+    "PearlEnergy",
+    "PythonLab",
+    "craftClassifier",
+    "RLab",
     "portfolio",
     "WeatherAppWeb",
     "FlutterTemplate",
@@ -16,7 +25,6 @@
     "blueprintTemplate",
     "myCertificates"
   ],
-  "priorityProjects": ["RetinaDx", "QuickBasket", "marble", "mailGraph"],
   "ignoreCertificates": [],
   "cocApiKey": ""
 }
