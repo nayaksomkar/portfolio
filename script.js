@@ -275,15 +275,12 @@ if (asciiArt) {
 /* ───────── PROFILE README POPUP ───────── */
 {
   const avatar = document.querySelector('.about-avatar');
-  const avatarGlow = document.querySelector('.avatar-glow');
   if (avatar) {
     const overlay = document.getElementById('window-overlay');
     const win = document.getElementById('project-window');
     const winBody = document.getElementById('window-body');
     const winTitle = document.getElementById('window-title');
     const winGhLink = document.getElementById('window-github-link');
-    let holdTimer = null;
-    let holdStarted = false;
 
     function closePopup() {
       if (!overlay.classList.contains('open')) return;
@@ -358,34 +355,10 @@ if (asciiArt) {
       })();
     }
 
-    function cancelHold() {
-      if (holdTimer) { clearTimeout(holdTimer); holdTimer = null; }
-      holdStarted = false;
-      avatar.classList.remove('avatar-pulsing');
-      if (avatarGlow) avatarGlow.classList.remove('avatar-pulsing');
-      if (navigator.vibrate) navigator.vibrate(0);
-    }
-
-    function startHold() {
-      if (holdStarted) return;
-      holdStarted = true;
-      avatar.classList.add('avatar-pulsing');
-      if (avatarGlow) avatarGlow.classList.add('avatar-pulsing');
-      if (navigator.vibrate) navigator.vibrate(6000);
-      holdTimer = setTimeout(() => {
-        cancelHold();
-        openProfileReadme();
-      }, 6000);
-    }
-
     const isTouch = 'ontouchstart' in window;
+    avatar.addEventListener('click', openProfileReadme);
     if (isTouch) {
-      avatar.addEventListener('touchstart', startHold, { passive: true });
-      avatar.addEventListener('touchmove', cancelHold, { passive: true });
-      avatar.addEventListener('touchend', cancelHold);
-      avatar.addEventListener('touchcancel', cancelHold);
-    } else {
-      avatar.addEventListener('click', openProfileReadme);
+      avatar.addEventListener('touchstart', function() { openProfileReadme(); }, { passive: true });
     }
   }
 }
