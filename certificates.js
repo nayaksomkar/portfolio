@@ -99,8 +99,10 @@ function getPositionClass(idx, currentIdx, total) {
   }
 
   buildStack();
+  buildGrid();
   positionCards(false);
   wireNavigation();
+  wireViewToggle();
   startHintSystem();
   wrapHintText();
 })();
@@ -381,6 +383,67 @@ function startHintSystem() {
 
 function stopHintSystem() {
   if (hintInterval) { clearInterval(hintInterval); hintInterval = null; }
+}
+
+/* ───────── GRID VIEW ───────── */
+function buildGrid() {
+  const grid = document.getElementById('cert-grid');
+  if (!grid) return;
+  let html = '';
+  for (let i = 0; i < certs.length; i++) {
+    const c = certs[i];
+    const imgHtml = c.image
+      ? `<img src="${c.image}" alt="${escapeAttr(c.title)}" class="cert-grid-img" loading="lazy" onerror="this.onerror=null;this.outerHTML='<div class=\\'cert-grid-img-placeholder\\'><i class=\\'fas fa-certificate\\'></i></div>'">`
+      : `<div class="cert-grid-img-placeholder"><i class="fas fa-certificate"></i></div>`;
+    html += `
+      <div class="cert-grid-card" data-idx="${i}">
+        ${imgHtml}
+        <div class="cert-grid-body">
+          <h3 class="cert-grid-title">${c.title}</h3>
+          <span class="cert-badge">${c.badge}</span>
+          <button class="cert-view-btn grid-view-btn" data-idx="${i}"><i class="fas fa-external-link-alt"></i> View</button>
+        </div>
+      </div>`;
+  }
+  grid.innerHTML = html;
+
+  grid.addEventListener('click', e => {
+    const btn = e.target.closest('.grid-view-btn');
+    if (btn) {
+      const idx = parseInt(btn.dataset.idx, 10);
+      const c = certs[idx];
+      if (c) openCertWindow(idx);
+      return;
+    }
+    const card = e.target.closest('.cert-grid-card');
+    if (card) {
+      const idx = parseInt(card.dataset.idx, 10);
+      const c = certs[idx];
+      if (c) openCertWindow(idx);
+    }
+  });
+}
+
+function wireViewToggle() {
+  const stackBtn = document.getElementById('view-stack');
+  const gridBtn = document.getElementById('view-grid');
+  const stackWrap = document.getElementById('cert-stack-wrap');
+  const grid = document.getElementById('cert-grid');
+  if (!stackBtn || !gridBtn || !stackWrap || !grid) return;
+
+  stackBtn.addEventListener('click', () => {
+    stackBtn.classList.add('active');
+    gridBtn.classList.remove('active');
+    stackWrap.style.display = '';
+    grid.style.display = 'none';
+  });
+
+  gridBtn.addEventListener('click', () => {
+    gridBtn.classList.add('active');
+    stackBtn.classList.remove('active');
+    stackWrap.style.display = 'none';
+    grid.style.display = 'grid';
+  });
 }
 
 /* ───────── WAVE ANIMATION FOR HINT TEXT ───────── */

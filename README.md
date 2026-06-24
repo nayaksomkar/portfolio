@@ -23,8 +23,8 @@ Config file at `portfolio-config.json`. Serve locally with `python3 -m http.serv
 | Page | File | Highlights |
 |------|------|------------|
 | About | `index.html` | ASCII art, skill cards, education, easter eggs |
-| Projects | `projects.html` | Live GitHub repos grid + README modal |
-| Certificates | `certificates.html` | Game-style card stack carousel from GitHub repo |
+| Projects | `projects.html` | 3-section repo grid (Projects / Building Blocks / Archive) + README modal |
+| Certificates | `certificates.html` | Card stack + grid view toggle, from GitHub repo |
 | Socials | `socials.html` | GitHub / Bluesky / Hugging Face / Email |
 
 ## File Structure
@@ -74,7 +74,7 @@ portfolio/
 | **Endpoint** | `api.github.com/users/nayaksomkar/repos?sort=updated&per_page=100&type=public` |
 | **Fetch** | On page load via `fetchRepos()` |
 | **Filtering** | Removes forks + repos in `ignoreProjects` config |
-| **Sorting** | Priority repos (from `priorityProjects`) first, then by stars descending |
+| **Sorting** | Three sections: **Projects** (`priorityProjects`) → **Building Blocks** (`buildingBlocks`) → **Archive** (remaining), each sorted by stars descending |
 | **Caching** | Repo count stored in `localStorage` key `projectsCount` |
 | **Error** | Shows spinner → error message (rate limit: 403 gets special message) |
 
@@ -157,7 +157,7 @@ portfolio/
 |---|---|
 | **Endpoint** | `portfolio-config.json` (local file) |
 | **Fetch** | On page load via `loadConfig()` |
-| **Contents** | Ignore lists, priority projects, CoC API key |
+| **Contents** | Ignore lists, priority projects, building blocks, CoC API key |
 | **Shared** | Stored in global `config` object, used by `projects.js`, `socials.js`, `coc.js` |
 
 ## Configuration
@@ -166,6 +166,7 @@ portfolio/
 {
   "ignoreProjects": ["repo-name"],
   "priorityProjects": ["featured-repo"],
+  "buildingBlocks": ["experiment-repo"],
   "ignoreCertificates": ["cert-title"],
   "cocApiKey": "your-clash-of-clans-api-key"
 }

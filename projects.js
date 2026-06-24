@@ -23,13 +23,13 @@ async function fetchRepos() {
     repos = repos.filter(r => !ignored.includes(r.name.toLowerCase().trim()));
     localStorage.setItem('projectsCount', repos.length);
     const descEl = document.getElementById('projects-desc');
-    if (descEl) descEl.textContent = `${repos.length} Projects`;
+    if (descEl) descEl.innerHTML = `${repos.length} public repositories · <a href="https://github.com/nayaksomkar" target="_blank">github.com/nayaksomkar</a>`;
     if (repos.length === 0) {
       grid.innerHTML = `<div class="error-msg"><i class="fas fa-folder-open"></i><p>No public repositories found.</p></div>`;
       return;
     }
-    const { pinned, incomplete, rest } = sortByPriority(repos, config.priorityProjects || [], config.incompleteProjects || []);
-    renderRepos(pinned, incomplete, rest);
+    const { pinned, blocks, rest } = sortByPriority(repos, config.priorityProjects || [], config.buildingBlocks || []);
+    renderRepos(pinned, blocks, rest);
 } catch (err) {
      const is403 = err.message && err.message.includes('403');
      grid.innerHTML = `<div class="error-msg"><i class="fas fa-exclamation-triangle"></i><p>${is403 ? 'GitHub API rate limit reached. Please try again later or refresh the page.' : 'Failed to load repos. ' + err.message}</p></div>`;
@@ -63,29 +63,29 @@ function timeSince(dateStr) {
   return `${mo}mo ago`;
 }
 
-function sortByPriority(repos, priority, incomplete) {
+function sortByPriority(repos, priority, buildingBlocks) {
   const priorityLower = priority.map(n => n.toLowerCase().trim());
-  const incompleteLower = incomplete.map(n => n.toLowerCase().trim());
+  const blocksLower = buildingBlocks.map(n => n.toLowerCase().trim());
   const pinned = [];
-  const incompleted = [];
+  const blocks = [];
   const rest = [];
   for (const r of repos) {
     const nameLower = r.name.toLowerCase().trim();
     const idx = priorityLower.indexOf(nameLower);
     if (idx !== -1) {
       pinned[idx] = r;
-    } else if (incompleteLower.includes(nameLower)) {
-      incompleted.push(r);
+    } else if (blocksLower.includes(nameLower)) {
+      blocks.push(r);
     } else {
       rest.push(r);
     }
   }
+  blocks.sort((a, b) => b.stargazers_count - a.stargazers_count);
   rest.sort((a, b) => b.stargazers_count - a.stargazers_count);
-  incompleted.sort((a, b) => b.stargazers_count - a.stargazers_count);
-  return { pinned: pinned.filter(Boolean), incomplete: incompleted, rest };
+  return { pinned: pinned.filter(Boolean), blocks, rest };
 }
 
-function renderRepos(pinned, incomplete, rest) {
+function renderRepos(pinned, blocks, rest) {
   const renderCard = (repo, isPinned = false) => `
     <div class="project-card${isPinned ? ' pinned' : ''}" data-repo="${repo.name}">
       <h3><i class="fas fa-book"></i> ${repo.name}</h3>
@@ -98,11 +98,29 @@ function renderRepos(pinned, incomplete, rest) {
       </div>
     </div>
   `;
-  const pinnedHtml = pinned.map(r => renderCard(r, true)).join('');
-  const restHtml = rest.map(r => renderCard(r)).join('');
-  const incompleteHtml = incomplete.map(r => renderCard(r)).join('');
-  const incompleteSection = incompleteHtml ? `<div class="priority-divider"></div><div class="project-grid-inline">${incompleteHtml}</div>` : '';
-  grid.innerHTML = pinnedHtml + (pinnedHtml && (restHtml || incompleteHtml) ? '<div class="priority-divider"></div>' : '') + restHtml + incompleteSection;
+
+  let html = '';
+
+  if (pinned.length) {
+    html += `<div class="section-subhead"><i class="fas fa-rocket"></i> Projects <span class="section-count">${pinned.length}</span></div>`;
+    html += pinned.map(r => renderCard(r, true)).join('');
+  }
+
+  if (blocks.length) {
+    html += `<div class="priority-divider"></div>`;
+    html += `<div class="section-subhead"><i class="fas fa-cubes"></i> Building Blocks <span class="section-count">${blocks.length}</span></div>`;
+    html += `<div class="section-desc section-subhead-desc">Small utilities, prototypes, and experiments created to test ideas before integrating them into larger projects.</div>`;
+    html += blocks.map(r => renderCard(r)).join('');
+  }
+
+  if (rest.length) {
+    html += `<div class="priority-divider"></div>`;
+    html += `<div class="section-subhead"><i class="fas fa-archive"></i> Archive <span class="section-count">${rest.length}</span></div>`;
+    html += `<div class="section-desc section-subhead-desc">Older learning projects, experiments, side explorations, data logs, rough drafts, and early-stage code.</div>`;
+    html += rest.map(r => renderCard(r)).join('');
+  }
+
+  grid.innerHTML = html;
 
   document.querySelectorAll('.project-card').forEach(card => {
     card.addEventListener('click', (e) => openProjectWindow(card.dataset.repo, e));

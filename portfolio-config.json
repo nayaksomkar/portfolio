@@ -3,11 +3,12 @@
   "_comment_projects": "Add repo names (e.g. 'old-project') or full URLs to hide from Projects tab",
   "_comment_certificates": "Add certificate titles to hide from the Certificates tab",
   "_comment_priority": "Pin these repo names to the top, in the order listed",
-  "_comment_incomplete": "Incomplete/experimental/abandoned projects shown at the bottom, sorted by stars",
+  "_comment_buildingBlocks": "Small utilities, prototypes, and experiments (Building Blocks section)",
+  "_comment_archive": "Older learning projects and explorations (Archive section) — everything not in priority or buildingBlocks lands here",
 
   "ignoreProjects": [],
   "priorityProjects": ["RetinaDx", "QuickBasket", "marble", "mailGraph"],
-  "incompleteProjects": [
+  "buildingBlocks": [
     "SoundSpace",
     "PearlEnergyWeb",
     "PearlEnergy",
