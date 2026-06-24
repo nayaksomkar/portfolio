@@ -1504,18 +1504,6 @@ body.light-mode .ascii-art pre {
   justify-content: center;
   position: relative;
 }
-.about-card h2::after {
-  content: '';
-  position: absolute;
-  bottom: -4px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 32px;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, var(--purple-accent), transparent);
-  border-radius: 1px;
-  opacity: 0.4;
-}
 .about-card h2 i { font-size: 0.8rem; }
 .tagline-card { text-align: center; position: relative; overflow: visible; cursor: pointer; }
 .tagline-card p {
