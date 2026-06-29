@@ -44,7 +44,7 @@ Key rule: never mention easter egg triggers, codes, or mechanics in README or pu
 | **When** | On `projects.html` page load via `fetchRepos()` |
 | **Flow** | `initProjects()` → `loadConfig()` → `fetchRepos()` |
 | **Filtering** | Removes forks, then filters against `config.ignoreProjects` (case-insensitive, supports full URLs or just names) |
-| **Sorting** | `sortByPriority()` — three sections: **Projects** (`config.priorityProjects`), **Building Blocks** (`config.buildingBlocks`), **Archive** (remaining). Each section sorted by `stargazers_count` descending. Dashed `.priority-divider` separates sections. Per-section counts shown in badge |
+| **Sorting** | `sortByPriority()` — three sections: **Projects** (`config.priorityProjects`), **Building Blocks** (default), **Dummies** (`config.dummies`). Each section sorted by `stargazers_count` descending. Dashed `.priority-divider` separates sections. Per-section counts shown in badge |
 | **Rendering** | Each repo gets a `.project-card` with name, description, language dot, stars, forks, last updated |
 | **Caching** | Repo count stored in `localStorage` key `projectsCount` (used by socials page) |
 | **Error handling** | Spinner while loading → error message on failure (403 gets "rate limit" message) |
@@ -114,7 +114,7 @@ Key rule: never mention easter egg triggers, codes, or mechanics in README or pu
 | **Endpoint** | `portfolio-config.json` (local file) |
 | **When** | On each page load via `loadConfig()` |
 | **Flow** | `fetch('portfolio-config.json')` → parse JSON → store in global `config` variable |
-| **Shared access** | `projects.js` reads `config.ignoreProjects`, `config.priorityProjects`, and `config.buildingBlocks`  
+| **Shared access** | `projects.js` reads `config.ignoreProjects`, `config.priorityProjects`, `config.dummies`
 | | `socials.js` reads `config.ignoreProjects` for repo filtering  
 | | `coc.js` reads `config.cocApiKey` for official API fallback |
 | **Error handling** | Silent catch — defaults to empty arrays/strings |
@@ -136,7 +136,7 @@ Key rule: never mention easter egg triggers, codes, or mechanics in README or pu
 {
   "ignoreProjects": ["repo-name"],
   "priorityProjects": ["featured-repo"],
-  "buildingBlocks": ["utility-repo"],
+  "dummies": ["learning-repo"],
   "ignoreCertificates": ["cert-title"],
   "cocApiKey": "optional-clash-of-clans-api-key"
 }

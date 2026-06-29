@@ -28,8 +28,8 @@ async function fetchRepos() {
       grid.innerHTML = `<div class="error-msg"><i class="fas fa-folder-open"></i><p>No public repositories found.</p></div>`;
       return;
     }
-    const { pinned, blocks, rest } = sortByPriority(repos, config.priorityProjects || [], config.buildingBlocks || []);
-    renderRepos(pinned, blocks, rest);
+    const { pinned, blocks, dummies } = sortByPriority(repos, config.priorityProjects || [], config.dummies || []);
+    renderRepos(pinned, blocks, dummies);
 } catch (err) {
      const is403 = err.message && err.message.includes('403');
      grid.innerHTML = `<div class="error-msg"><i class="fas fa-exclamation-triangle"></i><p>${is403 ? 'GitHub API rate limit reached. Please try again later or refresh the page.' : 'Failed to load repos. ' + err.message}</p></div>`;
@@ -63,29 +63,29 @@ function timeSince(dateStr) {
   return `${mo}mo ago`;
 }
 
-function sortByPriority(repos, priority, buildingBlocks) {
+function sortByPriority(repos, priority, dummies) {
   const priorityLower = priority.map(n => n.toLowerCase().trim());
-  const blocksLower = buildingBlocks.map(n => n.toLowerCase().trim());
+  const dummiesLower = dummies.map(n => n.toLowerCase().trim());
   const pinned = [];
   const blocks = [];
-  const rest = [];
+  const dummiesList = [];
   for (const r of repos) {
     const nameLower = r.name.toLowerCase().trim();
     const idx = priorityLower.indexOf(nameLower);
     if (idx !== -1) {
       pinned[idx] = r;
-    } else if (blocksLower.includes(nameLower)) {
-      blocks.push(r);
+    } else if (dummiesLower.includes(nameLower)) {
+      dummiesList.push(r);
     } else {
-      rest.push(r);
+      blocks.push(r);
     }
   }
   blocks.sort((a, b) => b.stargazers_count - a.stargazers_count);
-  rest.sort((a, b) => b.stargazers_count - a.stargazers_count);
-  return { pinned: pinned.filter(Boolean), blocks, rest };
+  dummiesList.sort((a, b) => b.stargazers_count - a.stargazers_count);
+  return { pinned: pinned.filter(Boolean), blocks, dummies: dummiesList };
 }
 
-function renderRepos(pinned, blocks, rest) {
+function renderRepos(pinned, blocks, dummies) {
   const renderCard = (repo, isPinned = false) => `
     <div class="project-card${isPinned ? ' pinned' : ''}" data-repo="${repo.name}">
       <h3><i class="fas fa-book"></i> ${repo.name}</h3>
@@ -113,11 +113,11 @@ function renderRepos(pinned, blocks, rest) {
     html += blocks.map(r => renderCard(r)).join('');
   }
 
-  if (rest.length) {
+  if (dummies.length) {
     html += `<div class="priority-divider"></div>`;
-    html += `<div class="section-subhead"><i class="fas fa-archive"></i> Archive <span class="section-count">${rest.length}</span></div>`;
-    html += `<div class="section-desc section-subhead-desc">Older learning projects, experiments, side explorations, data logs, rough drafts, and early-stage code.</div>`;
-    html += rest.map(r => renderCard(r)).join('');
+    html += `<div class="section-subhead"><i class="fas fa-cube"></i> Dummies <span class="section-count">${dummies.length}</span></div>`;
+    html += `<div class="section-desc section-subhead-desc">Small time pass projects, quick experiments, and learning exercises.</div>`;
+    html += dummies.map(r => renderCard(r)).join('');
   }
 
   grid.innerHTML = html;
