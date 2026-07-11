@@ -45,15 +45,13 @@ const bgContainer = document.getElementById('bg-text');
 
 function buildBgText() {
   bgContainer.innerHTML = '';
-  const numCols = window.innerWidth < 480 ? 1 : window.innerWidth < 768 ? 2 : 3;
-  const numRows = Math.ceil(window.innerHeight / 120) + 4;
-  for (let r = 0; r < numRows; r++) {
-    for (let c = 0; c < numCols; c++) {
-      const span = document.createElement('span');
-      span.className = 'bg-text-item';
-      span.textContent = BG_TEXT;
-      bgContainer.appendChild(span);
-    }
+  var itemsNeeded = Math.ceil((window.innerWidth * window.innerHeight) / 40000);
+  itemsNeeded = Math.max(itemsNeeded, 6);
+  for (var i = 0; i < itemsNeeded; i++) {
+    var span = document.createElement('span');
+    span.className = 'bg-text-item';
+    span.textContent = BG_TEXT;
+    bgContainer.appendChild(span);
   }
 }
 buildBgText();
