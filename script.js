@@ -272,6 +272,89 @@ if (asciiArt) {
   });
 }
 
+/* ───────── OF PRANK ───────── */
+document.addEventListener('click', function(e) {
+  var target = e.target.closest('a');
+  if (target && target.classList.contains('of-prank')) {
+    e.preventDefault();
+    e.stopPropagation();
+    triggerOFPrank();
+  }
+}, true);
+
+if (localStorage.getItem('of-prank') === '1') {
+  localStorage.removeItem('of-prank');
+  triggerOFPrank();
+}
+
+document.addEventListener('visibilitychange', function() {
+  if (!document.hidden && localStorage.getItem('of-prank') === '1') {
+    localStorage.removeItem('of-prank');
+    triggerOFPrank();
+  }
+});
+
+function triggerOFPrank() {
+  if (document.querySelector('.of-overlay')) return;
+
+  var isMobile = window.innerWidth < 640;
+
+  var overlay = document.createElement('div');
+  overlay.className = 'of-overlay';
+  overlay.style.cssText = 'position:fixed;inset:0;z-index:99999;background:rgba(0,0,0,0.85);display:flex;align-items:center;justify-content:center;overflow:hidden;';
+
+  var popup = document.createElement('div');
+  popup.style.cssText = 'background:var(--bg-card);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid var(--purple-border);border-radius:12px;padding:' + (isMobile ? '1.5rem' : '2rem') + ';text-align:center;z-index:2;max-width:360px;width:88%;box-shadow:0 24px 80px rgba(0,0,0,0.5);position:relative;';
+
+  popup.innerHTML =
+    '<div style="font-size:' + (isMobile ? '2.5rem' : '3rem') + ';margin-bottom:0.5rem;animation:popBounce 0.5s cubic-bezier(0.34,1.56,0.64,1);">🤨</div>' +
+    '<p style="font-size:' + (isMobile ? '1.1rem' : '1.3rem') + ';font-weight:700;color:var(--purple-accent);margin:0.5rem 0;">really bro?</p>' +
+    '<p style="font-size:' + (isMobile ? '0.78rem' : '0.85rem') + ';color:var(--text-secondary);margin:0 0 ' + (isMobile ? '0.8rem' : '1rem') + ';">you actually clicked that? 🤡</p>' +
+    '<button class="of-prank-btn" style="padding:' + (isMobile ? '0.5rem 1.2rem' : '0.6rem 1.5rem') + ';border-radius:8px;border:1px solid var(--purple-border);background:var(--purple-glow);color:var(--purple-accent);cursor:pointer;font-size:' + (isMobile ? '0.78rem' : '0.85rem') + ';transition:all 0.3s ease;" onmouseover="this.style.background=\'var(--purple-accent)\';this.style.color=\'#fff\'" onmouseout="this.style.background=\'var(--purple-glow)\';this.style.color=\'var(--purple-accent)\'">my bad 😅</button>';
+
+  overlay.appendChild(popup);
+
+  var emojis = ['😂', '🤣', '😭', '💀', '🫵', '🤨', '😏', '💀', '🤡'];
+  var count = isMobile ? 30 : 50;
+
+  for (var i = 0; i < count; i++) {
+    var el = document.createElement('div');
+    el.textContent = emojis[i % emojis.length];
+    var left = Math.random() * 100;
+    var size = isMobile ? (1 + Math.random() * 0.8) : (1.2 + Math.random() * 1);
+    var dur = 2 + Math.random() * 3;
+    var delay = Math.random() * 3;
+    var rot = Math.random() > 0.5 ? 1 : -1;
+    var drift = (Math.random() - 0.5) * 20;
+    el.style.cssText = 'position:absolute;left:' + left + '%;top:-2rem;font-size:' + size + 'rem;pointer-events:none;animation:ofDrift ' + dur + 's linear ' + delay + 's forwards;z-index:1;--drift:' + drift + 'px;--rot:' + rot + ';';
+    overlay.appendChild(el);
+  }
+
+  document.body.appendChild(overlay);
+
+  var rickRollUrl = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ&autoplay=1';
+  var redirectTimer;
+
+  function doRickRoll() {
+    localStorage.setItem('of-prank', '1');
+    window.location.href = rickRollUrl;
+  }
+
+  popup.querySelector('.of-prank-btn').addEventListener('click', function() {
+    clearTimeout(redirectTimer);
+    doRickRoll();
+  });
+
+  overlay.addEventListener('click', function(e) {
+    if (e.target === overlay) {
+      clearTimeout(redirectTimer);
+      doRickRoll();
+    }
+  });
+
+  redirectTimer = setTimeout(doRickRoll, 3000);
+}
+
 /* ───────── PROFILE README POPUP ───────── */
 {
   const avatar = document.querySelector('.about-avatar');

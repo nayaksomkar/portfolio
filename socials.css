@@ -1,6 +1,6 @@
 .connect-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
 }
 
@@ -400,14 +400,14 @@ body.light-mode .bsky-stack-wrap {
 }
 
 @media (max-width: 900px) {
-  .connect-grid { grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 0.8rem; }
+  .connect-grid { grid-template-columns: repeat(3, 1fr); gap: 0.8rem; }
   .connect-card { padding: 1.2rem 0.8rem; }
   .bsky-stack-wrap { max-width: 95vw; }
   .bsky-open-link { max-width: 95vw; }
 }
 
 @media (max-width: 768px) {
-  .connect-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 0.7rem; }
+  .connect-grid { grid-template-columns: repeat(3, 1fr); gap: 0.7rem; }
   .bsky-stack-card { padding: 0.7rem 0.6rem 0.6rem; }
   .bsky-stack-card.next { transform: translateX(25px) scale(0.94); }
   .bsky-stack-card.next-2 { transform: translateX(45px) scale(0.88); }

@@ -3,8 +3,13 @@ const CACHE_DURATION = 30 * 60 * 1000;
 const connectData = [
   { icon: 'fab fa-github', label: 'GitHub', desc: '— public repos', url: 'https://github.com/nayaksomkar', countFor: 'gh-repos-filtered' },
   { icon: 'fab fa-bluesky', label: 'Bluesky', desc: '— followers · — posts', url: 'https://bsky.app/profile/nayaksomkar.bsky.social', countFor: 'bsky-both-v2', popup: true },
+  { icon: 'fab fa-x-twitter', label: 'X / Twitter', desc: 'x.com/nayaksomkar', url: 'https://x.com/nayaksomkar' },
+  { icon: 'fab fa-instagram', label: 'Instagram', desc: 'instagram.com/nayaksomkar', url: 'https://instagram.com/nayaksomkar' },
+  { icon: 'fab fa-youtube', label: 'YouTube', desc: 'youtube.com/@nayaksomkar', url: 'https://youtube.com/@nayaksomkar' },
+  { icon: 'fab fa-youtube', label: 'YouTube', desc: 'youtube.com/@KaramelKumar', url: 'https://youtube.com/@KaramelKumar' },
   { img: 'https://cdn.simpleicons.org/huggingface', label: 'Hugging Face', desc: '— models · — datasets', url: 'https://huggingface.co/nayaksomkar', countFor: 'hf-both', popup: true },
   { icon: 'fas fa-envelope', label: 'Email', desc: 'nayaksomkar@outlook.in', url: 'mailto:nayaksomkar@outlook.in' },
+  { img: 'https://cdn.simpleicons.org/onlyfans', label: 'OnlyFans', desc: 'onlyfans.com/nayaksomkar', url: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ&autoplay=1', prank: true },
 ];
 
 function renderConnect() {
@@ -21,6 +26,13 @@ function renderConnect() {
         <span class="connect-label">${item.label}</span>
         <span class="connect-desc">${item.desc}</span>
       </div>`;
+    }
+    if (item.prank) {
+      return `<a href="https://${item.desc}" class="connect-card of-prank" data-count="${item.countFor || ''}">
+        ${iconHtml}
+        <span class="connect-label">${item.label}</span>
+        <span class="connect-desc">${item.desc}</span>
+      </a>`;
     }
     return `<a href="${item.url}" target="_blank" class="connect-card" data-count="${item.countFor || ''}">
       ${iconHtml}
