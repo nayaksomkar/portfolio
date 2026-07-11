@@ -3,13 +3,14 @@ const CACHE_DURATION = 30 * 60 * 1000;
 const connectData = [
   { icon: 'fab fa-github', label: 'GitHub', desc: '— public repos', url: 'https://github.com/nayaksomkar', countFor: 'gh-repos-filtered' },
   { icon: 'fab fa-bluesky', label: 'Bluesky', desc: '— followers · — posts', url: 'https://bsky.app/profile/nayaksomkar.bsky.social', countFor: 'bsky-both-v2', popup: true },
-  { icon: 'fab fa-x-twitter', label: 'X / Twitter', desc: 'x.com/nayaksomkar', url: 'https://x.com/nayaksomkar' },
-  { icon: 'fab fa-instagram', label: 'Instagram', desc: 'instagram.com/nayaksomkar', url: 'https://instagram.com/nayaksomkar' },
-  { icon: 'fab fa-youtube', label: 'YouTube', desc: 'youtube.com/@nayaksomkar', url: 'https://youtube.com/@nayaksomkar' },
-  { icon: 'fab fa-youtube', label: 'YouTube', desc: 'youtube.com/@KaramelKumar', url: 'https://youtube.com/@KaramelKumar' },
+  { icon: 'fab fa-x-twitter', label: 'X / Twitter', desc: '@nayaksomkar', url: 'https://x.com/nayaksomkar', handle: true },
+  { icon: 'fab fa-instagram', label: 'Instagram', desc: '@nayaksomkar', url: 'https://instagram.com/nayaksomkar', handle: true },
+  { icon: 'fab fa-instagram', label: 'Instagram', desc: '@KaramelKumar', url: 'https://instagram.com/KaramelKumar', handle: true },
+  { icon: 'fab fa-youtube', label: 'YouTube', desc: '@nayaksomkar', url: 'https://youtube.com/@nayaksomkar', handle: true },
+  { icon: 'fab fa-youtube', label: 'YouTube', desc: '@KaramelKumar', url: 'https://youtube.com/@KaramelKumar', handle: true },
   { img: 'https://cdn.simpleicons.org/huggingface', label: 'Hugging Face', desc: '— models · — datasets', url: 'https://huggingface.co/nayaksomkar', countFor: 'hf-both', popup: true },
   { icon: 'fas fa-envelope', label: 'Email', desc: 'nayaksomkar@outlook.in', url: 'mailto:nayaksomkar@outlook.in' },
-  { img: 'https://cdn.simpleicons.org/onlyfans', label: 'OnlyFans', desc: 'onlyfans.com/nayaksomkar', url: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ&autoplay=1', prank: true },
+  { img: 'https://cdn.simpleicons.org/onlyfans', label: 'OnlyFans', desc: '@nayaksomkar', url: 'https://onlyfans.com/nayaksomkar', handle: true, prank: true },
 ];
 
 function renderConnect() {
@@ -28,16 +29,16 @@ function renderConnect() {
       </div>`;
     }
     if (item.prank) {
-      return `<a href="https://${item.desc}" class="connect-card of-prank" data-count="${item.countFor || ''}">
+      return `<a href="${item.url}" class="connect-card of-prank" data-count="${item.countFor || ''}">
         ${iconHtml}
         <span class="connect-label">${item.label}</span>
-        <span class="connect-desc">${item.desc}</span>
+        <span class="connect-desc connect-desc--handle">${item.desc}</span>
       </a>`;
     }
-    return `<a href="${item.url}" target="_blank" class="connect-card" data-count="${item.countFor || ''}">
+    return `<a href="${item.url}" target="_blank" class="connect-card${item.handle ? ' connect-card--handle' : ''}" data-count="${item.countFor || ''}">
       ${iconHtml}
       <span class="connect-label">${item.label}</span>
-      <span class="connect-desc">${item.desc}</span>
+      <span class="connect-desc${item.handle ? ' connect-desc--handle' : ''}">${item.desc}</span>
     </a>`;
   }).join('');
   grid.querySelectorAll('.connect-card--popup').forEach(el => {

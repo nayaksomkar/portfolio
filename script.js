@@ -304,7 +304,7 @@ function triggerOFPrank() {
   overlay.style.cssText = 'position:fixed;inset:0;z-index:99999;background:rgba(0,0,0,0.85);display:flex;align-items:center;justify-content:center;overflow:hidden;';
 
   var popup = document.createElement('div');
-  popup.style.cssText = 'background:var(--bg-card);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid var(--purple-border);border-radius:12px;padding:' + (isMobile ? '1.5rem' : '2rem') + ';text-align:center;z-index:2;max-width:360px;width:88%;box-shadow:0 24px 80px rgba(0,0,0,0.5);position:relative;';
+  popup.style.cssText = 'background:' + (document.body.classList.contains('light-mode') ? 'rgba(255,255,255,0.95)' : 'rgba(18,18,24,0.95)') + ';border:1px solid var(--purple-border);border-radius:12px;padding:' + (isMobile ? '1.5rem' : '2rem') + ';text-align:center;z-index:2;max-width:360px;width:88%;box-shadow:0 24px 80px rgba(0,0,0,0.5);position:relative;';
 
   popup.innerHTML =
     '<div style="font-size:' + (isMobile ? '2.5rem' : '3rem') + ';margin-bottom:0.5rem;animation:popBounce 0.5s cubic-bezier(0.34,1.56,0.64,1);">🤨</div>' +

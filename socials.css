@@ -73,6 +73,10 @@
   font-size: 0.78rem;
   color: var(--text-secondary);
 }
+.connect-desc--handle {
+  color: var(--purple-accent);
+  font-weight: 700;
+}
 
 /* ───────── HF POPUP ───────── */
 .hf-body {
