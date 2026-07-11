@@ -1744,17 +1744,17 @@ body.light-mode footer::before {
 }
 .footer-tagline {
   font-size: clamp(0.45rem, 2.2vw, 0.85rem);
-  font-weight: 600;
-  color: var(--text-secondary);
-  opacity: 0.7;
+  font-weight: 700;
+  color: var(--purple-accent);
+  opacity: 0.9;
   text-align: center;
   line-height: 1.5;
   transition: all 0.3s ease;
+  text-shadow: 0 0 12px var(--purple-glow), 0 0 24px var(--purple-glow);
 }
 .footer-tagline:hover {
-  color: var(--purple-accent);
   opacity: 1;
-  text-shadow: 0 0 12px var(--purple-glow);
+  text-shadow: 0 0 16px var(--purple-glow), 0 0 32px var(--purple-glow-strong);
 }
 .footer-copy {
   font-size: 0.82rem;
