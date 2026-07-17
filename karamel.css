@@ -59,6 +59,7 @@ body.caramel-theme .content-section {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  padding-top: 5rem;
 }
 body.caramel-theme footer {
   flex-shrink: 0;
@@ -131,7 +132,7 @@ body.caramel-theme .content-section > p {
 @media (max-width: 768px) {
   body.caramel-theme .content-section {
     justify-content: flex-start;
-    padding-top: 2rem;
+    padding-top: 4.5rem;
   }
   .karamel-drip {
     margin: -0.4rem 0 0.1rem;
@@ -155,7 +156,7 @@ body.caramel-theme .content-section > p {
 @media (max-height: 700px) {
   body.caramel-theme .content-section {
     justify-content: flex-start;
-    padding-top: 1.5rem;
+    padding-top: 4rem;
   }
   body.caramel-theme .section-desc {
     margin-bottom: 0.3rem;
