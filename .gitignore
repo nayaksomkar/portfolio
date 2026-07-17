@@ -1,0 +1,16 @@
+# OpenCode orchestration state
+.omo/
+
+# Node.js
+node_modules/
+package-lock.json
+
+# Environment / secrets
+.env
+
+# Logs
+*.log
+
+# OS junk
+.DS_Store
+Thumbs.db

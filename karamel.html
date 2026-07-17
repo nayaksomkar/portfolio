@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Karamel Kumar 🧡</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="socials.css">
+  <link rel="stylesheet" href="karamel.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body class="night-mode page-connect caramel-theme">
+  <!-- Restore theme from localStorage before paint to avoid flash -->
+  <script>if(localStorage.getItem('theme')==='light'){document.body.classList.add('light-mode');document.body.classList.remove('night-mode')}</script>
+
+  <div id="bg-text" aria-hidden="true"></div>
+
+  <!-- ─── NAVIGATION ─── -->
+  <nav>
+    <div class="nav-inner">
+      <div class="nav-brand">
+        <span class="nav-handle" style="font-size:1rem;">@KaramelKumar</span>
+      </div>
+      <div class="nav-actions">
+        <div class="toggle-wrap">
+          <input type="checkbox" id="theme-toggle">
+          <label for="theme-toggle" class="toggle-label">
+            <i class="fas fa-moon"></i>
+            <i class="fas fa-sun"></i>
+            <span class="toggle-ball"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ─── KARAMEL CONNECT CARDS ─── -->
+  <div class="page-transition-bg">
+  <div class="page-wrap">
+  <section class="content-section">
+    <div class="karamel-drip">✦ ✦ ✦</div>
+    <div class="section-desc" style="color:var(--purple-accent);font-weight:700;">Karamel Kumar 🧡</div>
+    <p style="text-align:center;color:var(--purple-accent2);margin:-0.4rem 0 0.2rem;font-size:0.8rem;opacity:0.7;">@KaramelKumar</p>
+    <p style="text-align:center;color:var(--text-secondary);margin:0 0 1.8rem;font-size:0.85rem;font-style:italic;">warm · cozy · caramel everything</p>
+    <div class="connect-grid" id="karamel-grid"></div>
+    <div class="karamel-drip">✦ ✦ ✦</div>
+  </section>
+  </div>
+  </div>
+
+  <!-- ─── FOOTER ─── -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-bottom">
+        <p class="footer-copy"><a href="./" style="color:var(--purple-accent);text-decoration:none;">← back to @nayaksomkar</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    // Override background text — "Karamel Kumar" instead of "नायक Omkar"
+    window.buildBgText = function() {
+      var container = document.getElementById('bg-text');
+      if (!container) return;
+      container.innerHTML = '';
+      var n = Math.max(Math.ceil((window.innerWidth * window.innerHeight) / 40000), 6);
+      for (var i = 0; i < n; i++) {
+        var s = document.createElement('span');
+        s.className = 'bg-text-item';
+        s.textContent = 'Karamel Kumar';
+        container.appendChild(s);
+      }
+    };
+    window.buildBgText();
+    // welcome sweet burst
+    setTimeout(function() { triggerKaramelRain({ preventDefault: function() {} }); }, 900);
+  </script>
+  <script src="karamel.js"></script>
+</body>
+</html>

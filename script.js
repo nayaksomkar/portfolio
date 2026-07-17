@@ -444,5 +444,55 @@ function triggerOFPrank() {
   }
 }
 
+/* ───────── KARAMEL RAIN — welcome burst on karamel page ───────── */
+function triggerKaramelRain(e) {
+  if (e && e.preventDefault) e.preventDefault();
+  if (document.querySelector('.hearts-overlay')) return;
+
+  if (navigator.vibrate) navigator.vibrate([40, 20, 40, 20, 60, 30, 80, 40, 60]);
+
+  const overlay = document.createElement('div');
+  overlay.className = 'hearts-overlay';
+  document.body.appendChild(overlay);
+
+  const emojis = ['🧡', '🤎', '🍫', '🍬', '🍭', '✨', '💛', '🍯', '🍪', '🍩'];
+  const isMobile = window.innerWidth < 640;
+  const count = isMobile ? 22 : 28;
+
+  for (let i = 0; i < count; i++) {
+    const x = Math.random() * 100;
+    const y = Math.random() * 100;
+    const delay = (Math.random() * 1.2).toFixed(2);
+
+    const el = document.createElement('div');
+    el.className = 'hearts-particle';
+    el.textContent = emojis[i % emojis.length];
+    el.style.left = x + '%';
+    el.style.top = y + '%';
+    el.style.fontSize = (isMobile ? 2.0 : 2.8) + (Math.random() * (isMobile ? 1.2 : 1.5)) + 'rem';
+    el.style.setProperty('--delay', delay + 's');
+    overlay.appendChild(el);
+
+    const childCount = isMobile ? 2 : 3;
+    const spread = isMobile ? 7 : 12;
+    for (let c = 0; c < childCount; c++) {
+      const child = document.createElement('div');
+      child.className = 'hearts-particle child';
+      child.textContent = emojis[(i + c + 2) % emojis.length];
+      child.style.left = (x + (Math.random() - 0.5) * spread) + '%';
+      child.style.top = (y + (Math.random() - 0.5) * spread) + '%';
+      child.style.fontSize = (isMobile ? 0.8 : 0.6) + Math.random() * (isMobile ? 0.6 : 0.8) + 'rem';
+      child.style.setProperty('--delay', (parseFloat(delay) + 0.25 + Math.random() * 0.3).toFixed(2) + 's');
+      overlay.appendChild(child);
+    }
+  }
+
+  setTimeout(() => {
+    overlay.querySelectorAll('.hearts-particle').forEach(el => el.classList.add('exit'));
+  }, 2200);
+
+  setTimeout(() => { overlay.remove(); }, 3500);
+}
+
 
 

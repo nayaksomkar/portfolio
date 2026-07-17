@@ -1713,6 +1713,16 @@ body.light-mode footer::before {
   color: var(--purple-accent);
   font-weight: 700;
 }
+.footer-col ul li a.karamel-link {
+  color: var(--purple-accent);
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+.footer-col ul li a.karamel-link:hover {
+  color: #c87a2c;
+  font-weight: 800;
+  text-shadow: 0 0 12px rgba(200, 122, 44, 0.35), 0 0 24px rgba(200, 122, 44, 0.2);
+}
 
 .footer-bottom {
   display: flex;
