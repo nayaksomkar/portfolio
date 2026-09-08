@@ -1133,7 +1133,17 @@ body.light-mode .project-card.pinned {
   background: linear-gradient(135deg, var(--purple-accent), var(--purple-accent2), var(--purple-accent));
   background-size: 200% 200%;
   animation: avatarGlow 4s ease-in-out infinite;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
+  position: relative;
+  overflow: hidden;
+  border: none;
+  outline: none;
+}
+
+.avatar-glow::before,
+.avatar-glow::after {
+  display: none !important;
+  content: none !important;
 }
 
 @keyframes avatarGlow {
@@ -2301,7 +2311,7 @@ body.light-mode .magic-card {
   }
   .nav-inner {
     padding: 0 1rem;
-    height: 44px;
+    height: 42px;
     gap: 0.5rem;
     display: flex;
     align-items: center;
@@ -2334,48 +2344,67 @@ body.light-mode .magic-card {
     display: none !important;
   }
   .nav-links {
-    position: static;
-    transform: none;
+    position: static !important;
+    transform: none !important;
     display: flex;
-    gap: 0.8rem;
+    gap: 0.6rem;
     flex-shrink: 0;
+    left: auto;
   }
   .nav-links .nav-link {
-    font-size: 0.8rem;
-    padding: 0.2rem 0.5rem;
+    font-size: 0.78rem;
+    padding: 0.2rem 0.4rem;
     white-space: nowrap;
   }
 
   /* Content adjustments for minimal header */
   .about-main {
-    padding-top: 4.5rem !important;
+    padding-top: 3.5rem !important;
   }
   .about-hero {
-    padding-top: 1rem !important;
+    padding: 0.5rem 0 0.8rem !important;
+  }
+
+  /* Avatar - clean circle */
+  .avatar-glow {
+    margin-bottom: 0.6rem !important;
+    padding: 3px;
   }
   .about-avatar {
-    width: 80px;
-    height: 80px;
-    margin-bottom: 1rem;
+    width: 72px !important;
+    height: 72px !important;
   }
+
+  /* ASCII art - reduce gap */
   .ascii-art {
-    margin-bottom: 0.8rem;
+    margin-bottom: 0.5rem !important;
   }
   .ascii-art pre {
-    font-size: clamp(0.08rem, 0.9vw, 0.3rem);
+    font-size: clamp(0.08rem, 0.9vw, 0.28rem);
     max-width: 100%;
     overflow: hidden;
+    line-height: 1.05;
+  }
+
+  /* Description card */
+  .tagline-card.about-card {
+    padding: 0.8rem !important;
+    margin-bottom: 0.8rem !important;
   }
   .tagline-card.about-card p {
     font-size: clamp(0.7rem, 2.5vw, 0.85rem);
   }
+
+  /* Section title */
   .section-title {
     font-size: 0.85rem;
-    margin: 1rem 0 0.5rem;
+    margin: 0.8rem 0 0.5rem;
   }
+
+  /* Skill stack grid */
   .about-grid-2 {
     grid-template-columns: 1fr;
-    gap: 0.7rem;
+    gap: 0.6rem;
   }
   .about-grid-2 > .about-card {
     grid-column: span 1 !important;
@@ -2412,53 +2441,74 @@ body.light-mode .magic-card {
 
 @media (max-width: 414px) {
   .nav-inner {
-    padding: 0 0.8rem;
-    height: 42px;
+    padding: 0 0.7rem;
+    height: 40px;
     gap: 0.3rem;
   }
   .nav-handle {
-    font-size: 0.8rem;
+    font-size: 0.78rem;
   }
   .nav-links {
-    gap: 0.5rem;
+    gap: 0.3rem;
   }
   .nav-links .nav-link {
-    font-size: 0.75rem;
-    padding: 0.2rem 0.4rem;
+    font-size: 0.72rem;
+    padding: 0.15rem 0.3rem;
   }
   .about-main {
-    padding: 4rem 0.6rem 1.5rem !important;
+    padding: 3.2rem 0.6rem 1.5rem !important;
   }
   .about-avatar {
-    width: 70px;
-    height: 70px;
+    width: 64px !important;
+    height: 64px !important;
   }
   .ascii-art pre {
     font-size: clamp(0.06rem, 0.7vw, 0.2rem);
+  }
+  .tagline-card.about-card p {
+    font-size: 0.65rem;
+  }
+}
+
+@media (max-width: 375px) {
+  .nav-inner {
+    padding: 0 0.5rem;
+    gap: 0.2rem;
+  }
+  .nav-handle {
+    font-size: 0.72rem;
+  }
+  .nav-links .nav-link {
+    font-size: 0.68rem;
+    padding: 0.15rem 0.25rem;
   }
 }
 
 @media (max-width: 360px) {
   .nav-inner {
-    padding: 0 0.6rem;
-    height: 40px;
+    padding: 0 0.4rem;
+    height: 38px;
+    gap: 0.15rem;
   }
   .nav-handle {
-    font-size: 0.75rem;
+    font-size: 0.7rem;
   }
   .nav-links {
-    gap: 0.3rem;
+    gap: 0.2rem;
   }
   .nav-links .nav-link {
-    font-size: 0.7rem;
-    padding: 0.15rem 0.3rem;
+    font-size: 0.65rem;
+    padding: 0.1rem 0.2rem;
   }
   .about-main {
-    padding: 3.8rem 0.5rem 1.2rem !important;
+    padding: 3rem 0.5rem 1.2rem !important;
   }
   .about-avatar {
-    width: 60px;
-    height: 60px;
+    width: 56px !important;
+    height: 56px !important;
+  }
+  .about-card {
+    padding: 0.6rem !important;
   }
 }
 
