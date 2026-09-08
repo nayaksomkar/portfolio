@@ -2695,7 +2695,9 @@ body.light-mode .magic-card {
     height: 72px;
   }
   .ascii-art pre {
-    font-size: clamp(0.15rem, 1vw, 0.4rem);
+    font-size: clamp(0.08rem, 0.9vw, 0.3rem);
+    max-width: 100%;
+    overflow: hidden;
   }
   .tagline-card.about-card p {
     font-size: clamp(0.6rem, 3vw, 0.85rem);
@@ -2715,13 +2717,13 @@ body.light-mode .magic-card {
   .about-card h2 {
     font-size: 0.8rem;
     margin-bottom: 0.6rem;
-    justify-content: flex-start;
+    justify-content: center;
   }
   .skill-chips {
     display: flex;
     flex-wrap: wrap;
     gap: 0.25rem;
-    justify-content: flex-start !important;
+    justify-content: center !important;
   }
   .skill-chip {
     padding: 0.2rem 0.4rem 0.2rem 0.3rem;
@@ -2764,7 +2766,9 @@ body.light-mode .magic-card {
     margin-bottom: 0.5rem;
   }
   .ascii-art pre {
-    font-size: 0.12rem;
+    font-size: clamp(0.06rem, 0.7vw, 0.2rem);
+    max-width: 100%;
+    overflow: hidden;
   }
   .tagline-card.about-card p {
     font-size: 0.65rem;
@@ -2783,11 +2787,11 @@ body.light-mode .magic-card {
   .about-card h2 {
     font-size: 0.75rem;
     margin-bottom: 0.5rem;
-    justify-content: flex-start;
+    justify-content: center;
   }
   .skill-chips {
     gap: 0.2rem;
-    justify-content: flex-start !important;
+    justify-content: center !important;
   }
   .skill-chip {
     padding: 0.15rem 0.35rem 0.15rem 0.25rem;
