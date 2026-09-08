@@ -10,3 +10,4 @@
 - Spoken languages: English, Hindi, Odia. Confidence: 0.95
 - GitHub username: nayaksomkar. Confidence: 0.95
 - Portfolio project location: `/home/nsm/Documents/githubREPO/portfolio`. Confidence: 0.9
+- Prefers GitHub raw URLs (`raw.githubusercontent.com`) for serving media assets over local relative paths, to avoid path-resolution issues. Confidence: 0.7
