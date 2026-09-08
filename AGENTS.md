@@ -12,27 +12,49 @@ Key rule: never mention easter egg triggers, codes, or mechanics in README or pu
 
 ## Pages
 
-| Page | File |
-|------|------|
-| About | `index.html` |
-| Projects | `projects.html` |
-| Certificates | `certificates.html` |
-| Socials | `socials.html` |
+| Page | File | Notes |
+|------|------|-------|
+| Root redirect | `index.html` | Redirects to `pages/about.html` |
+| About | `pages/about.html` | ASCII name + skill stack |
+| Projects | `pages/projects.html` | GitHub repo grid |
+| Certificates | `pages/certificates.html` | Card stack from GitHub repo |
+| Socials | `pages/socials.html` | Connect cards |
+| Karamel | `pages/karamel.html` | Sub-page with caramel theme |
+| Rickroll | `pages/rickroll.html` | Reached via OnlyFans prank link |
 
 ## Key Files
 
 | File | Purpose |
 |------|---------|
-| `script.js` | Theme toggle, bg wave, page transitions, config loader, magic easter egg |
-| `style.css` | Global styles, responsive, CSS custom properties, window/popup styles |
-| `projects.js` | GitHub API fetch, repo grid, README modal |
-| `certificates.js` | Certificate data + rendering |
-| `socials.js` | Connect cards, Bluesky popup (macOS titlebar), HF popup |
-| `socials.css` | Connect cards, Bluesky/HF popup styles |
-| `coc.js` | Game-themed interactions (ClashKing API), CoC popup |
-| `coc.css` | Game-themed animations/styles |
+| `pages/*.html` | Page templates, mobile hamburger menu |
+| `css/style.css` | Global styles, CSS custom properties, responsive breakpoints, mobile header/hero overrides |
+| `css/socials.css` | Connect cards, Bluesky/HF popup styles |
+| `css/coc.css` | Game-themed animations/styles |
+| `css/karamel.css` | Karamel theme overrides |
+| `js/script.js` | Theme toggle, bg wave, page transitions, config loader, magic easter egg, mobile hamburger toggle |
+| `js/projects.js` | GitHub API fetch, repo grid, README modal |
+| `js/certificates.js` | Certificate data + rendering |
+| `js/socials.js` | Connect cards, Bluesky popup (macOS titlebar), HF popup |
+| `js/coc.js` | Game-themed interactions (ClashKing API), CoC popup |
+| `js/karamel.js` | Karamel page logic |
 | `proxy.js` | Express proxy (has `/api/coc`, `/api/twitter/*`) |
 | `portfolio-config.json` | Ignore lists, priority projects, API keys |
+| `assets/resume.pdf` | Resume linked from About page |
+
+## Responsive Behavior (≤600px)
+
+| Element | Desktop | Mobile |
+|---------|---------|--------|
+| Header layout | Full nav with avatar, fullname, theme toggle | Single-row strip with hamburger only |
+| `@nayaksomkar` text in nav | Visible | Hidden |
+| Inline nav links | Visible | Hidden, in hamburger menu |
+| Hamburger icon | Hidden | Visible, 44×44px tap target, theme-aware |
+| Name representation | Original ASCII art (`<pre>` inside `#ascii-art`) | Plain text "NAYAK OMKAR" (`<div class="ascii-mobile-text">`) |
+| Avatar size | 96px | 70px (≤600px), 62px (≤414px), 56px (≤360px) |
+
+Both representations share the same container (`#ascii-art`) so click handlers, heart-tap counter, and the magic-number popup work identically. The mobile text version uses `var(--purple-accent)` so it adapts to light and dark themes automatically.
+
+The mobile hamburger uses CSS-only responsive show/hide via `display: inline-flex !important` at ≤600px. Toggling the dropdown menu uses vanilla JS in `script.js` (no framework dependency).
 
 ## Data Fetching
 

@@ -31,18 +31,26 @@ Config file at `portfolio-config.json`. Serve locally with `python3 -m http.serv
 
 ```
 portfolio/
-├── index.html              About page
-├── projects.html           Projects page
-├── certificates.html       Certificates page
-├── socials.html            Socials page
-├── style.css               Global styles + responsive
-├── socials.css             Socials/Bluesky/HF styles
-├── coc.css                 Game-themed styles
-├── script.js               Theme toggle, bg wave, page transitions
-├── coc.js                  Game-themed interactions
-├── projects.js             GitHub API fetch, repo grid, README modal
-├── certificates.js         Certificate data + rendering
-├── socials.js              Connect cards, Bluesky popup, HF popup
+├── index.html              Root redirect → pages/about.html
+├── pages/
+│   ├── about.html          About page (with ASCII name + skill stack)
+│   ├── projects.html       Projects page
+│   ├── certificates.html   Certificates page
+│   ├── socials.html        Socials page
+│   └── karamel.html        Karamel sub-page
+├── css/
+│   ├── style.css           Global styles + responsive
+│   ├── socials.css         Socials/Bluesky/HF styles
+│   ├── coc.css             Game-themed styles
+│   └── karamel.css         Karamel theme
+├── js/
+│   ├── script.js           Theme toggle, bg wave, page transitions, mobile hamburger
+│   ├── projects.js         GitHub API fetch, repo grid, README modal
+│   ├── certificates.js     Certificate data + rendering
+│   ├── socials.js          Connect cards, Bluesky popup, HF popup
+│   ├── coc.js              Game-themed interactions
+│   └── karamel.js          Karamel page logic
+├── assets/                 Static assets (resume.pdf, etc.)
 ├── proxy.js                Express proxy (optional, for CoC API)
 ├── portfolio-config.json   Ignore lists + API keys
 ├── AGENTS.md               Dev context for AI assistants
@@ -61,9 +69,44 @@ portfolio/
 | Bluesky | Posts carousel with swipe/arrow nav, macOS-style titlebar |
 | Hugging Face | Models & datasets popup with download counts |
 | Windows | macOS traffic light controls (close/minimize/maximize) on all popups |
-| Responsive | 9 breakpoints: 380px → 1600px+ |
-| Accessibility | Reduced-motion support, touch-friendly targets |
+| Responsive | 7 breakpoints: 360px → 1600px+ with mobile-first header and hero |
+| Accessibility | Reduced-motion support, touch-friendly targets, 44×44 hamburger tap target |
 | Caching | localStorage with 30-min TTL for API counts |
+
+## Responsive Behavior
+
+### Header (Mobile ≤600px)
+
+| Element | Desktop | Mobile |
+|---------|---------|--------|
+| `@nayaksomkar` text | Visible | Hidden |
+| Avatar in nav | Visible | Hidden |
+| Theme toggle | Visible | Hidden |
+| Navigation links | Inline (`Projects`, `Certificates`) | Hidden, in hamburger menu |
+| Hamburger button | Hidden | Visible — single control, 44×44px tap target |
+
+The mobile header is **always a single horizontal row** (`flex-wrap: nowrap`) containing only the hamburger icon, vertically centered. Tapping it opens a dropdown with the navigation links for the current page. The hamburger uses `var(--purple-accent)` which adapts to both light and dark themes.
+
+### Name / Logo
+
+| Viewport | Representation |
+|----------|----------------|
+| Desktop (>600px) | Original ASCII art `███╗ ██╗ █████╗ ██╗...` with decorative stars |
+| Mobile (≤600px) | Plain readable text: `NAYAK OMKAR` |
+
+The two representations share the same underlying element (`#ascii-art`) and therefore the same event handlers (heart tap counter, magic popup). The text version uses `var(--purple-accent)` with `clamp(1rem, 5vw, 1.5rem)` for fluid responsive sizing and `white-space: nowrap` to prevent wrapping. The mobile text is hidden on desktop and the ASCII art is hidden on mobile.
+
+### Avatar
+
+Clean circle below the header. Pseudo-elements disabled to prevent artifacts. Sizes: 72px (≤600px), 62px (414px), 56px (360px).
+
+### ASCII Art (Desktop only)
+
+Desktop uses the original `<pre>` block with `white-space: pre` and the existing `clamp(0.18rem, 1.2vw, 0.55rem)` font-size. It is never squashed or distorted on mobile — instead it is replaced by the text version above.
+
+### Hero Spacing
+
+`about-main` has `padding-top: 3.8rem` on mobile (≤600px) so the avatar sits fully below the 42px header without being clipped.
 
 ## Data Flow
 
