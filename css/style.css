@@ -2346,7 +2346,9 @@ body.light-mode .magic-card {
     white-space: nowrap;
   }
   .nav-actions {
-    display: none !important;
+    display: flex !important;
+    flex: 0 0 auto !important;
+    align-items: center !important;
   }
   .nav-links {
     position: static !important;
@@ -3189,23 +3191,26 @@ body.light-mode .mobile-name {
   .nav-brand-link {
     display: none !important;
   }
-  .nav-actions {
-    display: none !important;
-  }
   /* Hide inline nav-links on mobile - show only hamburger */
   .nav-links {
     display: none !important;
   }
-  /* Show hamburger on mobile - center it */
+  /* Show hamburger and theme toggle on mobile */
   .nav-hamburger {
     display: inline-flex !important;
     flex: 0 0 auto !important;
-    margin: 0 auto !important;
+    margin: 0 !important;
+  }
+  .nav-actions {
+    display: flex !important;
+    flex: 0 0 auto !important;
+    align-items: center !important;
   }
   /* Ensure nav-inner is flex with nowrap */
   .nav-inner {
     flex-wrap: nowrap !important;
-    justify-content: center !important;
+    justify-content: flex-end !important;
+    gap: 0.5rem !important;
   }
 
   /* Hero — avatar fully visible below header */

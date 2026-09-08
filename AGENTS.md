@@ -20,7 +20,7 @@ Key rule: never mention easter egg triggers, codes, or mechanics in README or pu
 | Certificates | `pages/certificates.html` | Card stack from GitHub repo |
 | Socials | `pages/socials.html` | Connect cards |
 | Karamel | `pages/karamel.html` | Sub-page with caramel theme |
-| Rickroll | `pages/rickroll.html` | Reached via OnlyFans prank link |
+| Fame | `pages/fame.html` | Reached via OnlyFans prank link (rickroll) |
 
 ## Key Files
 

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>🎵 Never Gonna Give You Up 🎵</title>
+  <title>🌟 Hall of Fame 🌟</title>
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -46,19 +46,26 @@
       font-style: italic;
     }
 
-    .rickroll-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 1.5rem;
+    .uno-layout {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
       padding: 2rem;
       max-width: 1400px;
       margin: 0 auto;
     }
 
-    .rickroll-grid > .rickroll-card:last-child:nth-child(odd) {
-      grid-column: 1 / -1;
-      max-width: 50%;
-      margin: 0 auto;
+    .uno-row {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      width: 100%;
+    }
+
+    .uno-center {
+      width: 100%;
+      max-width: 800px;
     }
 
     .rickroll-card {
@@ -68,6 +75,7 @@
       overflow: hidden;
       transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
       position: relative;
+      flex: 1;
     }
 
     .rickroll-card:hover {
@@ -99,10 +107,14 @@
 
     .rickroll-card img {
       width: 100%;
-      height: 250px;
+      height: 200px;
       object-fit: cover;
       display: block;
       background: #0e0e16;
+    }
+
+    .uno-center .rickroll-card img {
+      height: 450px;
     }
 
     .rickroll-card .card-title {
@@ -112,6 +124,11 @@
       font-weight: 700;
       text-align: center;
       border-top: 1px solid #1e1535;
+    }
+
+    .uno-center .rickroll-card .card-title {
+      font-size: 1.1rem;
+      padding: 1rem;
     }
 
     .rickroll-footer {
@@ -204,9 +221,22 @@
     }
 
     @media (max-width: 768px) {
-      .rickroll-grid {
-        grid-template-columns: 1fr;
+      .uno-layout {
         padding: 1rem;
+        gap: 1rem;
+      }
+      .uno-row {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      .uno-center {
+        order: -1;
+      }
+      .uno-center .rickroll-card img {
+        height: 300px;
+      }
+      .rickroll-card img {
+        height: 180px;
       }
       .disco-ball {
         width: 40px;
@@ -215,7 +245,10 @@
     }
   </style>
 </head>
-<body>
+<body class="light-mode">
+  <!-- Restore theme from localStorage before paint to avoid flash -->
+  <script>if(localStorage.getItem('theme')==='dark'){document.body.classList.add('night-mode');document.body.classList.remove('light-mode')}</script>
+
   <div class="disco-ball"></div>
 
   <div class="floating-notes">
@@ -231,8 +264,8 @@
   </div>
 
   <header class="rickroll-header">
-    <h1>🎵 Never Gonna Give You Up 🎵</h1>
-    <p>You clicked the OnlyFans link... and now you're here. Welcome to the rickroll hall of fame.</p>
+    <h1>🌟 Hall of Fame 🌟</h1>
+    <p>You clicked the link... and now you're here. Welcome to the hall of fame.</p>
   </header>
 
   <div class="marquee">
@@ -241,40 +274,49 @@
     </span>
   </div>
 
-  <main class="rickroll-grid">
-    <div class="rickroll-card">
-      <img src="../rick-roll/rick-roll-rick-astley.gif" alt="Rick Roll Rick Astley" loading="lazy">
-      <div class="card-title">🕺 Rick in Action</div>
+  <main class="uno-layout">
+    <!-- Top Row: 3 GIFs -->
+    <div class="uno-row">
+      <div class="rickroll-card">
+        <img src="../rick-roll/rick-roll-rick-astley.gif" alt="Rick Roll Rick Astley" loading="lazy">
+        <div class="card-title">🕺 Rick in Action</div>
+      </div>
+
+      <div class="rickroll-card">
+        <img src="../rick-roll/rickroll-roll.gif" alt="Rickroll Roll" loading="lazy">
+        <div class="card-title">🌀 The Infinite Roll</div>
+      </div>
+
+      <div class="rickroll-card">
+        <img src="https://lab.subinsb.com/projects/blog/uploads/2020/03/rickroll.gif" alt="Rickroll GIF" loading="lazy">
+        <div class="card-title">🎬 Classic Rickroll</div>
+      </div>
     </div>
 
-    <div class="rickroll-card">
-      <img src="../rick-roll/rickroll-roll.gif" alt="Rickroll Roll" loading="lazy">
-      <div class="card-title">🌀 The Infinite Roll</div>
+    <!-- Center: UNO Reverse Card (Gigantic) -->
+    <div class="uno-center">
+      <div class="rickroll-card">
+        <img src="../rick-roll/rick-roll-uno-reverse-uno-reverse.gif" alt="UNO Reverse Rick Roll" loading="lazy">
+        <div class="card-title">🃏 UNO REVERSE CARD 🃏</div>
+      </div>
     </div>
 
-    <div class="rickroll-card">
-      <img src="https://lab.subinsb.com/projects/blog/uploads/2020/03/rickroll.gif" alt="Rickroll GIF" loading="lazy">
-      <div class="card-title">🎬 Classic Rickroll</div>
-    </div>
+    <!-- Bottom Row: 3 GIFs -->
+    <div class="uno-row">
+      <div class="rickroll-card">
+        <img src="https://i.pinimg.com/originals/f7/85/7f/f7857f7dc8194d91da6b825d3ab90fce.gif" alt="Rick Astley Dancing" loading="lazy">
+        <div class="card-title">💃 The Dance</div>
+      </div>
 
-    <div class="rickroll-card">
-      <img src="https://i.pinimg.com/originals/f7/85/7f/f7857f7dc8194d91da6b825d3ab90fce.gif" alt="Rick Astley Dancing" loading="lazy">
-      <div class="card-title">💃 The Dance</div>
-    </div>
+      <div class="rickroll-card">
+        <img src="https://media.giphy.com/media/zFLTcYpS84wM0/giphy.gif" alt="Rick Roll Giphy" loading="lazy">
+        <div class="card-title">✨ Giphy Edition</div>
+      </div>
 
-    <div class="rickroll-card">
-      <img src="../rick-roll/rick-roll-uno-reverse-uno-reverse.gif" alt="UNO Reverse Rick Roll" loading="lazy">
-      <div class="card-title">🃏 UNO Reverse Card</div>
-    </div>
-
-    <div class="rickroll-card">
-      <img src="https://media.giphy.com/media/zFLTcYpS84wM0/giphy.gif" alt="Rick Roll Giphy" loading="lazy">
-      <div class="card-title">✨ Giphy Edition</div>
-    </div>
-
-    <div class="rickroll-card">
-      <img src="https://c.tenor.com/hTzv4T-zpjsAAAAC/hd-rick-rickroll-hd.gif" alt="HD Rick Roll" loading="lazy">
-      <div class="card-title">📺 HD Rick Roll</div>
+      <div class="rickroll-card">
+        <img src="https://c.tenor.com/hTzv4T-zpjsAAAAC/hd-rick-rickroll-hd.gif" alt="HD Rick Roll" loading="lazy">
+        <div class="card-title">📺 HD Rick Roll</div>
+      </div>
     </div>
   </main>
 

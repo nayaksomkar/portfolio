@@ -2,16 +2,17 @@
 const toggle = document.getElementById('theme-toggle');
 
 if (toggle) {
-  if (localStorage.getItem('theme') === 'light') {
+  // Default is light mode; checkbox unchecked = light, checked = dark
+  if (localStorage.getItem('theme') === 'dark') {
     toggle.checked = true;
-    document.body.classList.add('light-mode');
-    document.body.classList.remove('night-mode');
+    document.body.classList.add('night-mode');
+    document.body.classList.remove('light-mode');
   }
 
   toggle.addEventListener('change', () => {
-    document.body.classList.toggle('light-mode', toggle.checked);
-    document.body.classList.toggle('night-mode', !toggle.checked);
-    localStorage.setItem('theme', toggle.checked ? 'light' : 'dark');
+    document.body.classList.toggle('night-mode', toggle.checked);
+    document.body.classList.toggle('light-mode', !toggle.checked);
+    localStorage.setItem('theme', toggle.checked ? 'dark' : 'light');
   });
 }
 
@@ -284,13 +285,13 @@ document.addEventListener('click', function(e) {
 
 if (localStorage.getItem('of-prank') === '1') {
   localStorage.removeItem('of-prank');
-  window.location.href = 'rickroll.html';
+  window.location.href = 'fame.html';
 }
 
 document.addEventListener('visibilitychange', function() {
   if (!document.hidden && localStorage.getItem('of-prank') === '1') {
     localStorage.removeItem('of-prank');
-    window.location.href = 'rickroll.html';
+    window.location.href = 'fame.html';
   }
 });
 
@@ -336,7 +337,7 @@ function triggerOFPrank() {
 
   function doRickRoll() {
     localStorage.setItem('of-prank', '1');
-    window.location.href = 'rickroll.html';
+    window.location.href = 'fame.html';
   }
 
   popup.querySelector('.of-prank-btn').addEventListener('click', function() {
