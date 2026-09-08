@@ -494,4 +494,51 @@ function triggerKaramelRain(e) {
 }
 
 
+/* ───────── MOBILE HAMBURGER MENU ───────── */
+(function initHamburger() {
+  const btn = document.getElementById('nav-hamburger');
+  const menu = document.getElementById('nav-mobile-menu');
+  if (!btn || !menu) return;
+
+  function close() {
+    menu.classList.remove('open');
+    btn.setAttribute('aria-expanded', 'false');
+    var icon = btn.querySelector('i');
+    if (icon) { icon.classList.remove('fa-times'); icon.classList.add('fa-bars'); }
+  }
+
+  function open() {
+    menu.classList.add('open');
+    btn.setAttribute('aria-expanded', 'true');
+    var icon = btn.querySelector('i');
+    if (icon) { icon.classList.remove('fa-bars'); icon.classList.add('fa-times'); }
+  }
+
+  btn.addEventListener('click', function(e) {
+    e.stopPropagation();
+    if (menu.classList.contains('open')) close();
+    else open();
+  });
+
+  // Close when clicking outside
+  document.addEventListener('click', function(e) {
+    if (menu.classList.contains('open') && !menu.contains(e.target) && !btn.contains(e.target)) {
+      close();
+    }
+  });
+
+  // Close on link click (after navigation begins)
+  menu.querySelectorAll('a').forEach(function(a) {
+    a.addEventListener('click', function() {
+      setTimeout(close, 100);
+    });
+  });
+
+  // Close on Escape
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && menu.classList.contains('open')) close();
+  });
+})();
+
+
 

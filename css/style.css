@@ -3004,7 +3004,67 @@ body.light-mode .magic-card {
 }
 /* ───────── FINAL MOBILE OVERRIDE (≤600px) ───────── */
 /* Ensures mobile header is one thin strip and hero is properly positioned.
-   All other sections are NOT touched here. */</old_string><replace_all>false</replace_all>
+   All other sections are NOT touched here. */
+
+/* Hamburger & mobile menu - hidden on desktop */
+.nav-hamburger {
+  display: none;
+  background: transparent;
+  border: 1px solid var(--purple-border);
+  border-radius: 6px;
+  padding: 0.3rem 0.55rem;
+  color: var(--purple-accent);
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all var(--transition);
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+.nav-hamburger:hover {
+  background: var(--purple-glow);
+  border-color: var(--purple-accent);
+}
+
+.nav-mobile-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0.5rem;
+  background: var(--bg-nav);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--purple-border);
+  border-radius: var(--radius);
+  min-width: 180px;
+  padding: 0.4rem;
+  margin-top: 0.3rem;
+  z-index: 200;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px);
+  transition: opacity 0.2s ease, visibility 0.2s ease, transform 0.2s ease;
+}
+.nav-mobile-menu.open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+.nav-mobile-link {
+  display: block;
+  padding: 0.6rem 0.8rem;
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+.nav-mobile-link:hover {
+  background: var(--purple-glow);
+  color: var(--purple-accent);
+}</old_string><replace_all>false</replace_all>
 @media (max-width: 600px) {
   /* Header — single thin strip */
   nav {
@@ -3038,23 +3098,14 @@ body.light-mode .magic-card {
   .nav-actions {
     display: none !important;
   }
-  /* nav-links: completely override the absolute positioning for single line */
+  /* Hide inline nav-links on mobile - show only hamburger */
   .nav-links {
-    position: static !important;
-    transform: none !important;
-    left: auto !important;
-    display: flex !important;
-    gap: 0.5rem !important;
-    flex: 0 0 auto !important;
-    margin: 0 !important;
-    padding: 0 !important;
+    display: none !important;
   }
-  .nav-links .nav-link {
-    font-size: 0.78rem !important;
-    padding: 0.15rem 0.4rem !important;
-    white-space: nowrap !important;
-    color: var(--text-secondary) !important;
-    font-weight: 700 !important;
+  /* Show hamburger on mobile */
+  .nav-hamburger {
+    display: inline-flex !important;
+    flex: 0 0 auto !important;
   }
 
   /* Hero — avatar fully visible below header */
