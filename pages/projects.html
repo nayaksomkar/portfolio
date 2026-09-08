@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>nayaksomkar · certificates</title>
-  <link rel="stylesheet" href="style.css">
+  <title>nayaksomkar · projects</title>
+  <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 </head>
-<body class="night-mode page-certificates">
+<body class="night-mode page-projects">
   <!-- Restore theme from localStorage before paint to avoid flash -->
   <script>if(localStorage.getItem('theme')==='light'){document.body.classList.add('light-mode');document.body.classList.remove('night-mode')}</script>
 
@@ -29,7 +29,7 @@
         </a>
       </div>
       <div class="nav-links">
-        <a href="projects" class="nav-link">Projects </a>
+        <a href="certificates.html" class="nav-link">Certificates </a>
         <a href="socials.html" class="nav-link">Socials</a>
       </div>
       <div class="nav-actions">
@@ -45,39 +45,14 @@
     </div>
   </nav>
 
-  <!-- ─── CARD STACK CAROUSEL ─── -->
+  <!-- ─── PROJECTS GRID ─── -->
   <div class="page-transition-bg">
   <div class="page-wrap">
   <section class="content-section">
-    <div class="section-desc" id="certs-desc">Certifications & achievements</div>
-    <div class="cert-view-toggle">
-      <button class="view-toggle-btn active" id="view-stack" title="Card Stack View"><i class="fas fa-layer-group"></i> Stack</button>
-      <button class="view-toggle-btn" id="view-grid" title="Grid View"><i class="fas fa-th"></i> Grid</button>
+    <div class="section-desc" id="projects-desc"><a href="https://github.com/nayaksomkar" target="_blank">github.com/nayaksomkar</a></div>
+    <div class="project-grid" id="project-grid">
+      <div class="loader"><div class="spinner"></div><p>Loading projects...</p></div>
     </div>
-    <div class="cert-stack-wrap" id="cert-stack-wrap">
-      <!-- Card stack populated by certificates.js -->
-      <div class="cert-stack" id="cert-stack"></div>
-      <!-- Navigation controls: arrows + counter -->
-      <div class="cert-controls" id="cert-controls">
-        <button class="cert-arrow cert-arrow--prev" id="cert-prev" aria-label="Previous certificate">
-          <i class="fas fa-chevron-left"></i>
-        </button>
-        <span class="cert-counter" id="cert-counter"></span>
-        <button class="cert-arrow cert-arrow--next" id="cert-next" aria-label="Next certificate">
-          <i class="fas fa-chevron-right"></i>
-        </button>
-      </div>
-      <!-- Animated hints on left/right pointing to arrows -->
-      <div class="cert-hint-left" id="cert-hint-left">
-        <span class="hint-arrows"><span>&gt;</span><span>&gt;</span><span>&gt;</span></span>
-      </div>
-      <div class="cert-hint-right" id="cert-hint-right">
-        <span class="hint-arrows"><span>&gt;</span><span>&gt;</span><span>&gt;</span></span>
-      </div>
-      <!-- Subtle hint text between card stack and controls -->
-      <div class="cert-hint-text" id="cert-hint-text">use arrow keys or swipe to navigate</div>
-    </div>
-    <div class="cert-grid" id="cert-grid" style="display: none;"></div>
   </section>
   </div>
   </div>
@@ -89,10 +64,10 @@
         <div class="footer-col">
           <h4>Navigate</h4>
           <ul>
-            <li><a href="./">About</a></li>
-            <li><a href="projects">Projects</a></li>
-            <li><a href="certificates">Certificates</a></li>
-            <li><a href="socials">Socials</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="certificates.html">Certificates</a></li>
+            <li><a href="socials.html">Socials</a></li>
           </ul>
         </div>
         <div class="footer-col">
@@ -104,7 +79,7 @@
             <li><a href="https://instagram.com/nayaksomkar" target="_blank">Instagram <span class="yt-handle">@nayaksomkar</span></a></li>
             <li><a href="https://threads.net/@nayaksomkar" target="_blank">Threads <span class="yt-handle">@nayaksomkar</span></a></li>
             <li><a href="https://youtube.com/@nayaksomkar" target="_blank">YouTube <span class="yt-handle">@nayaksomkar</span></a></li>
-            <li><a href="karamel" class="karamel-link">🧡 get karamelised</a></li>
+              <li><a href="karamel.html" class="karamel-link">🧡 get karamelised</a></li>
             <li><a href="https://huggingface.co/nayaksomkar" target="_blank">Hugging Face</a></li>
             <li><a href="https://onlyfans.com/nayaksomkar" class="of-prank">OnlyFans</a></li>
             <li><a href="mailto:nayaksomkar@outlook.in">Email</a></li>
@@ -124,7 +99,28 @@
     </div>
   </footer>
 
-  <script src="script.js"></script>
-  <script src="certificates.js"></script>
+  <!-- ─── README MODAL (macOS-style popup) ─── -->
+  <div class="window-overlay" id="window-overlay">
+    <div class="window" id="project-window">
+      <div class="window-titlebar">
+        <span class="window-title" id="window-title">README</span>
+        <div class="window-controls">
+          <button class="win-btn close" id="win-close" title="Close"><i class="fas fa-times"></i></button>
+          <button class="win-btn minimize" id="win-minimize" title="Minimize"><i class="fas fa-minus"></i></button>
+          <button class="win-btn maximize" id="win-maximize" title="Maximize"><i class="fas fa-expand"></i></button>
+        </div>
+      </div>
+      <div class="window-body" id="window-body">
+        <div class="win-loader"><div class="spinner"></div><p>Fetching README...</p></div>
+      </div>
+      <div class="window-footer">
+        <a href="#" id="window-github-link" target="_blank" class="btn-gh"><i class="fab fa-github"></i> Open on GitHub</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="../js/script.js"></script>
+  <script src="../js/projects.js"></script>
 </body>
 </html>

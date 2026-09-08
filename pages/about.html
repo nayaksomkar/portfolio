@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>nayaksomkar · portfolio</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/coc.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body class="night-mode page-about">
+  <!-- Restore theme from localStorage before paint to avoid flash -->
+  <script>if(localStorage.getItem('theme')==='light'){document.body.classList.add('light-mode');document.body.classList.remove('night-mode')}</script>
+
+  <div id="bg-text" aria-hidden="true"></div>
+
+  <!-- ─── NAVIGATION ─── -->
+  <nav>
+    <div class="nav-inner">
+      <div class="nav-brand">
+        <a href="./" class="nav-brand-link">
+          <img src="https://avatars.githubusercontent.com/nayaksomkar" alt="" class="nav-avatar">
+          <div class="nav-brand-text">
+            <span class="nav-handle">@nayaksomkar</span>
+            <span class="nav-fullname">नायक Omkar 🖤🦢</span>
+          </div>
+        </a>
+      </div>
+      <div class="nav-links">
+        <a href="projects.html" class="nav-link">Projects </a>
+        <a href="certificates.html" class="nav-link">Certificates</a>
+      </div>
+      <div class="nav-actions">
+        <div class="toggle-wrap">
+          <input type="checkbox" id="theme-toggle">
+          <label for="theme-toggle" class="toggle-label">
+            <i class="fas fa-moon"></i>
+            <i class="fas fa-sun"></i>
+            <span class="toggle-ball"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ─── HERO / ABOUT ─── -->
+  <div class="page-transition-bg">
+  <div class="page-wrap">
+  <main class="about-main">
+    <div class="about-hero">
+      <div class="avatar-glow">
+        <img src="https://avatars.githubusercontent.com/nayaksomkar" alt="" class="about-avatar" />
+      </div>
+      <div class="ascii-art" id="ascii-art">
+        <pre>✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦
+
+███╗   ██╗ █████╗ ██╗   ██╗ █████╗ ██╗  ██╗      ██████╗ ███╗   ███╗██╗  ██╗ █████╗ ██████╗
+████╗  ██║██╔══██╗╚██╗ ██╔╝██╔══██╗██║ ██╔╝     ██╔═══██╗████╗ ████║██║ ██╔╝██╔══██╗██╔══██╗
+██╔██╗ ██║███████║ ╚████╔╝ ███████║█████╔╝      ██║   ██║██╔████╔██║█████╔╝ ███████║██████╔╝
+██║╚██╗██║██╔══██║  ╚██╔╝  ██╔══██║██╔═██╗      ██║   ██║██║╚██╔╝██║██╔═██╗ ██╔══██║██╔══██╗
+██║ ╚████║██║  ██║   ██║   ██║  ██║██║  ██╗     ╚██████╔╝██║ ╚═╝ ██║██║  ██╗██║  ██║██║  ██║
+╚═╝  ╚═══╝╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═╝      ╚═════╝ ╚═╝     ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝
+
+✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦</pre>
+      </div>
+    </div>
+
+    <!-- Tagline — also acts as a hidden CoC easter egg trigger -->
+    <div class="about-card tagline-card" id="coc-trigger">
+      <p>Developing intelligent automation systems with<br>LangChain, and LangGraph, one at a time.</p>
+    </div>
+
+    <!-- ─── SKILL STACK ─── -->
+    <h2 class="section-title"><i class="fas fa-tools"></i> Skill Stack</h2>
+
+    <div class="about-grid-2">
+      <div class="about-card">
+        <h2><i class="fas fa-code"></i> Programming</h2>
+        <div class="skill-chips">
+          <div class="skill-chip"><img src="https://cdn.simpleicons.org/python" alt="" /><span>Python</span></div>
+          <div class="skill-chip"><img src="https://cdn.simpleicons.org/javascript" alt="" /><span>JavaScript</span></div>
+          <div class="skill-chip"><img src="https://cdn.simpleicons.org/html5" alt="" /><span>HTML</span></div>
+          <div class="skill-chip"><img src="https://cdn.simpleicons.org/css3" alt="" /><span>CSS</span></div>
+        </div>
+      </div>
+
+      <div class="about-card">
+        <h2><i class="fas fa-layer-group"></i> Frameworks</h2>
+        <div class="skill-chips">
+          <div class="skill-chip"><img src="https://cdn.simpleicons.org/fastapi" alt="" /><span>FastAPI</span></div>
+          <div class="skill-chip"><img src="https://cdn.simpleicons.org/flask" alt="" /><span>Flask</span></div>
+          <div class="skill-chip"><img src="https://cdn.simpleicons.org/react" alt="" /><span>React.js</span></div>
+        </div>
+      </div>
+
+      <div class="about-card">
+        <h2><i class="fas fa-brain"></i> AI/LLM & Automation</h2>
+        <div class="skill-chips">
+          <div class="skill-chip"><img src="https://raw.githubusercontent.com/lobehub/lobe-icons/refs/heads/master/packages/static-png/light/langchain-color.png" alt="" /><span>LangChain</span></div>
+          <div class="skill-chip"><img src="https://raw.githubusercontent.com/lobehub/lobe-icons/refs/heads/master/packages/static-png/light/langgraph-color.png" alt="" /><span>LangGraph</span></div>
+          <div class="skill-chip"><img src="https://cdn.simpleicons.org/n8n" alt="" /><span>n8n</span></div>
+          <div class="skill-chip"><img src="https://cdn.jsdelivr.net/gh/unslothai/unsloth@main/images/unsloth%20logo.png" alt="" /><span>Unsloth</span></div>
+        </div>
+      </div>
+
+      <div class="about-card">
+        <h2><i class="fas fa-database"></i> Databases</h2>
+        <div class="skill-chips">
+          <div class="skill-chip"><img src="https://cdn.simpleicons.org/mysql" alt="" /><span>MySQL</span></div>
+          <div class="skill-chip"><img src="https://cdn.simpleicons.org/postgresql" alt="" /><span>PostgreSQL</span></div>
+          <div class="skill-chip"><img src="https://cdn.simpleicons.org/mongodb" alt="" /><span>MongoDB</span></div>
+          <div class="skill-chip"><img src="https://cdn.simpleicons.org/sqlite" alt="" /><span>SQLite</span></div>
+          <div class="skill-chip"><img src="https://assets.streamlinehq.com/image/private/w_300,h_300,ar_1/f_auto/v1/icons/1/chroma-erzavigj9yrwcd5lup0swm.png/chroma-1xw4nxhjo4c64ndhrqtxp.png?_a=DATAiZiuZAA0" alt="" /><span>ChromaDB</span></div>
+        </div>
+      </div>
+
+      <div class="about-card">
+        <h2><i class="fas fa-tools"></i> Tools & Technologies</h2>
+        <div class="skill-chips">
+          <div class="skill-chip"><img src="https://cdn.simpleicons.org/git" alt="" /><span>Git</span></div>
+          <div class="skill-chip"><img src="https://cdn.simpleicons.org/github" alt="" /><span>GitHub</span></div>
+          <div class="skill-chip"><img src="https://cdn.simpleicons.org/docker" alt="" /><span>Docker</span></div>
+          <div class="skill-chip skill-chip--text"><span>REST APIs</span></div>
+          <div class="skill-chip skill-chip--text"><span>Microservices</span></div>
+        </div>
+      </div>
+
+      <div class="about-card resume-card">
+        <h2><i class="fas fa-file-alt"></i> Resume</h2>
+        <div class="resume-action">
+          <a href="#" class="resume-btn" id="resume-btn" onclick="alert('Resume coming soon!'); return false;">
+            <i class="fas fa-eye"></i> Click to see my resume
+          </a>
+        </div>
+      </div>
+    </div>
+
+    </div>
+
+    <!-- ─── FOOTER ─── -->
+    <footer>
+      <div class="footer-inner">
+        <div class="footer-grid">
+          <div class="footer-col">
+            <h4>Navigate</h4>
+            <ul>
+              <li><a href="./about.html">About</a></li>
+              <li><a href="projects.html">Projects</a></li>
+              <li><a href="certificates.html">Certificates</a></li>
+              <li><a href="socials.html">Socials</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Connect</h4>
+            <ul>
+              <li><a href="https://github.com/nayaksomkar" target="_blank">GitHub</a></li>
+              <li><a href="https://bsky.app/profile/nayaksomkar.bsky.social" target="_blank">Bluesky</a></li>
+              <li><a href="https://x.com/nayaksomkar" target="_blank">X / Twitter</a></li>
+              <li><a href="https://instagram.com/nayaksomkar" target="_blank">Instagram <span class="yt-handle">@nayaksomkar</span></a></li>
+              <li><a href="https://threads.net/@nayaksomkar" target="_blank">Threads <span class="yt-handle">@nayaksomkar</span></a></li>
+              <li><a href="https://youtube.com/@nayaksomkar" target="_blank">YouTube <span class="yt-handle">@nayaksomkar</span></a></li>
+               <li><a href="karamel.html" class="karamel-link">🧡 get karamelised</a></li>
+              <li><a href="https://huggingface.co/nayaksomkar" target="_blank">Hugging Face</a></li>
+              <li><a href="https://onlyfans.com/nayaksomkar" class="of-prank">OnlyFans</a></li>
+              <li><a href="mailto:nayaksomkar@outlook.in">Email</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <div class="footer-socials">
+            <a href="https://github.com/nayaksomkar" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://bsky.app/profile/nayaksomkar.bsky.social" target="_blank" aria-label="Bluesky"><i class="fab fa-bluesky"></i></a>
+            <a href="https://x.com/nayaksomkar" target="_blank" aria-label="X / Twitter"><i class="fab fa-x-twitter"></i></a>
+            <a href="mailto:nayaksomkar@outlook.in" aria-label="Email"><i class="fas fa-envelope"></i></a>
+          </div>
+          <p class="footer-tagline">✨ Building Intelligent Systems • One at a Time ✨</p>
+          <p class="footer-copy">@nayaksomkar</p>
+        </div>
+      </div>
+    </footer>
+  </main>
+  </div>
+  </div>
+
+  <!-- ─── README MODAL ─── -->
+  <div class="window-overlay" id="window-overlay">
+    <div class="window" id="project-window">
+      <div class="window-titlebar">
+        <span class="window-title" id="window-title">README</span>
+        <div class="window-controls">
+          <button class="win-btn close" id="win-close" title="Close"><i class="fas fa-times"></i></button>
+          <button class="win-btn minimize" id="win-minimize" title="Minimize"><i class="fas fa-minus"></i></button>
+          <button class="win-btn maximize" id="win-maximize" title="Maximize"><i class="fas fa-expand"></i></button>
+        </div>
+      </div>
+      <div class="window-body" id="window-body">
+        <div class="win-loader"><div class="spinner"></div><p>Loading README...</p></div>
+      </div>
+      <div class="window-footer">
+        <a href="#" id="window-github-link" target="_blank" class="btn-gh"><i class="fab fa-github"></i> Open on GitHub</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="../js/script.js"></script>
+  <script src="../js/coc.js"></script>
+</body>
+</html>

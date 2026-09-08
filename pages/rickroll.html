@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🎵 Never Gonna Give You Up 🎵</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background: #050508;
+      color: #f0ecf5;
+      font-family: 'Space Mono', monospace;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .rickroll-header {
+      text-align: center;
+      padding: 3rem 1rem 2rem;
+      position: relative;
+    }
+
+    .rickroll-header h1 {
+      font-size: clamp(1.5rem, 5vw, 3rem);
+      background: linear-gradient(90deg, #c084fc, #fbbf24, #c084fc);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: gradientShift 3s linear infinite;
+      margin-bottom: 0.5rem;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% center; }
+      100% { background-position: 200% center; }
+    }
+
+    .rickroll-header p {
+      color: #b8a8d0;
+      font-size: 0.9rem;
+      font-style: italic;
+    }
+
+    .rickroll-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+      padding: 2rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .rickroll-card {
+      background: rgba(14, 14, 22, 0.8);
+      border: 1px solid #1e1535;
+      border-radius: 12px;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+      position: relative;
+    }
+
+    .rickroll-card:hover {
+      transform: translateY(-4px) scale(1.02);
+      box-shadow: 0 12px 48px rgba(192, 132, 252, 0.2);
+      border-color: #c084fc;
+    }
+
+    .rickroll-card::before {
+      content: '🎵';
+      position: absolute;
+      top: 0.5rem;
+      right: 0.5rem;
+      font-size: 1.5rem;
+      z-index: 2;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .rickroll-card:hover::before {
+      opacity: 1;
+      animation: bounce 0.6s ease infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
+    }
+
+    .rickroll-card img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      display: block;
+      background: #0e0e16;
+    }
+
+    .rickroll-card .card-title {
+      padding: 0.8rem 1rem;
+      font-size: 0.85rem;
+      color: #c084fc;
+      font-weight: 700;
+      text-align: center;
+      border-top: 1px solid #1e1535;
+    }
+
+    .rickroll-footer {
+      text-align: center;
+      padding: 3rem 1rem;
+      position: relative;
+    }
+
+    .rickroll-footer p {
+      color: #b8a8d0;
+      font-size: 0.85rem;
+      margin-bottom: 1rem;
+    }
+
+    .rickroll-footer a {
+      color: #c084fc;
+      text-decoration: none;
+      font-weight: 700;
+      padding: 0.5rem 1rem;
+      border: 1px solid #c084fc;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+
+    .rickroll-footer a:hover {
+      background: #c084fc;
+      color: #050508;
+    }
+
+    .marquee {
+      overflow: hidden;
+      white-space: nowrap;
+      padding: 1rem 0;
+      background: rgba(192, 132, 252, 0.05);
+      border-top: 1px solid #1e1535;
+      border-bottom: 1px solid #1e1535;
+    }
+
+    .marquee-content {
+      display: inline-block;
+      animation: marquee 20s linear infinite;
+      font-size: 0.9rem;
+      color: #c084fc;
+      font-weight: 700;
+    }
+
+    @keyframes marquee {
+      0% { transform: translateX(100%); }
+      100% { transform: translateX(-100%); }
+    }
+
+    .disco-ball {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      width: 60px;
+      height: 60px;
+      background: radial-gradient(circle at 30% 30%, #fff, #c084fc, #1e1535);
+      border-radius: 50%;
+      animation: spin 4s linear infinite;
+      z-index: 100;
+      box-shadow: 0 0 30px rgba(192, 132, 252, 0.5);
+    }
+
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .floating-notes {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    .note {
+      position: absolute;
+      font-size: 2rem;
+      opacity: 0.1;
+      animation: floatNote 10s linear infinite;
+    }
+
+    @keyframes floatNote {
+      0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+      10% { opacity: 0.1; }
+      90% { opacity: 0.1; }
+      100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+    }
+
+    @media (max-width: 768px) {
+      .rickroll-grid {
+        grid-template-columns: 1fr;
+        padding: 1rem;
+      }
+      .disco-ball {
+        width: 40px;
+        height: 40px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="disco-ball"></div>
+
+  <div class="floating-notes">
+    <span class="note" style="left: 10%; animation-delay: 0s;">🎵</span>
+    <span class="note" style="left: 20%; animation-delay: 2s;">🎶</span>
+    <span class="note" style="left: 30%; animation-delay: 4s;">🎵</span>
+    <span class="note" style="left: 40%; animation-delay: 6s;">🎶</span>
+    <span class="note" style="left: 50%; animation-delay: 8s;">🎵</span>
+    <span class="note" style="left: 60%; animation-delay: 1s;">🎶</span>
+    <span class="note" style="left: 70%; animation-delay: 3s;">🎵</span>
+    <span class="note" style="left: 80%; animation-delay: 5s;">🎶</span>
+    <span class="note" style="left: 90%; animation-delay: 7s;">🎵</span>
+  </div>
+
+  <header class="rickroll-header">
+    <h1>🎵 Never Gonna Give You Up 🎵</h1>
+    <p>You clicked the OnlyFans link... and now you're here. Welcome to the rickroll hall of fame.</p>
+  </header>
+
+  <div class="marquee">
+    <span class="marquee-content">
+      🎤 Never gonna give you up • Never gonna let you down • Never gonna run around and desert you • Never gonna make you cry • Never gonna say goodbye • Never gonna tell a lie and hurt you • 🎤
+    </span>
+  </div>
+
+  <main class="rickroll-grid">
+    <div class="rickroll-card">
+      <img src="rick-roll/rick-astley-never-give-you-up.gif" alt="Rick Astley - Never Gonna Give You Up" loading="lazy">
+      <div class="card-title">🎵 The Original Classic</div>
+    </div>
+
+    <div class="rickroll-card">
+      <img src="rick-roll/rick-roll-rick-astley.gif" alt="Rick Roll Rick Astley" loading="lazy">
+      <div class="card-title">🕺 Rick in Action</div>
+    </div>
+
+    <div class="rickroll-card">
+      <img src="rick-roll/rick-roll-uno-reverse-uno-reverse.gif" alt="UNO Reverse Rick Roll" loading="lazy">
+      <div class="card-title">🃏 UNO Reverse Card</div>
+    </div>
+
+    <div class="rickroll-card">
+      <img src="rick-roll/rickroll-roll.gif" alt="Rickroll Roll" loading="lazy">
+      <div class="card-title">🌀 The Infinite Roll</div>
+    </div>
+
+    <div class="rickroll-card">
+      <img src="https://lab.subinsb.com/projects/blog/uploads/2020/03/rickroll.gif" alt="Rickroll GIF" loading="lazy">
+      <div class="card-title">🎬 Classic Rickroll</div>
+    </div>
+
+    <div class="rickroll-card">
+      <img src="https://i.pinimg.com/originals/f7/85/7f/f7857f7dc8194d91da6b825d3ab90fce.gif" alt="Rick Astley Dancing" loading="lazy">
+      <div class="card-title">💃 The Dance</div>
+    </div>
+
+    <div class="rickroll-card">
+      <img src="https://i.makeagif.com/media/1-08-2016/BdPABg.gif" alt="Rick Roll MakeAGif" loading="lazy">
+      <div class="card-title">🎥 Vintage Rick</div>
+    </div>
+
+    <div class="rickroll-card">
+      <img src="https://media.giphy.com/media/zFLTcYpS84wM0/giphy.gif" alt="Rick Roll Giphy" loading="lazy">
+      <div class="card-title">✨ Giphy Edition</div>
+    </div>
+
+    <div class="rickroll-card">
+      <img src="https://c.tenor.com/hTzv4T-zpjsAAAAC/hd-rick-rickroll-hd.gif" alt="HD Rick Roll" loading="lazy">
+      <div class="card-title">📺 HD Rick Roll</div>
+    </div>
+  </main>
+
+  <footer class="rickroll-footer">
+    <p>🎤 You've been officially rickrolled. Never gonna give you up! 🎤</p>
+    <p style="font-size: 0.75rem; opacity: 0.6;">Click anywhere to go back... or stay and enjoy the show 🕺</p>
+    <p style="margin-top: 1.5rem;"><a href="#" onclick="history.back(); return false;">← Go Back (if you can)</a></p>
+  </footer>
+
+  <script>
+    // Auto-play the song in your head
+    const lyrics = [
+      "Never gonna give you up",
+      "Never gonna let you down",
+      "Never gonna run around and desert you",
+      "Never gonna make you cry",
+      "Never gonna say goodbye",
+      "Never gonna tell a lie and hurt you"
+    ];
+
+    let line = 0;
+    setInterval(() => {
+      console.log(`🎵 ${lyrics[line % lyrics.length]} 🎵`);
+      line++;
+    }, 3000);
+
+    // Konami code easter egg
+    let konamiCode = [];
+    const konamiSequence = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
+    document.addEventListener('keydown', (e) => {
+      konamiCode.push(e.key);
+      konamiCode = konamiCode.slice(-10);
+      if (konamiCode.join(',') === konamiSequence.join(',')) {
+        document.body.style.animation = 'spin 2s linear infinite';
+        setTimeout(() => {
+          alert('🎮 CHEAT ACTIVATED: You are now permanently rickrolled! 🎮');
+          document.body.style.animation = '';
+        }, 100);
+      }
+    });
+  </script>
+</body>
+</html>

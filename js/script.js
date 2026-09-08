@@ -18,7 +18,7 @@ let config = { ignoreProjects: [], priorityProjects: [], ignoreCertificates: [],
 
 async function loadConfig() {
   try {
-    const res = await fetch('portfolio-config.json');
+    const res = await fetch('../portfolio-config.json');
     if (res.ok) config = await res.json();
   } catch {}
 }
@@ -282,13 +282,13 @@ document.addEventListener('click', function(e) {
 
 if (localStorage.getItem('of-prank') === '1') {
   localStorage.removeItem('of-prank');
-  triggerOFPrank();
+  window.location.href = 'rickroll.html';
 }
 
 document.addEventListener('visibilitychange', function() {
   if (!document.hidden && localStorage.getItem('of-prank') === '1') {
     localStorage.removeItem('of-prank');
-    triggerOFPrank();
+    window.location.href = 'rickroll.html';
   }
 });
 
@@ -330,12 +330,11 @@ function triggerOFPrank() {
 
   document.body.appendChild(overlay);
 
-  var rickRollUrl = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ&autoplay=1';
   var redirectTimer;
 
   function doRickRoll() {
     localStorage.setItem('of-prank', '1');
-    window.location.href = rickRollUrl;
+    window.location.href = 'rickroll.html';
   }
 
   popup.querySelector('.of-prank-btn').addEventListener('click', function() {

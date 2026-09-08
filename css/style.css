@@ -1618,9 +1618,55 @@ body.light-mode .ascii-art pre {
   filter: none;
 }
 
+.skill-chip--text {
+  padding: 0.3rem 0.9rem;
+}
+.skill-chip--text span {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+.skill-chip--text:hover span {
+  color: var(--purple-accent);
+  font-weight: 700;
+}
+
 .headlamp-chip .hl-dark { display: none; }
 .night-mode .headlamp-chip .hl-light { display: none; }
 .night-mode .headlamp-chip .hl-dark { display: inline-block; }
+
+.resume-card {
+  grid-column: span 6 !important;
+  text-align: center;
+}
+
+.resume-action {
+  padding: 1rem 0;
+}
+
+.resume-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.8rem 2rem;
+  border: 2px solid var(--purple-accent);
+  border-radius: 50px;
+  background: transparent;
+  color: var(--purple-accent);
+  font-family: 'Space Mono', monospace;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.resume-btn:hover {
+  background: var(--purple-accent);
+  color: #fff;
+  box-shadow: 0 0 30px var(--purple-glow);
+  transform: scale(1.05);
+}
 
 .footer-socials .of-logo { filter: brightness(0) saturate(100%) invert(40%) sepia(100%) saturate(500%) hue-rotate(180deg); }
 
