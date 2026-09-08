@@ -2313,15 +2313,19 @@ body.light-mode .magic-card {
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     background: var(--bg-nav);
+    height: 56px !important;
+    width: 100% !important;
   }
   .nav-inner {
-    padding: 0 1rem;
-    height: 42px;
-    gap: 0.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    max-width: 100%;
+    padding: 0 1rem !important;
+    height: 56px !important;
+    gap: 0.75rem !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
   }
   .nav-brand {
     flex-shrink: 0;
@@ -2351,17 +2355,32 @@ body.light-mode .magic-card {
     align-items: center !important;
   }
   .nav-links {
-    position: static !important;
-    transform: none !important;
-    display: flex;
-    gap: 0.6rem;
-    flex-shrink: 0;
-    left: auto;
+    display: none !important;
   }
-  .nav-links .nav-link {
-    font-size: 0.78rem;
-    padding: 0.2rem 0.4rem;
-    white-space: nowrap;
+  .nav-hamburger {
+    display: inline-flex !important;
+    flex: 0 0 auto !important;
+    width: 44px !important;
+    height: 44px !important;
+  }
+  .nav-actions {
+    display: flex !important;
+    flex: 0 0 auto !important;
+    align-items: center !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+  .toggle-wrap {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+  .toggle-label {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    width: 50px !important;
+    height: 28px !important;
   }
 
   /* Content adjustments for minimal header */
@@ -3159,31 +3178,24 @@ body.light-mode .mobile-name {
   color: var(--purple-accent);
 }</old_string><replace_all>false</replace_all>
 @media (max-width: 600px) {
-  /* Header — single thin strip */
+  /* Header — wider strip for mobile */
   nav {
-    height: 42px !important;
+    height: 56px !important;
+    width: 100% !important;
   }
   nav::after {
     opacity: 0.2 !important;
   }
   .nav-inner {
-    height: 42px !important;
-    padding: 0 0.8rem !important;
-    gap: 0.4rem !important;
+    height: 56px !important;
+    padding: 0 1rem !important;
+    gap: 0.5rem !important;
     display: flex !important;
     align-items: center !important;
-    justify-content: space-between !important;
+    justify-content: flex-end !important;
     max-width: 100% !important;
-  }
-  .nav-brand {
-    flex: 0 0 auto !important;
-    min-width: 0 !important;
-  }
-  .nav-brand-link {
-    gap: 0 !important;
-  }
-  .nav-handle {
-    display: none !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
   }
   .nav-brand {
     display: none !important;
@@ -3200,17 +3212,33 @@ body.light-mode .mobile-name {
     display: inline-flex !important;
     flex: 0 0 auto !important;
     margin: 0 !important;
+    width: 44px !important;
+    height: 44px !important;
   }
   .nav-actions {
     display: flex !important;
     flex: 0 0 auto !important;
     align-items: center !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+  .toggle-wrap {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+  .toggle-label {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    width: 50px !important;
+    height: 28px !important;
   }
   /* Ensure nav-inner is flex with nowrap */
   .nav-inner {
     flex-wrap: nowrap !important;
     justify-content: flex-end !important;
-    gap: 0.5rem !important;
+    gap: 0.75rem !important;
   }
 
   /* Hero — avatar fully visible below header */
@@ -3338,5 +3366,212 @@ body.light-mode .mobile-name {
   .ascii-mobile-text {
     display: block !important;
     font-size: clamp(1.4rem, 7vw, 2rem);
+  }
+}
+
+/* ───────── MOBILE PORTRAIT ALIGNMENT FIX ───────── */
+/* Comprehensive centering and alignment for portrait phones */
+@media (max-width: 700px) {
+  /* Prevent horizontal overflow */
+  html, body {
+    overflow-x: hidden !important;
+    width: 100% !important;
+  }
+
+  /* Center the main content wrapper */
+  .page-wrap {
+    width: 100% !important;
+    max-width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+
+  /* Center all direct children of main */
+  .about-main {
+    width: 100% !important;
+    max-width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Header: single row with all controls centered */
+  .nav-inner {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    width: 100% !important;
+    padding: 0 1rem !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Profile image: perfectly centered */
+  .about-hero {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    text-align: center !important;
+    padding: 1.5rem 0 !important;
+  }
+
+  .avatar-glow {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    margin: 0 auto 1rem auto !important;
+  }
+
+  .about-avatar {
+    margin: 0 auto !important;
+    display: block !important;
+  }
+
+  /* Animated mobile name: centered */
+  .ascii-art {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 100% !important;
+    text-align: center !important;
+    margin-bottom: 1rem !important;
+  }
+
+  .ascii-mobile-text {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 100% !important;
+    text-align: center !important;
+  }
+
+  .mobile-name {
+    display: block !important;
+    width: 100% !important;
+    text-align: center !important;
+    margin: 0 auto !important;
+  }
+
+  /* Tagline / description card: centered with equal margins */
+  .tagline-card {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 auto 1rem auto !important;
+    text-align: center !important;
+    box-sizing: border-box !important;
+  }
+
+  .tagline-card.about-card p {
+    text-align: center !important;
+    margin: 0 auto !important;
+  }
+
+  /* Section title: centered with icon */
+  .section-title {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 100% !important;
+    text-align: center !important;
+    margin: 1.5rem auto 1rem auto !important;
+  }
+
+  .section-title i {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  /* Grid: single column, centered */
+  .about-grid-2 {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    gap: 1rem !important;
+  }
+
+  /* Cards: centered with consistent padding */
+  .about-card {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 auto 1rem auto !important;
+    padding: 1rem !important;
+    text-align: center !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Card headings: icon + text centered as one unit */
+  .about-card h2 {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 100% !important;
+    text-align: center !important;
+    margin: 0 auto 0.85rem auto !important;
+  }
+
+  .about-card h2 i {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  /* Skill pills: center the entire group */
+  .skill-chips {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 100% !important;
+    gap: 0.35rem !important;
+    padding: 0.5rem 0 !important;
+  }
+
+  /* Each pill centered */
+  .skill-chip {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin: 0 !important;
+  }
+
+  /* Resume card centered */
+  .resume-card {
+    text-align: center !important;
+  }
+
+  .resume-action {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 100% !important;
+  }
+
+  .resume-btn {
+    margin: 0 auto !important;
+  }
+}
+
+/* Extra small phones - ensure alignment holds */
+@media (max-width: 380px) {
+  .about-main {
+    padding-left: 0.75rem !important;
+    padding-right: 0.75rem !important;
+  }
+
+  .about-card {
+    padding: 0.8rem !important;
+  }
+
+  .nav-inner {
+    padding: 0 0.75rem !important;
   }
 }
