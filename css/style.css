@@ -3137,24 +3137,30 @@ body.light-mode .magic-card {
     border: 3px solid var(--bg-body) !important;
   }
 
-  /* ASCII — scale proportionally using transform */
+  /* ASCII — scale entire composition proportionally as one unit.
+     Base font-size is fixed (matches desktop). transform: scale() shrinks
+     everything (including strokes) proportionally to fit container width.
+     Aspect ratio is perfectly preserved. */
   .ascii-art {
     margin: 0 auto 0.5rem auto !important;
     padding: 0 !important;
     width: 100% !important;
     max-width: 100% !important;
-    overflow: hidden !important;
+    overflow: visible !important;
     display: flex !important;
     justify-content: center !important;
     align-items: center !important;
+    min-height: 80px;
   }
   .ascii-art pre {
-    font-size: 0.16rem !important;
+    /* Fixed base font-size so transform: scale() has a known reference */
+    font-size: 0.55rem !important;
     max-width: 100% !important;
     white-space: pre !important;
     display: inline-block !important;
     margin: 0 auto !important;
     padding: 0 !important;
+    transform: scale(var(--ascii-scale, 0.55)) !important;
     transform-origin: center center !important;
   }
 }
@@ -3169,11 +3175,7 @@ body.light-mode .magic-card {
     font-size: 0.78rem !important;
   }
   .nav-links {
-    gap: 0.3rem !important;
-  }
-  .nav-links .nav-link {
-    font-size: 0.72rem !important;
-    padding: 0.15rem 0.3rem !important;
+    display: none !important;
   }
   .about-main {
     padding-top: 3.5rem !important;
@@ -3183,7 +3185,7 @@ body.light-mode .magic-card {
     height: 62px !important;
   }
   .ascii-art pre {
-    font-size: 0.14rem !important;
+    --ascii-scale: 0.6 !important;
   }
 }
 
@@ -3192,11 +3194,11 @@ body.light-mode .magic-card {
   .nav-handle {
     font-size: 0.74rem !important;
   }
-  .nav-links .nav-link {
-    font-size: 0.68rem !important;
+  .nav-links {
+    display: none !important;
   }
   .ascii-art pre {
-    font-size: 0.13rem !important;
+    --ascii-scale: 0.55 !important;
   }
 }
 
@@ -3210,14 +3212,10 @@ body.light-mode .magic-card {
     font-size: 0.7rem !important;
   }
   .nav-links {
-    gap: 0.2rem !important;
-  }
-  .nav-links .nav-link {
-    font-size: 0.66rem !important;
-    padding: 0.1rem 0.25rem !important;
+    display: none !important;
   }
   .ascii-art pre {
-    font-size: 0.12rem !important;
+    --ascii-scale: 0.5 !important;
   }
 }
 
@@ -3232,11 +3230,7 @@ body.light-mode .magic-card {
     font-size: 0.66rem !important;
   }
   .nav-links {
-    gap: 0.15rem !important;
-  }
-  .nav-links .nav-link {
-    font-size: 0.62rem !important;
-    padding: 0.1rem 0.2rem !important;
+    display: none !important;
   }
   .about-main {
     padding-top: 3.2rem !important;
@@ -3246,6 +3240,6 @@ body.light-mode .magic-card {
     height: 56px !important;
   }
   .ascii-art pre {
-    font-size: 0.11rem !important;
+    --ascii-scale: 0.46 !important;
   }
 }
