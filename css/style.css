@@ -2291,7 +2291,8 @@ body.light-mode .magic-card {
   .about-avatar { width: 72px; height: 72px; }
   .skill-chips { justify-content: center; }
   .about-card { padding: 1rem; text-align: center; }
-  .about-card h2 { font-size: 0.8rem; justify-content: center; }
+  .about-card h2 { font-size: clamp(0.9rem, 3.2vw, 1rem); justify-content: center; }
+  .about-card h2 i { font-size: clamp(0.8rem, 2.8vw, 0.9rem); }
   .about-card p { font-size: 0.85rem; }
   .edu-item { justify-content: center; flex-wrap: wrap; }
   .ascii-art { margin-bottom: 1rem; text-align: center; }
@@ -2891,7 +2892,7 @@ body.light-mode .magic-card {
     font-size: clamp(0.6rem, 3vw, 0.85rem);
   }
   .section-title {
-    font-size: 0.9rem;
+    font-size: clamp(1.1rem, 4vw, 1.3rem);
     margin: 1rem 0 0.5rem;
   }
   .about-grid-2 {
@@ -2903,32 +2904,34 @@ body.light-mode .magic-card {
     padding: 0.8rem;
   }
   .about-card h2 {
-    font-size: 0.8rem;
+    font-size: clamp(0.95rem, 3.5vw, 1.1rem);
     margin-bottom: 0.6rem;
     justify-content: center;
+  }
+  .about-card h2 i {
+    font-size: clamp(0.85rem, 3vw, 1rem);
   }
   .skill-chips {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.25rem;
+    gap: 0.3rem;
     justify-content: center !important;
   }
   .skill-chip {
-    padding: 0.2rem 0.4rem 0.2rem 0.3rem;
-    font-size: 0.7rem;
+    padding: 0.25rem 0.5rem 0.25rem 0.35rem;
   }
   .skill-chip img {
-    width: 18px;
-    height: 18px;
+    width: clamp(20px, 5vw, 26px);
+    height: clamp(20px, 5vw, 26px);
   }
   .skill-chip span {
-    font-size: 0.7rem;
+    font-size: clamp(0.75rem, 2.5vw, 0.85rem);
   }
   .skill-chip--text {
-    padding: 0.2rem 0.6rem;
+    padding: 0.25rem 0.7rem;
   }
   .skill-chip--text span {
-    font-size: 0.7rem;
+    font-size: clamp(0.75rem, 2.5vw, 0.85rem);
   }
   .resume-card {
     grid-column: span 1 !important;
@@ -2962,7 +2965,7 @@ body.light-mode .magic-card {
     font-size: 0.65rem;
   }
   .section-title {
-    font-size: 0.8rem;
+    font-size: clamp(1rem, 3.8vw, 1.2rem);
   }
   .about-grid-2 {
     grid-template-columns: 1fr;
@@ -2973,29 +2976,32 @@ body.light-mode .magic-card {
     padding: 0.6rem;
   }
   .about-card h2 {
-    font-size: 0.75rem;
+    font-size: clamp(0.85rem, 3.2vw, 1rem);
     margin-bottom: 0.5rem;
     justify-content: center;
   }
+  .about-card h2 i {
+    font-size: clamp(0.75rem, 2.8vw, 0.9rem);
+  }
   .skill-chips {
-    gap: 0.2rem;
+    gap: 0.25rem;
     justify-content: center !important;
   }
   .skill-chip {
-    padding: 0.15rem 0.35rem 0.15rem 0.25rem;
+    padding: 0.2rem 0.4rem 0.2rem 0.3rem;
   }
   .skill-chip img {
-    width: 16px;
-    height: 16px;
+    width: clamp(18px, 4.5vw, 24px);
+    height: clamp(18px, 4.5vw, 24px);
   }
   .skill-chip span {
-    font-size: 0.65rem;
+    font-size: clamp(0.7rem, 2.2vw, 0.8rem);
   }
   .skill-chip--text {
-    padding: 0.15rem 0.5rem;
+    padding: 0.2rem 0.55rem;
   }
   .skill-chip--text span {
-    font-size: 0.65rem;
+    font-size: clamp(0.7rem, 2.2vw, 0.8rem);
   }
   .resume-btn {
     padding: 0.5rem 1.2rem;
@@ -3005,13 +3011,73 @@ body.light-mode .magic-card {
 /* ───────── ASCII MOBILE TEXT (hidden on desktop) ───────── */
 .ascii-mobile-text {
   display: none;
-  font-family: 'Space Mono', monospace;
-  font-weight: 700;
-  color: var(--purple-accent);
   text-align: center;
-  letter-spacing: 0.1em;
+  position: relative;
+  overflow: hidden;
+}
+
+.mobile-name {
+  display: inline-block;
+  font-weight: 700;
+  text-align: center;
   white-space: nowrap;
-  -webkit-text-stroke: 1px var(--purple-accent);
+  font-family: 'Space Mono', monospace;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    transparent 25%,
+    rgba(192, 132, 252, 0.15) 28%,
+    var(--purple-accent) 33%,
+    var(--purple-accent3) 50%,
+    var(--purple-accent) 66%,
+    rgba(192, 132, 252, 0.15) 70%,
+    transparent 73%,
+    transparent 100%
+  );
+  background-size: 300% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textSweep 8s ease-in-out infinite;
+}
+
+@keyframes textSweep {
+  0%, 100% { background-position: 0% 0; }
+  50% { background-position: 200% 0; }
+}
+
+.ascii-mobile-text::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--purple-accent), transparent);
+  border-radius: 2px;
+  opacity: 0.6;
+}
+
+body.light-mode .mobile-name {
+  background-image: linear-gradient(90deg,
+    transparent 0%,
+    transparent 25%,
+    rgba(168, 85, 247, 0.1) 28%,
+    var(--purple-accent2) 33%,
+    var(--purple-accent) 50%,
+    var(--purple-accent2) 66%,
+    rgba(168, 85, 247, 0.1) 70%,
+    transparent 73%,
+    transparent 100%
+  );
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mobile-name {
+    animation: none !important;
+  }
 }
 
 /* ───────── FINAL MOBILE OVERRIDE (≤600px) ───────── */
@@ -3045,7 +3111,7 @@ body.light-mode .magic-card {
   color: #fff;
 }
 .nav-hamburger i {
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   line-height: 1;
   display: inline-block;
   color: inherit;
@@ -3170,31 +3236,6 @@ body.light-mode .magic-card {
     display: block !important;
     border: 3px solid var(--bg-body) !important;
   }
-
-  /* ASCII — preserve original character proportions. Scale down uniformly
-     to fit viewport while keeping aspect ratio intact. Centered. */
-  .ascii-art {
-    margin: 0 auto 0.5rem auto !important;
-    padding: 0 !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    overflow: hidden !important;
-    display: flex !important;
-    justify-content: center !important;
-    align-items: center !important;
-    min-height: 60px;
-  }
-  /* Hide ASCII art <pre> on mobile - show mobile text version instead */
-  .ascii-art pre {
-    display: none !important;
-  }
-  /* Show mobile text version */
-  .ascii-mobile-text {
-    display: block !important;
-    font-size: clamp(1rem, 5vw, 1.5rem) !important;
-    margin: 0.5rem 0 !important;
-    padding: 0.3rem 0.5rem !important;
-  }
 }
 
 /* 414px — iPhone XR / 11 */
@@ -3217,7 +3258,7 @@ body.light-mode .magic-card {
     height: 62px !important;
   }
   .ascii-mobile-text {
-    font-size: clamp(1rem, 4.8vw, 1.4rem) !important;
+    font-size: clamp(1.3rem, 6.5vw, 1.8rem) !important;
   }
 }
 
@@ -3230,7 +3271,7 @@ body.light-mode .magic-card {
     display: none !important;
   }
   .ascii-mobile-text {
-    font-size: clamp(0.95rem, 4.5vw, 1.3rem) !important;
+    font-size: clamp(1.2rem, 6vw, 1.6rem) !important;
   }
 }
 
@@ -3247,7 +3288,7 @@ body.light-mode .magic-card {
     display: none !important;
   }
   .ascii-mobile-text {
-    font-size: clamp(0.9rem, 4.2vw, 1.2rem) !important;
+    font-size: clamp(1.1rem, 5.5vw, 1.5rem) !important;
   }
 }
 
@@ -3272,6 +3313,25 @@ body.light-mode .magic-card {
     height: 56px !important;
   }
   .ascii-mobile-text {
-    font-size: clamp(0.85rem, 4vw, 1.1rem) !important;
+    font-size: clamp(1rem, 5vw, 1.3rem) !important;
+  }
+}
+
+/* ───────── MOBILE TEXT VISIBILITY ───────── */
+/* Portrait OR narrow screens: show mobile text, hide ASCII */
+/* Wide landscape: ASCII follows existing desktop/responsive  */
+@media (orientation: portrait), (max-width: 700px) {
+  .ascii-art pre {
+    display: none !important;
+    visibility: hidden !important;
+    position: absolute !important;
+    width: 0 !important;
+    height: 0 !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+  }
+  .ascii-mobile-text {
+    display: block !important;
+    font-size: clamp(1.4rem, 7vw, 2rem);
   }
 }
