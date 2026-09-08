@@ -3002,3 +3002,210 @@ body.light-mode .magic-card {
     font-size: 0.85rem;
   }
 }
+/* ───────── FINAL MOBILE OVERRIDE (≤600px) ───────── */
+/* Ensures mobile header is one thin strip and hero is properly positioned.
+   All other sections are NOT touched here. */
+@media (max-width: 600px) {
+  /* Header — single thin strip */
+  nav {
+    height: 42px !important;
+  }
+  nav::after {
+    opacity: 0.2 !important;
+  }
+  .nav-inner {
+    height: 42px !important;
+    padding: 0 0.8rem !important;
+    gap: 0.4rem !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    max-width: 100% !important;
+  }
+  .nav-brand {
+    flex: 0 0 auto !important;
+    min-width: 0 !important;
+  }
+  .nav-brand-link {
+    gap: 0 !important;
+  }
+  .nav-avatar {
+    display: none !important;
+  }
+  .nav-brand-text {
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 0 !important;
+  }
+  .nav-fullname {
+    display: none !important;
+  }
+  .nav-handle {
+    font-size: 0.85rem !important;
+    white-space: nowrap !important;
+    color: var(--purple-accent) !important;
+    font-weight: 700 !important;
+  }
+  .nav-actions {
+    display: none !important;
+  }
+  /* nav-links: completely override the absolute positioning */
+  .nav-links {
+    position: static !important;
+    transform: none !important;
+    left: auto !important;
+    display: flex !important;
+    gap: 0.5rem !important;
+    flex: 0 0 auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  .nav-links .nav-link {
+    font-size: 0.78rem !important;
+    padding: 0.15rem 0.4rem !important;
+    white-space: nowrap !important;
+    color: var(--text-secondary) !important;
+    font-weight: 700 !important;
+  }
+
+  /* Hero — avatar fully visible below header */
+  .about-main {
+    padding-top: 3.8rem !important;
+  }
+  .about-hero {
+    padding: 0.4rem 0 0.5rem !important;
+  }
+  .avatar-glow {
+    margin: 0 auto 0.4rem auto !important;
+    padding: 3px !important;
+    display: inline-flex !important;
+    border-radius: 50% !important;
+    overflow: hidden !important;
+    position: relative !important;
+  }
+  .avatar-glow::before,
+  .avatar-glow::after {
+    display: none !important;
+    content: none !important;
+  }
+  .about-avatar {
+    width: 70px !important;
+    height: 70px !important;
+    border-radius: 50% !important;
+    object-fit: cover !important;
+    display: block !important;
+    border: 3px solid var(--bg-body) !important;
+  }
+
+  /* ASCII — scale proportionally using transform */
+  .ascii-art {
+    margin: 0 auto 0.5rem auto !important;
+    padding: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow: hidden !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+  }
+  .ascii-art pre {
+    font-size: 0.16rem !important;
+    max-width: 100% !important;
+    white-space: pre !important;
+    display: inline-block !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+    transform-origin: center center !important;
+  }
+}
+
+/* 414px — iPhone XR / 11 */
+@media (max-width: 414px) {
+  .nav-inner {
+    padding: 0 0.6rem !important;
+    gap: 0.3rem !important;
+  }
+  .nav-handle {
+    font-size: 0.78rem !important;
+  }
+  .nav-links {
+    gap: 0.3rem !important;
+  }
+  .nav-links .nav-link {
+    font-size: 0.72rem !important;
+    padding: 0.15rem 0.3rem !important;
+  }
+  .about-main {
+    padding-top: 3.5rem !important;
+  }
+  .about-avatar {
+    width: 62px !important;
+    height: 62px !important;
+  }
+  .ascii-art pre {
+    font-size: 0.14rem !important;
+  }
+}
+
+/* 390px — iPhone 12/13/14 */
+@media (max-width: 390px) {
+  .nav-handle {
+    font-size: 0.74rem !important;
+  }
+  .nav-links .nav-link {
+    font-size: 0.68rem !important;
+  }
+  .ascii-art pre {
+    font-size: 0.13rem !important;
+  }
+}
+
+/* 375px — iPhone SE */
+@media (max-width: 375px) {
+  .nav-inner {
+    padding: 0 0.5rem !important;
+    gap: 0.2rem !important;
+  }
+  .nav-handle {
+    font-size: 0.7rem !important;
+  }
+  .nav-links {
+    gap: 0.2rem !important;
+  }
+  .nav-links .nav-link {
+    font-size: 0.66rem !important;
+    padding: 0.1rem 0.25rem !important;
+  }
+  .ascii-art pre {
+    font-size: 0.12rem !important;
+  }
+}
+
+/* 360px — very small phone */
+@media (max-width: 360px) {
+  .nav-inner {
+    padding: 0 0.4rem !important;
+    height: 40px !important;
+    gap: 0.15rem !important;
+  }
+  .nav-handle {
+    font-size: 0.66rem !important;
+  }
+  .nav-links {
+    gap: 0.15rem !important;
+  }
+  .nav-links .nav-link {
+    font-size: 0.62rem !important;
+    padding: 0.1rem 0.2rem !important;
+  }
+  .about-main {
+    padding-top: 3.2rem !important;
+  }
+  .about-avatar {
+    width: 56px !important;
+    height: 56px !important;
+  }
+  .ascii-art pre {
+    font-size: 0.11rem !important;
+  }
+}
