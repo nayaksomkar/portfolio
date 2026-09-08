@@ -3011,10 +3011,12 @@ body.light-mode .magic-card {
   display: none;
   background: transparent;
   border: 1px solid var(--purple-border);
-  border-radius: 6px;
-  padding: 0.3rem 0.55rem;
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  min-width: 44px;
+  min-height: 44px;
   color: var(--purple-accent);
-  font-size: 0.95rem;
+  font-size: 1.5rem;
   cursor: pointer;
   transition: all var(--transition);
   align-items: center;
@@ -3024,6 +3026,17 @@ body.light-mode .magic-card {
 .nav-hamburger:hover {
   background: var(--purple-glow);
   border-color: var(--purple-accent);
+  color: var(--purple-accent2);
+}
+.nav-hamburger:active {
+  background: var(--purple-accent);
+  color: #fff;
+}
+.nav-hamburger i {
+  font-size: 1.4rem;
+  line-height: 1;
+  display: inline-block;
+  color: inherit;
 }
 
 .nav-mobile-menu {
