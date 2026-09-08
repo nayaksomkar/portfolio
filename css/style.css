@@ -3002,6 +3002,18 @@ body.light-mode .magic-card {
     font-size: 0.85rem;
   }
 }
+/* ───────── ASCII MOBILE TEXT (hidden on desktop) ───────── */
+.ascii-mobile-text {
+  display: none;
+  font-family: 'Space Mono', monospace;
+  font-weight: 700;
+  color: var(--purple-accent);
+  text-align: center;
+  letter-spacing: 0.1em;
+  white-space: nowrap;
+  -webkit-text-stroke: 1px var(--purple-accent);
+}
+
 /* ───────── FINAL MOBILE OVERRIDE (≤600px) ───────── */
 /* Ensures mobile header is one thin strip and hero is properly positioned.
    All other sections are NOT touched here. */
@@ -3166,24 +3178,22 @@ body.light-mode .magic-card {
     padding: 0 !important;
     width: 100% !important;
     max-width: 100% !important;
-    overflow-x: auto !important;
-    overflow-y: hidden !important;
+    overflow: hidden !important;
     display: flex !important;
     justify-content: center !important;
     align-items: center !important;
-    min-height: 80px;
-    -webkit-overflow-scrolling: touch;
+    min-height: 60px;
   }
+  /* Hide ASCII art <pre> on mobile - show mobile text version instead */
   .ascii-art pre {
-    /* Fixed base font-size so transform: scale() has a known reference */
-    font-size: 0.55rem !important;
-    max-width: 100% !important;
-    white-space: pre !important;
-    display: inline-block !important;
-    margin: 0 auto !important;
-    padding: 0 0.5rem !important;
-    transform: scale(var(--ascii-scale, 0.55)) !important;
-    transform-origin: center center !important;
+    display: none !important;
+  }
+  /* Show mobile text version */
+  .ascii-mobile-text {
+    display: block !important;
+    font-size: clamp(1rem, 5vw, 1.5rem) !important;
+    margin: 0.5rem 0 !important;
+    padding: 0.3rem 0.5rem !important;
   }
 }
 
@@ -3206,8 +3216,8 @@ body.light-mode .magic-card {
     width: 62px !important;
     height: 62px !important;
   }
-  .ascii-art pre {
-    --ascii-scale: 0.6 !important;
+  .ascii-mobile-text {
+    font-size: clamp(1rem, 4.8vw, 1.4rem) !important;
   }
 }
 
@@ -3219,8 +3229,8 @@ body.light-mode .magic-card {
   .nav-links {
     display: none !important;
   }
-  .ascii-art pre {
-    --ascii-scale: 0.55 !important;
+  .ascii-mobile-text {
+    font-size: clamp(0.95rem, 4.5vw, 1.3rem) !important;
   }
 }
 
@@ -3236,8 +3246,8 @@ body.light-mode .magic-card {
   .nav-links {
     display: none !important;
   }
-  .ascii-art pre {
-    --ascii-scale: 0.5 !important;
+  .ascii-mobile-text {
+    font-size: clamp(0.9rem, 4.2vw, 1.2rem) !important;
   }
 }
 
@@ -3261,7 +3271,7 @@ body.light-mode .magic-card {
     width: 56px !important;
     height: 56px !important;
   }
-  .ascii-art pre {
-    --ascii-scale: 0.46 !important;
+  .ascii-mobile-text {
+    font-size: clamp(0.85rem, 4vw, 1.1rem) !important;
   }
 }
