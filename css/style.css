@@ -2710,24 +2710,34 @@ body.light-mode .magic-card {
   }
   .about-grid-2 > .about-card {
     grid-column: span 1 !important;
-    padding: 1rem;
+    padding: 0.8rem;
   }
   .about-card h2 {
     font-size: 0.8rem;
     margin-bottom: 0.6rem;
   }
   .skill-chips {
-    gap: 0.3rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+    justify-content: flex-start;
   }
   .skill-chip {
-    padding: 0.25rem 0.5rem 0.25rem 0.4rem;
+    padding: 0.2rem 0.4rem 0.2rem 0.3rem;
+    font-size: 0.7rem;
   }
   .skill-chip img {
-    width: 20px;
-    height: 20px;
+    width: 18px;
+    height: 18px;
   }
   .skill-chip span {
-    font-size: 0.75rem;
+    font-size: 0.7rem;
+  }
+  .skill-chip--text {
+    padding: 0.2rem 0.6rem;
+  }
+  .skill-chip--text span {
+    font-size: 0.7rem;
   }
   .resume-card {
     grid-column: span 1 !important;
@@ -2740,7 +2750,7 @@ body.light-mode .magic-card {
 
 @media (max-width: 480px) {
   .about-main {
-    padding: 4.5rem 0.6rem 1.5rem;
+    padding: 4.5rem 0.5rem 1.5rem;
   }
   .about-hero {
     padding: 0.3rem 0 0.8rem;
@@ -2762,23 +2772,35 @@ body.light-mode .magic-card {
     font-size: 0.8rem;
   }
   .about-grid-2 {
+    grid-template-columns: 1fr;
     gap: 0.6rem;
   }
-  .about-card {
-    padding: 0.8rem;
+  .about-grid-2 > .about-card {
+    grid-column: span 1 !important;
+    padding: 0.6rem;
   }
   .about-card h2 {
     font-size: 0.75rem;
+    margin-bottom: 0.5rem;
+  }
+  .skill-chips {
+    gap: 0.2rem;
+  }
+  .skill-chip {
+    padding: 0.15rem 0.35rem 0.15rem 0.25rem;
   }
   .skill-chip img {
-    width: 18px;
-    height: 18px;
+    width: 16px;
+    height: 16px;
   }
   .skill-chip span {
-    font-size: 0.7rem;
+    font-size: 0.65rem;
+  }
+  .skill-chip--text {
+    padding: 0.15rem 0.5rem;
   }
   .skill-chip--text span {
-    font-size: 0.7rem;
+    font-size: 0.65rem;
   }
   .resume-btn {
     padding: 0.5rem 1.2rem;
