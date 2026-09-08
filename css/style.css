@@ -3433,14 +3433,16 @@ body.light-mode .mobile-name {
     display: block !important;
   }
 
-  /* Animated mobile name: centered */
+  /* Animated mobile name: centered and lower */
   .ascii-art {
     display: flex !important;
     justify-content: center !important;
     align-items: center !important;
     width: 100% !important;
     text-align: center !important;
-    margin-bottom: 1rem !important;
+    margin-top: 1.5rem !important;
+    margin-bottom: 1.5rem !important;
+    padding-top: 0 !important;
   }
 
   .ascii-mobile-text {
