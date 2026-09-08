@@ -1199,17 +1199,21 @@ body.light-mode .project-card.pinned {
   position: relative;
   padding-top: 1.2rem;
   max-width: 100%;
+  overflow: visible;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .ascii-art pre {
-  display: block;
+  display: inline-block;
   font-family: 'Space Mono', monospace;
   font-size: clamp(0.18rem, 1.2vw, 0.55rem);
   font-weight: 400;
   line-height: 1.1;
   letter-spacing: normal;
   white-space: pre;
-  overflow: hidden;
-  width: 100%;
+  margin: 0;
+  padding: 0;
   max-width: 100%;
   -webkit-text-stroke: 1px var(--purple-accent);
   background: linear-gradient(90deg,
@@ -2375,15 +2379,21 @@ body.light-mode .magic-card {
     height: 72px !important;
   }
 
-  /* ASCII art - reduce gap */
+  /* ASCII art - scale proportionally as one unit */
   .ascii-art {
     margin-bottom: 0.5rem !important;
+    padding-top: 0.5rem !important;
+    padding-bottom: 0 !important;
+    width: 100%;
+    overflow: visible;
   }
   .ascii-art pre {
-    font-size: clamp(0.08rem, 0.9vw, 0.28rem);
+    font-size: clamp(0.14rem, 0.95vw, 0.22rem);
     max-width: 100%;
-    overflow: hidden;
-    line-height: 1.05;
+    overflow: visible;
+    white-space: pre;
+    transform-origin: center center;
+    display: inline-block;
   }
 
   /* Description card */
@@ -2463,7 +2473,7 @@ body.light-mode .magic-card {
     height: 64px !important;
   }
   .ascii-art pre {
-    font-size: clamp(0.06rem, 0.7vw, 0.2rem);
+    font-size: clamp(0.12rem, 0.85vw, 0.18rem);
   }
   .tagline-card.about-card p {
     font-size: 0.65rem;
@@ -2481,6 +2491,9 @@ body.light-mode .magic-card {
   .nav-links .nav-link {
     font-size: 0.68rem;
     padding: 0.15rem 0.25rem;
+  }
+  .ascii-art pre {
+    font-size: clamp(0.11rem, 0.8vw, 0.16rem);
   }
 }
 
@@ -2509,6 +2522,9 @@ body.light-mode .magic-card {
   }
   .about-card {
     padding: 0.6rem !important;
+  }
+  .ascii-art pre {
+    font-size: clamp(0.1rem, 0.75vw, 0.15rem);
   }
 }
 
