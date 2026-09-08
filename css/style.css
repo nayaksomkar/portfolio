@@ -2721,7 +2721,7 @@ body.light-mode .magic-card {
     display: flex;
     flex-wrap: wrap;
     gap: 0.25rem;
-    justify-content: flex-start;
+    justify-content: flex-start !important;
   }
   .skill-chip {
     padding: 0.2rem 0.4rem 0.2rem 0.3rem;
@@ -2787,7 +2787,7 @@ body.light-mode .magic-card {
   }
   .skill-chips {
     gap: 0.2rem;
-    justify-content: flex-start;
+    justify-content: flex-start !important;
   }
   .skill-chip {
     padding: 0.15rem 0.35rem 0.15rem 0.25rem;
