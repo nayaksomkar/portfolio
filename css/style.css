@@ -2292,6 +2292,176 @@ body.light-mode .magic-card {
   .detail-grid { grid-template-columns: 1fr; }
 }
 
+/* ───────── MINIMAL MOBILE HEADER (≤600px) ───────── */
+@media (max-width: 600px) {
+  nav {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    background: var(--bg-nav);
+  }
+  .nav-inner {
+    padding: 0 1rem;
+    height: 44px;
+    gap: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 100%;
+  }
+  .nav-brand {
+    flex-shrink: 0;
+    min-width: 0;
+  }
+  .nav-brand-link {
+    gap: 0;
+  }
+  .nav-avatar {
+    display: none !important;
+  }
+  .nav-brand-text {
+    flex-direction: row;
+    align-items: center;
+    gap: 0;
+  }
+  .nav-fullname {
+    display: none !important;
+  }
+  .nav-handle {
+    font-size: 0.85rem;
+    white-space: nowrap;
+  }
+  .nav-actions {
+    display: none !important;
+  }
+  .nav-links {
+    position: static;
+    transform: none;
+    display: flex;
+    gap: 0.8rem;
+    flex-shrink: 0;
+  }
+  .nav-links .nav-link {
+    font-size: 0.8rem;
+    padding: 0.2rem 0.5rem;
+    white-space: nowrap;
+  }
+
+  /* Content adjustments for minimal header */
+  .about-main {
+    padding-top: 4.5rem !important;
+  }
+  .about-hero {
+    padding-top: 1rem !important;
+  }
+  .about-avatar {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 1rem;
+  }
+  .ascii-art {
+    margin-bottom: 0.8rem;
+  }
+  .ascii-art pre {
+    font-size: clamp(0.08rem, 0.9vw, 0.3rem);
+    max-width: 100%;
+    overflow: hidden;
+  }
+  .tagline-card.about-card p {
+    font-size: clamp(0.7rem, 2.5vw, 0.85rem);
+  }
+  .section-title {
+    font-size: 0.85rem;
+    margin: 1rem 0 0.5rem;
+  }
+  .about-grid-2 {
+    grid-template-columns: 1fr;
+    gap: 0.7rem;
+  }
+  .about-grid-2 > .about-card {
+    grid-column: span 1 !important;
+    padding: 0.8rem;
+    text-align: center;
+  }
+  .about-card h2 {
+    font-size: 0.78rem;
+    margin-bottom: 0.5rem;
+    justify-content: center;
+  }
+  .skill-chips {
+    justify-content: center !important;
+    gap: 0.25rem;
+  }
+  .skill-chip {
+    padding: 0.2rem 0.4rem 0.2rem 0.3rem;
+  }
+  .skill-chip img {
+    width: 18px;
+    height: 18px;
+  }
+  .skill-chip span {
+    font-size: 0.7rem;
+  }
+  .resume-card {
+    grid-column: span 1 !important;
+  }
+  .resume-btn {
+    padding: 0.6rem 1.5rem;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 414px) {
+  .nav-inner {
+    padding: 0 0.8rem;
+    height: 42px;
+    gap: 0.3rem;
+  }
+  .nav-handle {
+    font-size: 0.8rem;
+  }
+  .nav-links {
+    gap: 0.5rem;
+  }
+  .nav-links .nav-link {
+    font-size: 0.75rem;
+    padding: 0.2rem 0.4rem;
+  }
+  .about-main {
+    padding: 4rem 0.6rem 1.5rem !important;
+  }
+  .about-avatar {
+    width: 70px;
+    height: 70px;
+  }
+  .ascii-art pre {
+    font-size: clamp(0.06rem, 0.7vw, 0.2rem);
+  }
+}
+
+@media (max-width: 360px) {
+  .nav-inner {
+    padding: 0 0.6rem;
+    height: 40px;
+  }
+  .nav-handle {
+    font-size: 0.75rem;
+  }
+  .nav-links {
+    gap: 0.3rem;
+  }
+  .nav-links .nav-link {
+    font-size: 0.7rem;
+    padding: 0.15rem 0.3rem;
+  }
+  .about-main {
+    padding: 3.8rem 0.5rem 1.2rem !important;
+  }
+  .about-avatar {
+    width: 60px;
+    height: 60px;
+  }
+}
+
 @media (max-width: 640px) {
   .nav-inner { padding: 0 0.8rem; height: 56px; gap: 0.5rem; }
   .nav-brand-link { gap: 0.5rem; }
