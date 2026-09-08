@@ -2715,6 +2715,7 @@ body.light-mode .magic-card {
   .about-card h2 {
     font-size: 0.8rem;
     margin-bottom: 0.6rem;
+    justify-content: flex-start;
   }
   .skill-chips {
     display: flex;
@@ -2782,9 +2783,11 @@ body.light-mode .magic-card {
   .about-card h2 {
     font-size: 0.75rem;
     margin-bottom: 0.5rem;
+    justify-content: flex-start;
   }
   .skill-chips {
     gap: 0.2rem;
+    justify-content: flex-start;
   }
   .skill-chip {
     padding: 0.15rem 0.35rem 0.15rem 0.25rem;
