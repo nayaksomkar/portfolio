@@ -3004,7 +3004,7 @@ body.light-mode .magic-card {
 }
 /* ───────── FINAL MOBILE OVERRIDE (≤600px) ───────── */
 /* Ensures mobile header is one thin strip and hero is properly positioned.
-   All other sections are NOT touched here. */
+   All other sections are NOT touched here. */</old_string><replace_all>false</replace_all>
 @media (max-width: 600px) {
   /* Header — single thin strip */
   nav {
@@ -3029,17 +3029,6 @@ body.light-mode .magic-card {
   .nav-brand-link {
     gap: 0 !important;
   }
-  .nav-avatar {
-    display: none !important;
-  }
-  .nav-brand-text {
-    flex-direction: row !important;
-    align-items: center !important;
-    gap: 0 !important;
-  }
-  .nav-fullname {
-    display: none !important;
-  }
   .nav-handle {
     font-size: 0.85rem !important;
     white-space: nowrap !important;
@@ -3049,7 +3038,7 @@ body.light-mode .magic-card {
   .nav-actions {
     display: none !important;
   }
-  /* nav-links: completely override the absolute positioning */
+  /* nav-links: completely override the absolute positioning for single line */
   .nav-links {
     position: static !important;
     transform: none !important;
