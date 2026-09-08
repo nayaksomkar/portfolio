@@ -1,17 +1,19 @@
 /* ───────── THEME TOGGLE ───────── */
 const toggle = document.getElementById('theme-toggle');
 
-if (localStorage.getItem('theme') === 'light') {
-  toggle.checked = true;
-  document.body.classList.add('light-mode');
-  document.body.classList.remove('night-mode');
-}
+if (toggle) {
+  if (localStorage.getItem('theme') === 'light') {
+    toggle.checked = true;
+    document.body.classList.add('light-mode');
+    document.body.classList.remove('night-mode');
+  }
 
-toggle.addEventListener('change', () => {
-  document.body.classList.toggle('light-mode', toggle.checked);
-  document.body.classList.toggle('night-mode', !toggle.checked);
-  localStorage.setItem('theme', toggle.checked ? 'light' : 'dark');
-});
+  toggle.addEventListener('change', () => {
+    document.body.classList.toggle('light-mode', toggle.checked);
+    document.body.classList.toggle('night-mode', !toggle.checked);
+    localStorage.setItem('theme', toggle.checked ? 'light' : 'dark');
+  });
+}
 
 /* ───────── CONFIG (shared) ───────── */
 let config = { ignoreProjects: [], priorityProjects: [], ignoreCertificates: [], cocApiKey: '' };
