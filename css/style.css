@@ -3090,10 +3090,13 @@ body.light-mode .magic-card {
     gap: 0 !important;
   }
   .nav-handle {
-    font-size: 0.85rem !important;
-    white-space: nowrap !important;
-    color: var(--purple-accent) !important;
-    font-weight: 700 !important;
+    display: none !important;
+  }
+  .nav-brand {
+    display: none !important;
+  }
+  .nav-brand-link {
+    display: none !important;
   }
   .nav-actions {
     display: none !important;
@@ -3102,10 +3105,16 @@ body.light-mode .magic-card {
   .nav-links {
     display: none !important;
   }
-  /* Show hamburger on mobile */
+  /* Show hamburger on mobile - center it */
   .nav-hamburger {
     display: inline-flex !important;
     flex: 0 0 auto !important;
+    margin: 0 auto !important;
+  }
+  /* Ensure nav-inner is flex with nowrap */
+  .nav-inner {
+    flex-wrap: nowrap !important;
+    justify-content: center !important;
   }
 
   /* Hero — avatar fully visible below header */
@@ -3137,20 +3146,20 @@ body.light-mode .magic-card {
     border: 3px solid var(--bg-body) !important;
   }
 
-  /* ASCII — scale entire composition proportionally as one unit.
-     Base font-size is fixed (matches desktop). transform: scale() shrinks
-     everything (including strokes) proportionally to fit container width.
-     Aspect ratio is perfectly preserved. */
+  /* ASCII — preserve original character proportions. Scale down uniformly
+     to fit viewport while keeping aspect ratio intact. Centered. */
   .ascii-art {
     margin: 0 auto 0.5rem auto !important;
     padding: 0 !important;
     width: 100% !important;
     max-width: 100% !important;
-    overflow: visible !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
     display: flex !important;
     justify-content: center !important;
     align-items: center !important;
     min-height: 80px;
+    -webkit-overflow-scrolling: touch;
   }
   .ascii-art pre {
     /* Fixed base font-size so transform: scale() has a known reference */
@@ -3159,7 +3168,7 @@ body.light-mode .magic-card {
     white-space: pre !important;
     display: inline-block !important;
     margin: 0 auto !important;
-    padding: 0 !important;
+    padding: 0 0.5rem !important;
     transform: scale(var(--ascii-scale, 0.55)) !important;
     transform-origin: center center !important;
   }
