@@ -11,17 +11,26 @@
   <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
   <style>
     body {
-      background: #050508;
-      color: #f0ecf5;
+      background: var(--bg-body);
+      color: var(--text-primary);
       font-family: 'Space Mono', monospace;
       min-height: 100vh;
       overflow-x: hidden;
+      transition: background 0.3s ease, color 0.3s ease;
     }
 
     .rickroll-header {
       text-align: center;
       padding: 3rem 1rem 2rem;
       position: relative;
+    }
+
+    .fame-header-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
     }
 
     .rickroll-header h1 {
@@ -69,8 +78,8 @@
     }
 
     .rickroll-card {
-      background: rgba(14, 14, 22, 0.8);
-      border: 1px solid #1e1535;
+      background: var(--bg-card);
+      border: 1px solid var(--purple-border);
       border-radius: 12px;
       overflow: hidden;
       transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
@@ -80,8 +89,8 @@
 
     .rickroll-card:hover {
       transform: translateY(-4px) scale(1.02);
-      box-shadow: 0 12px 48px rgba(192, 132, 252, 0.2);
-      border-color: #c084fc;
+      box-shadow: 0 12px 48px var(--purple-glow);
+      border-color: var(--purple-accent);
     }
 
     .rickroll-card::before {
@@ -110,7 +119,7 @@
       height: 200px;
       object-fit: cover;
       display: block;
-      background: #0e0e16;
+      background: var(--bg-card);
     }
 
     .uno-center .rickroll-card img {
@@ -138,24 +147,24 @@
     }
 
     .rickroll-footer p {
-      color: #b8a8d0;
+      color: var(--text-secondary);
       font-size: 0.85rem;
       margin-bottom: 1rem;
     }
 
     .rickroll-footer a {
-      color: #c084fc;
+      color: var(--purple-accent);
       text-decoration: none;
       font-weight: 700;
       padding: 0.5rem 1rem;
-      border: 1px solid #c084fc;
+      border: 1px solid var(--purple-accent);
       border-radius: 8px;
       transition: all 0.3s ease;
     }
 
     .rickroll-footer a:hover {
-      background: #c084fc;
-      color: #050508;
+      background: var(--purple-accent);
+      color: var(--bg-body);
     }
 
     .marquee {
@@ -249,8 +258,6 @@
   <!-- Restore theme from localStorage before paint to avoid flash -->
   <script>if(localStorage.getItem('theme')==='dark'){document.body.classList.add('night-mode');document.body.classList.remove('light-mode')}</script>
 
-  <div class="disco-ball"></div>
-
   <div class="floating-notes">
     <span class="note" style="left: 10%; animation-delay: 0s;">🎵</span>
     <span class="note" style="left: 20%; animation-delay: 2s;">🎶</span>
@@ -264,7 +271,17 @@
   </div>
 
   <header class="rickroll-header">
-    <h1>🌟 Hall of Fame 🌟</h1>
+    <div class="fame-header-row">
+      <h1>🌟 Hall of Fame 🌟</h1>
+      <div class="toggle-wrap">
+        <input type="checkbox" id="theme-toggle">
+        <label for="theme-toggle" class="toggle-label">
+          <i class="fas fa-moon"></i>
+          <i class="fas fa-sun"></i>
+          <span class="toggle-ball"></span>
+        </label>
+      </div>
+    </div>
     <p>You clicked the link... and now you're here. Welcome to the hall of fame.</p>
   </header>
 
@@ -326,6 +343,7 @@
     <p style="margin-top: 1.5rem;"><a href="#" onclick="history.back(); return false;">← Go Back (if you can)</a></p>
   </footer>
 
+  <script src="../js/script.js"></script>
   <script>
     // Auto-play the song in your head
     const lyrics = [
