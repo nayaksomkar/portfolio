@@ -2363,89 +2363,47 @@ body.light-mode .magic-card {
 
   /* Content adjustments for minimal header */
   .about-main {
-    padding-top: 3.5rem !important;
+    padding-top: 3.8rem !important;
   }
   .about-hero {
-    padding: 0.5rem 0 0.8rem !important;
+    padding: 0.5rem 0 0.5rem !important;
   }
 
-  /* Avatar - clean circle */
+  /* Avatar - clean circle, fully visible below header */
   .avatar-glow {
-    margin-bottom: 0.6rem !important;
+    margin-bottom: 0.5rem !important;
     padding: 3px;
+    display: inline-flex;
+    overflow: hidden;
   }
   .about-avatar {
     width: 72px !important;
     height: 72px !important;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+    border: 3px solid var(--bg-body);
   }
 
-  /* ASCII art - scale proportionally as one unit */
+  /* ASCII art - scale entire composition proportionally */
   .ascii-art {
     margin-bottom: 0.5rem !important;
-    padding-top: 0.5rem !important;
+    padding-top: 0.3rem !important;
     padding-bottom: 0 !important;
     width: 100%;
-    overflow: visible;
+    max-width: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   .ascii-art pre {
-    font-size: clamp(0.14rem, 0.95vw, 0.22rem);
+    font-size: clamp(0.13rem, 0.9vw, 0.2rem) !important;
     max-width: 100%;
-    overflow: visible;
     white-space: pre;
-    transform-origin: center center;
     display: inline-block;
-  }
-
-  /* Description card */
-  .tagline-card.about-card {
-    padding: 0.8rem !important;
-    margin-bottom: 0.8rem !important;
-  }
-  .tagline-card.about-card p {
-    font-size: clamp(0.7rem, 2.5vw, 0.85rem);
-  }
-
-  /* Section title */
-  .section-title {
-    font-size: 0.85rem;
-    margin: 0.8rem 0 0.5rem;
-  }
-
-  /* Skill stack grid */
-  .about-grid-2 {
-    grid-template-columns: 1fr;
-    gap: 0.6rem;
-  }
-  .about-grid-2 > .about-card {
-    grid-column: span 1 !important;
-    padding: 0.8rem;
-    text-align: center;
-  }
-  .about-card h2 {
-    font-size: 0.78rem;
-    margin-bottom: 0.5rem;
-    justify-content: center;
-  }
-  .skill-chips {
-    justify-content: center !important;
-    gap: 0.25rem;
-  }
-  .skill-chip {
-    padding: 0.2rem 0.4rem 0.2rem 0.3rem;
-  }
-  .skill-chip img {
-    width: 18px;
-    height: 18px;
-  }
-  .skill-chip span {
-    font-size: 0.7rem;
-  }
-  .resume-card {
-    grid-column: span 1 !important;
-  }
-  .resume-btn {
-    padding: 0.6rem 1.5rem;
-    font-size: 0.85rem;
+    transform: scale(var(--ascii-scale, 1));
+    transform-origin: center center;
   }
 }
 
@@ -2466,17 +2424,14 @@ body.light-mode .magic-card {
     padding: 0.15rem 0.3rem;
   }
   .about-main {
-    padding: 3.2rem 0.6rem 1.5rem !important;
+    padding: 3.5rem 0.6rem 1.5rem !important;
   }
   .about-avatar {
     width: 64px !important;
     height: 64px !important;
   }
   .ascii-art pre {
-    font-size: clamp(0.12rem, 0.85vw, 0.18rem);
-  }
-  .tagline-card.about-card p {
-    font-size: 0.65rem;
+    font-size: clamp(0.11rem, 0.8vw, 0.16rem) !important;
   }
 }
 
@@ -2493,7 +2448,7 @@ body.light-mode .magic-card {
     padding: 0.15rem 0.25rem;
   }
   .ascii-art pre {
-    font-size: clamp(0.11rem, 0.8vw, 0.16rem);
+    font-size: clamp(0.1rem, 0.75vw, 0.14rem) !important;
   }
 }
 
@@ -2514,17 +2469,14 @@ body.light-mode .magic-card {
     padding: 0.1rem 0.2rem;
   }
   .about-main {
-    padding: 3rem 0.5rem 1.2rem !important;
+    padding: 3.2rem 0.5rem 1.2rem !important;
   }
   .about-avatar {
     width: 56px !important;
     height: 56px !important;
   }
-  .about-card {
-    padding: 0.6rem !important;
-  }
   .ascii-art pre {
-    font-size: clamp(0.1rem, 0.75vw, 0.15rem);
+    font-size: clamp(0.09rem, 0.7vw, 0.13rem) !important;
   }
 }
 
